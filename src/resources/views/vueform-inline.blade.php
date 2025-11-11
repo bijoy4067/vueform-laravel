@@ -1,0 +1,49 @@
+<div class="vue-app" data-vue-app>
+
+    {{-- STEP 1: DEFINE VARIABLES AND RECURSIVE FUNCTION --}}
+    @php
+        // Define $formElements and $formOptions from $formData (passed to the view)
+        $formElements = $formData['schema'];
+        $formOptions = $formData;
+        unset($formOptions['schema']); // Remove schema to keep :options clean
+
+        /**
+         * Recursive renderer for nested form elements.
+         */
+        $renderElements = function ($elements) use (&$renderElements) {
+            $html = '';
+
+            foreach ($elements as $formElement => $elementData) {
+                $component = $elementData['element'] ?? $formElement;
+
+                // 1. Render children first (pass the schema array recursively)
+                $childHtml = '';
+                if (!empty($elementData['schema']) && is_array($elementData['schema'])) {
+                    $childHtml = $renderElements($elementData['schema']);
+                }
+
+                // 2. FIX: Remove the 'schema' key from the element's data
+        //    before passing it to the component via the :data prop.
+        unset($elementData['schema']);
+
+        // 3. Render this element, passing its data and the rendered children
+        $html .= view('vueForm::components.core.element-render', [
+            'component' => $component,
+            'data' => $elementData,
+            'html' => $childHtml, // The rendered children
+                ])->render();
+            }
+            return $html;
+        };
+    @endphp
+
+    {{-- STEP 2: RENDER THE VUE FORM --}}
+    <vue-form-inline :options='{!! json_encode($formOptions, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}'>
+        {!! $renderElements($formElements) !!}
+
+    </vue-form-inline>
+
+</div>
+<script>
+    window.VUEFORM_STYLES = @json(config('laravel-vueform.styles'));
+</script>

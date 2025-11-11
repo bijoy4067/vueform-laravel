@@ -1,0 +1,63 @@
+{
+    "name": "bijoy/laravel-vueform",
+    "description": "Laraform Community Edition (Laravel)",
+    "version": "1.2.2",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "form",
+        "builder",
+        "generator"
+    ],
+    "homepage": "https://laraform.io",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bijoy Karmokar",
+            "email": "developer.bijoy.karmokar@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/bijoy4067/laravel-vueform/issues",
+        "docs": "https://laraform.io/docs"
+    },
+    "require": {
+        "php": "^8.2"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.23",
+        "laravel/pail": "^1.2.2",
+        "laravel/pint": "^1.24",
+        "laravel/sail": "^1.41",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.6",
+        "phpunit/phpunit": "^11.5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaravelVueForm\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelVueForm\\VueFormServiceProvider"
+            ],
+            "aliases": {
+                "VueForm": "LaravelVueForm\\VueForm"
+            }
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@php artisan vendor:publish --provider=\"LaravelVueForm\\VueFormServiceProvider\" --force",
+            "LaravelVueForm\\ComposerScripts::postInstall"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --provider=\"LaravelVueForm\\VueFormServiceProvider\" --force",
+            "LaravelVueForm\\ComposerScripts::postInstall",
+            "LaravelVueForm\\ComposerScripts::postUpdate"
+
+        ]
+    }
+}

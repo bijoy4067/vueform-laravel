@@ -1,0 +1,1 @@
+<{{ $component . '-inline' }} :data='@json($data)'>{!! $html !!}</{{ $component . '-inline' }}>
