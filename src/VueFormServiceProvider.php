@@ -33,12 +33,6 @@ class VueFormServiceProvider extends ServiceProvider
             'laravel-vueform'
         );
 
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                \LaravelVueForm\Console\BuildCommand::class,
-            ]);
-        }
-
         $this->app->bind('Laraform\Contracts\Validation\Validator', 'Laraform\Validation\Validator');
 
         $this->app->bind('Illuminate\Contracts\Validation\Validator', function ($app, $args) {
