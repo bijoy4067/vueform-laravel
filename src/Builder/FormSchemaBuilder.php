@@ -65,4 +65,9 @@ class FormSchemaBuilder extends AttributesBuilder
     {
         return $this->getAttributes();
     }
+
+    protected static function generateRandomName()
+    {
+        return strtolower(Str::random(10));
+    }
 }

@@ -1,4 +1,4 @@
-<div class="vue-app" data-vue-app>
+<div class="vue-app">
 
     {{-- STEP 1: DEFINE VARIABLES AND RECURSIVE FUNCTION --}}
     @php

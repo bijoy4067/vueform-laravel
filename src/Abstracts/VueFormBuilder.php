@@ -22,6 +22,7 @@ abstract class VueFormBuilder
     protected static $schema = [];
 
     protected static $formMode = 'inline';
+    private static array $elementsKey = [];
 
     /**
      * Define the form structure.
@@ -48,7 +49,9 @@ abstract class VueFormBuilder
         if (!empty($value->attributes['schema'])) {
             $children = [];
             foreach ($value->attributes['schema'] as $child) {
+                self::$elementsKey[] =  $value->attributes['name'] ?? '';
                 if (is_array($child)) {
+                    $child['dataPath'] = implode('.', self::$elementsKey);
                     $children[] = $child;
                 } else {
 
@@ -58,10 +61,12 @@ abstract class VueFormBuilder
             $elementArray['schema'] = $children;
         }
 
+        
+        self::$elementsKey = [];
         return $elementArray; // numeric array entry
     }
 
-    /**
+    /** 
      * Build the Vue form data and render the HTML component.
      *
      * @return string The rendered HTML string for embedding the VueFormBuilder.

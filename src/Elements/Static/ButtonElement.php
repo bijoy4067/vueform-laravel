@@ -47,6 +47,6 @@ class ButtonElement extends FormSchemaBuilder
     public static function submitButton(array $data = [])
     {
         $element = new static();
-        return $element->name('submit-button')->submits(true)->buttonType('anchor');
+        return $element->name(static::generateRandomName())->submits(true);
     }
 }
