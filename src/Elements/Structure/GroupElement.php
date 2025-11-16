@@ -109,6 +109,7 @@ class GroupElement extends FormSchemaBuilder
         'after' => [],
     ];
 
+
     public static function rowWith1Columns(array $data)
     {
         $element = new static();
@@ -119,7 +120,7 @@ class GroupElement extends FormSchemaBuilder
             $instance->attributes = [
                 'type' => 'group',
                 'name' => static::generateRandomName(),
-                'schema' => $value,  // Use 0-based index
+                'schema' => $value->toArray(),  // Use 0-based index
                 'element' => 'group-element',
                 'columns' => [
                     'default' => 12,

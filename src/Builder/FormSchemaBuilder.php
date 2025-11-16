@@ -48,14 +48,7 @@ class FormSchemaBuilder extends AttributesBuilder
      */
     public function getAttributes(): array
     {
-        $defaults = [];
-
-        if (isset($this->attributes['name']) && is_string($this->attributes['name'])) {
-            $name = ucfirst($this->attributes['name']);
-            $defaults = array_map(fn($v) => is_string($v) ? str_replace('{name}', $name, $v) : $v, $defaults);
-        }
-
-        return array_merge($defaults, $this->attributes);
+        return $this->attributes;
     }
 
     /**

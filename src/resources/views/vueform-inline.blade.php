@@ -23,16 +23,17 @@
                 }
 
                 // 2. FIX: Remove the 'schema' key from the element's data
-        //    before passing it to the component via the :data prop.
-        unset($elementData['schema']);
+                //    before passing it to the component via the :data prop.
+                unset($elementData['schema']);
 
-        // 3. Render this element, passing its data and the rendered children
-        $html .= view('vueForm::components.core.element-render', [
-            'component' => $component,
-            'data' => $elementData,
-            'html' => $childHtml, // The rendered children
+                // 3. Render this element, passing its data and the rendered children
+                $html .= view('vueForm::components.core.element-render', [
+                    'component' => $component,
+                    'data' => $elementData,
+                    'html' => $childHtml, // The rendered children  
                 ])->render();
             }
+            
             return $html;
         };
     @endphp

@@ -23,6 +23,7 @@ abstract class VueFormBuilder
 
     protected static $formMode = 'inline';
     private static array $elementsKey = [];
+    private static array $lookup = []; // name => full path lookup
 
     /**
      * Define the form structure.
@@ -41,29 +42,47 @@ abstract class VueFormBuilder
      * @param object $value
      * @return array
      */
-    private function processElements(Object $value): array
+    private static function processElements(object $value): array
     {
         $elementArray = $value->toArray();
 
-        // Recursively process children if schema exists
         if (!empty($value->attributes['schema'])) {
             $children = [];
             foreach ($value->attributes['schema'] as $child) {
-                self::$elementsKey[] =  $value->attributes['name'] ?? '';
+                
+                // Track parent keys
+                self::$elementsKey[] = $value->attributes['name'] ?? '';
+
                 if (is_array($child)) {
-                    $child['dataPath'] = implode('.', self::$elementsKey);
+
+                    // Build the child's dataPath
+                    $child['dataPath'] = implode('.', array_filter(self::$elementsKey));
+
+                    // Store in lookup for condition path resolving
+                    if (!empty($child['name'])) {
+                        self::$lookup[$child['name']] = $child['dataPath'];
+                    }
+
+                    // Process conditions
+                    if (isset($child['conditions'])) {
+                        foreach ($child['conditions'] as $conditionKey => $condition) {
+                            $targetName = $condition[0]; // e.g. 'first_name'
+                            if (isset(self::$lookup[$targetName])) {
+                                // Replace with full datapath
+                                $child['conditions'][$conditionKey][0] = self::$lookup[$targetName];
+                            }
+                        }
+                    }
                     $children[] = $child;
                 } else {
-
-                    $children[] = $this->processElements($child); // numeric keys preserved
+                    $children[] = self::processElements($child);
                 }
+
+                array_pop(self::$elementsKey); // restore stack
             }
             $elementArray['schema'] = $children;
         }
-
         
-        self::$elementsKey = [];
-        return $elementArray; // numeric array entry
     }
 
     /** 
@@ -77,7 +96,7 @@ abstract class VueFormBuilder
 
         // Loop through all defined form elements and prepare their schema
         foreach ($this->buildForm() as $value) {
-            $elements[] = $this->processElements($value); // numeric array
+            $elements[] = self::processElements($value); // numeric array
         }
 
         // Prepare the final VueFormBuilder schema configuration
