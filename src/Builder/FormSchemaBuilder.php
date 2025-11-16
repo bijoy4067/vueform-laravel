@@ -63,4 +63,10 @@ class FormSchemaBuilder extends AttributesBuilder
     {
         return strtolower(Str::random(10));
     }
+
+    protected function conditions(array $conditions): static
+    {
+        $this->attributes['conditions'] = $conditions ?? [];
+        return $this;
+    }
 }

@@ -82,7 +82,7 @@ abstract class VueFormBuilder
             }
             $elementArray['schema'] = $children;
         }
-        
+        return $elementArray;
     }
 
     /** 
