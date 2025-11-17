@@ -6,7 +6,7 @@ A fully-featured demonstration of the TagsElement field in Laravel VueForm.
       mixed field types, slot customization, remote data loading, validation rules, 
       and integration with static elements such as headings and horizontal dividers. 
       Ideal for developers looking to implement advanced tag-based input fields with 
-      flexible UI rendering and form submission workflows.
+      flexible UI rendering and form submission workflows. [Documentation](https://vueform.com/reference/tags-input-element)
 
 ---
 

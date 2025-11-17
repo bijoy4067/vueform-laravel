@@ -5,7 +5,7 @@ Demonstrates the use of ListElement in Laravel VueForm for creating repeatable a
       allowing multiple columns and rows inside each list item. Each list entry can 
       include various field types, such as text inputs, and supports validation rules 
       to ensure consistent data entry. Ideal for forms requiring dynamic, repeatable, 
-      and organized input sections .[Documentation](https://linktodocumentation)
+      and organized input sections .[Documentation](https://linktodocumentation) [Documentation](https://vueform.com/reference/list-element)
 
 ---
 
