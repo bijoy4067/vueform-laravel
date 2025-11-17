@@ -49,7 +49,7 @@ abstract class VueFormBuilder
         if (!empty($value->attributes['schema'])) {
             $children = [];
             foreach ($value->attributes['schema'] as $child) {
-                
+
                 // Track parent keys
                 self::$elementsKey[] = $value->attributes['name'] ?? '';
 
@@ -63,7 +63,7 @@ abstract class VueFormBuilder
                         self::$lookup[$child['name']] = $child['dataPath'];
                     }
 
-                    // Process conditions
+                    // Process conditions option to replace names with dataPaths
                     if (isset($child['conditions'])) {
                         foreach ($child['conditions'] as $conditionKey => $condition) {
                             $targetName = $condition[0]; // e.g. 'first_name'
@@ -73,7 +73,18 @@ abstract class VueFormBuilder
                             }
                         }
                     }
-                    $children[] = $child;
+
+                    // Recursively process nested schema if exists
+                    if (array_key_exists('schema', $child) && is_array($child['schema'])) {
+                        foreach ($child['schema'] as $value) {
+                            if (is_object($value)) {
+                                $children[] = self::processElements($value);
+                                continue;
+                            }
+                        }
+                    } else {
+                        $children[] = $child;
+                    }
                 } else {
                     $children[] = self::processElements($child);
                 }

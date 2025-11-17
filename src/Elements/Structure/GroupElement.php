@@ -114,13 +114,13 @@ class GroupElement extends FormSchemaBuilder
     {
         $element = new static();
         $groups = [];
-        
+
         foreach ($data as $value) {
             $instance = new static();
             $instance->attributes = [
                 'type' => 'group',
                 'name' => static::generateRandomName(),
-                'schema' => $value->toArray(),  // Use 0-based index
+                'schema' => $value,  // Convert to array if object
                 'element' => 'group-element',
                 'columns' => [
                     'default' => 12,
@@ -128,7 +128,6 @@ class GroupElement extends FormSchemaBuilder
             ];
             $groups[] = $instance;
         }
-        
         $element->attributes = [
             'type' => 'group',
             'schema' => $groups,
@@ -141,13 +140,13 @@ class GroupElement extends FormSchemaBuilder
     {
         $element = new static();
         $groups = [];
-        
+
         foreach ($data as $value) {
             $instance = new static();
             $instance->attributes = [
                 'type' => 'group',
                 'name' => static::generateRandomName(),
-                'schema' => $value,  // Use 0-based index
+                'schema' => $value,  // Convert to array if object
                 'element' => 'group-element',
                 'columns' => [
                     'container' => [
@@ -158,7 +157,7 @@ class GroupElement extends FormSchemaBuilder
             ];
             $groups[] = $instance;
         }
-        
+
         $element->attributes = [
             'type' => 'group',
             'schema' => $groups,
@@ -171,13 +170,13 @@ class GroupElement extends FormSchemaBuilder
     {
         $element = new static();
         $groups = [];
-        
+
         foreach ($data as $value) {
             $instance = new static();
             $instance->attributes = [
                 'type' => 'group',
                 'name' => static::generateRandomName(),
-                'schema' => $value,  // Use 0-based index
+                'schema' => $value,  // Convert to array if object
                 'element' => 'group-element',
                 'columns' => [
                     'container' => [
@@ -188,7 +187,7 @@ class GroupElement extends FormSchemaBuilder
             ];
             $groups[] = $instance;
         }
-        
+
         $element->attributes = [
             'type' => 'group',
             'schema' => $groups,
@@ -207,7 +206,7 @@ class GroupElement extends FormSchemaBuilder
             $instance->attributes = [
                 'type' => 'group',
                 'name' => static::generateRandomName(),
-                'schema' => $value,  // Use 0-based index
+                'schema' => $value,  // Convert to array if object
                 'element' => 'group-element',
                 'columns' => [
                     'container' => [
@@ -217,8 +216,8 @@ class GroupElement extends FormSchemaBuilder
                 ]
             ];
             $groups[] = $instance;
-        }   
-        
+        }
+
         $element->attributes = [
             'type' => 'group',
             'name' => static::generateRandomName(),
@@ -232,13 +231,13 @@ class GroupElement extends FormSchemaBuilder
     {
         $element = new static();
         $groups = [];
-        
+
         foreach ($data as $value) {
             $instance = new static();
             $instance->attributes = [
                 'type' => 'group',
                 'name' => static::generateRandomName(),
-                'schema' => $value,  // Use 0-based index
+                'schema' => $value,  // Convert to array if object
                 'element' => 'group-element',
                 'columns' => [
                     'container' => [
@@ -249,7 +248,7 @@ class GroupElement extends FormSchemaBuilder
             ];
             $groups[] = $instance;
         }
-        
+
         $element->attributes = [
             'type' => 'group',
             'schema' => $groups,
@@ -274,8 +273,8 @@ class GroupElement extends FormSchemaBuilder
     // }
 
     /**
-     * Build a group element dynamically with any number of columns.
-     */
+ * Build a group element dynamically with any number of columns.
+ */
     // protected static function makeRowWithColumns(array $data, int $columnsCount = 1)
     // {
     //     $element = new static();
