@@ -1,4 +1,6 @@
-# TagsElement
+# Tags Input Element 
+
+A fully-featured demonstration of the TagsElement field in Laravel VueForm. 
 
 ---
 

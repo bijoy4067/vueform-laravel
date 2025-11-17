@@ -1,4 +1,6 @@
-# PhoneElement
+# Phone Input Element 
+
+A complete example form demonstrating how to use the PhoneElement field within Laravel VueForm. 
 
 ---
 

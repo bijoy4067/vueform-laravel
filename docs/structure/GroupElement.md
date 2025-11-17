@@ -1,4 +1,6 @@
-# GroupElement
+# Group Element 
+
+A comprehensive demonstration of using GroupElement and ListElement in Laravel VueForm. 
 
 ---
 

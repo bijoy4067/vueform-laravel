@@ -1,4 +1,6 @@
-# ButtonElement
+# Button Element 
+
+A minimal example demonstrating the ButtonElement component within Laravel VueForm. 
 
 ---
 

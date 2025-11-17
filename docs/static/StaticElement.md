@@ -1,4 +1,6 @@
-# StaticElement
+# Static Element 
+
+A demonstration of static UI components available in Laravel VueForm, including 
 
 ---
 
