@@ -9,7 +9,7 @@ A comprehensive form demonstrating various text input types including text, numb
 
 ---
 
-## 🧱 Imports
+## 🧱 Import Class
 
 ```php
 use LaravelVueForm\Abstracts\VueFormBuilder;
@@ -19,7 +19,7 @@ use LaravelVueForm\Elements\Static\ButtonElement;
 
 ---
 
-## 🧩 Class
+## 🧩 Example
 
 ```php
 class TextElementForm extends VueFormBuilder

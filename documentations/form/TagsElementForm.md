@@ -7,7 +7,7 @@
 
 ---
 
-## 🧱 Imports
+## 🧱 Import Class
 
 ```php
 use LaravelVueForm\Abstracts\VueFormBuilder;
@@ -20,7 +20,7 @@ use LaravelVueForm\Elements\Structure\GroupElement;
 
 ---
 
-## 🧩 Class
+## 🧩 Example
 
 ```php
 class TagsElementForm extends VueFormBuilder

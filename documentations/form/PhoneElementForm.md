@@ -7,7 +7,7 @@
 
 ---
 
-## 🧱 Imports
+## 🧱 Import Class
 
 ```php
 use LaravelVueForm\Abstracts\VueFormBuilder;
@@ -16,7 +16,7 @@ use LaravelVueForm\Elements\Fields\PhoneElement;
 
 ---
 
-## 🧩 Class
+## 🧩 Example
 
 ```php
 class PhoneElementForm extends VueFormBuilder

@@ -7,7 +7,7 @@
 
 ---
 
-## 🧱 Imports
+## 🧱 Import Class
 
 ```php
 use LaravelVueForm\Abstracts\VueFormBuilder;
@@ -16,11 +16,12 @@ use LaravelVueForm\Elements\Fields\TextElement;
 use LaravelVueForm\Elements\Static\ButtonElement;
 use LaravelVueForm\Elements\Static\StaticElement;
 use LaravelVueForm\Elements\Structure\GroupElement;
+use LaravelVueForm\Elements\Structure\ListElement;
 ```
 
 ---
 
-## 🧩 Class
+## 🧩 Example
 
 ```php
 class GroupElementForm extends VueFormBuilder
@@ -93,7 +94,7 @@ class GroupElementForm extends VueFormBuilder
                     ->inputType('search')
                     ->autocomplete('off')
                     ->limit(5)
-                    ->items('http://127.0.0.1:8001/tags/json')
+                    ->items('http://localhost:8000/tags/json')
                     ->max(5)
                     ->rules('required')
                     ->event([
@@ -101,6 +102,11 @@ class GroupElementForm extends VueFormBuilder
                     ]),
                 TextElement::name('search'),
                 TextElement::name('number')->inputType('number'),
+            ]),
+            ListElement::schema([
+                TextElement::name('item_name')
+                    ->label('Item Name')
+                    ->rules('required'),
             ]),
             StaticElement::hr(),
             TagsElement::name('rating')
