@@ -99,4 +99,74 @@ class GridElement extends FormSchemaBuilder
         'label' => [],
         'required' => [],
     ];
+
+    /**
+     * @desc Arrange the given data into a single column row.
+     * @param array $data The data to be arranged in the row.
+     * @return GridElement The arranged grid data.
+     */
+    public static function rowWith1Columns(array $data)
+    {
+        return static::grid($data, 1);
+    }
+
+    /**
+     * @desc Arrange the given data into a two-column row.
+     * @param array $data The data to be arranged in the row.
+     * @return GridElement The arranged grid data.
+     */
+    public static function rowWith2Columns(array $data)
+    {
+        return static::grid($data, 2);
+    }
+
+    /**
+     * @desc Arrange the given data into a three-column row.
+     * @param array $data The data to be arranged in the row.
+     * @return GridElement The arranged grid data.
+     */
+    public static function rowWith3Columns(array $data)
+    {
+        return static::grid($data, 3);
+    }
+
+    /**
+     * @desc Arrange the given data into a four-column row.
+     * @param array $data The data to be arranged in the row.
+     * @return GridElement The arranged grid data.
+     */
+    public static function rowWith4Columns(array $data)
+    {
+        return static::grid($data, 4);
+    }
+
+    /**
+     * @desc Arrange the given data into a six-column row.
+     * @param array $data The data to be arranged in the row.
+     * @return GridElement The arranged grid data.
+     */
+    public static function rowWith6Columns(array $data)
+    {
+        return static::grid($data, 6);
+    }
+
+    private static function chunks(array $data, int $cols)
+    {
+        $count = count($data);
+        $chunkSize = ceil($count / $cols); // divide into $cols parts
+
+        return array_chunk($data, $chunkSize);
+    }
+
+    private static function grid(array $data, int $cols)
+    {
+        $instance = new static();
+        $instance->attributes = [
+            'grid' => static::chunks($data, $cols),
+            'element' => 'grid-element',
+            'cols' => $cols
+        ];
+
+        return $instance;
+    }
 }

@@ -106,6 +106,7 @@ abstract class VueFormBuilder
         $elements = [];
 
         // Loop through all defined form elements and prepare their schema
+        // dd($this->buildForm());
         foreach ($this->buildForm() as $value) {
             $elements[] = self::processElements($value); // numeric array
         }

@@ -89,24 +89,9 @@ class GroupElement extends FormSchemaBuilder
     public static function rowWith1Columns(array $data)
     {
         $element = new static();
-        $groups = [];
-
-        foreach ($data as $value) {
-            $instance = new static();
-            $instance->attributes = [
-                'type' => 'group',
-                'name' => static::generateRandomName(),
-                'schema' => $value,  // Convert to array if object
-                'element' => 'group-element',
-                'columns' => [
-                    'default' => 12,
-                ]
-            ];
-            $groups[] = $instance;
-        }
         $element->attributes = [
             'type' => 'group',
-            'schema' => $groups,
+            'schema' => self::chunks($data, 1),
             'element' => 'group-element'
         ];
 
@@ -115,28 +100,9 @@ class GroupElement extends FormSchemaBuilder
     public static function rowWith2Columns(array $data)
     {
         $element = new static();
-        $groups = [];
-
-        foreach ($data as $value) {
-            $instance = new static();
-            $instance->attributes = [
-                'type' => 'group',
-                'name' => static::generateRandomName(),
-                'schema' => $value,  // Convert to array if object
-                'element' => 'group-element',
-                'columns' => [
-                    'container' => [
-                        'sm' => 6,
-                        'lg' => 6,
-                    ],
-                ]
-            ];
-            $groups[] = $instance;
-        }
-
         $element->attributes = [
             'type' => 'group',
-            'schema' => $groups,
+            'schema' => self::chunks($data, 2),
             'element' => 'group-element'
         ];
 
@@ -145,28 +111,9 @@ class GroupElement extends FormSchemaBuilder
     public static function rowWith3Columns(array $data)
     {
         $element = new static();
-        $groups = [];
-
-        foreach ($data as $value) {
-            $instance = new static();
-            $instance->attributes = [
-                'type' => 'group',
-                'name' => static::generateRandomName(),
-                'schema' => $value,  // Convert to array if object
-                'element' => 'group-element',
-                'columns' => [
-                    'container' => [
-                        'sm' => 6,
-                        'lg' => 4,
-                    ],
-                ]
-            ];
-            $groups[] = $instance;
-        }
-
         $element->attributes = [
             'type' => 'group',
-            'schema' => $groups,
+            'schema' => self::chunks($data, 3),
             'element' => 'group-element'
         ];
 
@@ -175,29 +122,10 @@ class GroupElement extends FormSchemaBuilder
     public static function rowWith4Columns(array $data)
     {
         $element = new static();
-        $groups = [];
-
-        foreach ($data as $value) {
-            $instance = new static();
-            $instance->attributes = [
-                'type' => 'group',
-                'name' => static::generateRandomName(),
-                'schema' => $value,  // Convert to array if object
-                'element' => 'group-element',
-                'columns' => [
-                    'container' => [
-                        'sm' => 6,
-                        'lg' => 3,
-                    ]
-                ]
-            ];
-            $groups[] = $instance;
-        }
-
         $element->attributes = [
             'type' => 'group',
             'name' => static::generateRandomName(),
-            'schema' => $groups,
+            'schema' => self::chunks($data, 4),
             'element' => 'group-element',
         ];
 
@@ -206,6 +134,17 @@ class GroupElement extends FormSchemaBuilder
     public static function rowWith6Columns(array $data)
     {
         $element = new static();
+        $element->attributes = [
+            'type' => 'group',
+            'schema' => self::chunks($data, 6),
+            'element' => 'group-element'
+        ];
+
+        return $element;
+    }
+
+    private static function chunks(array $data, $col)
+    {
         $groups = [];
 
         foreach ($data as $value) {
@@ -217,21 +156,15 @@ class GroupElement extends FormSchemaBuilder
                 'element' => 'group-element',
                 'columns' => [
                     'container' => [
-                        'sm' => 6,
-                        'lg' => 2,
-                    ]
+                        'sm' => 12 / $col,
+                        'lg' => 12 / $col,
+                    ],
                 ]
             ];
             $groups[] = $instance;
         }
 
-        $element->attributes = [
-            'type' => 'group',
-            'schema' => $groups,
-            'element' => 'group-element'
-        ];
-
-        return $element;
+        return $groups;
     }
     /**
      * Magic handler for calls like rowWith1Columns, rowWith2Columns, etc.
