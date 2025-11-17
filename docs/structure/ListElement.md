@@ -1,6 +1,11 @@
-# List Element Form
+# List Element 
 
 Demonstrates the use of ListElement in Laravel VueForm for creating repeatable and 
+      structured item entries. This form showcases nested layouts with GroupElement, 
+      allowing multiple columns and rows inside each list item. Each list entry can 
+      include various field types, such as text inputs, and supports validation rules 
+      to ensure consistent data entry. Ideal for forms requiring dynamic, repeatable, 
+      and organized input sections .[Documentation](https://linktodocumentation)
 
 ---
 
