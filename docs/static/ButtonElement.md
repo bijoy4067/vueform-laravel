@@ -3,7 +3,7 @@
 A minimal example demonstrating the ButtonElement component within Laravel VueForm. 
       This form focuses on rendering a standard submit button using the built-in 
       submitButton() helper. Ideal for showcasing how simple static UI elements can be 
-      integrated into a form and how button elements interact with form submission behavior. [Documentation](https://vueform.com/reference/button-element)
+      integrated into a form and how button elements interact with form submission behavior. <a href="https://vueform.com/reference/button-element" target="_blank">Documentation</a>
 
 ---
 

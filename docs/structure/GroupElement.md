@@ -5,7 +5,7 @@ A comprehensive demonstration of using GroupElement and ListElement in Laravel V
       with custom templates, dynamic remote items, and mixed input types. It includes validation, 
       slot customization, static elements like horizontal dividers, and submit button integration. 
       Ideal for developers looking to implement advanced, structured forms with flexible layouts 
-      and complex user interactions. [Documentation](https://vueform.com/reference/group-element)
+      and complex user interactions. <a href="https://vueform.com/reference/group-element" target="_blank">Documentation</a>
 
 ---
 
