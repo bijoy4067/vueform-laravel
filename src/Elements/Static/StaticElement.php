@@ -76,6 +76,7 @@ class StaticElement extends FormSchemaBuilder
     /**
      * Create a plain static text element.
      *
+     * @desc Generates a simple static text block without any HTML tag.
      * @param string $content The text content to display.
      * @return static
      */
@@ -88,6 +89,7 @@ class StaticElement extends FormSchemaBuilder
     /**
      * Create a static <h1> heading element.
      *
+     * @desc Renders a bold level-one heading.
      * @param string $content The heading text.
      * @return static
      */
@@ -100,6 +102,7 @@ class StaticElement extends FormSchemaBuilder
     /**
      * Create a static <h2> heading element.
      *
+     * @desc Renders a level-two heading.
      * @param string $content The heading text.
      * @return static
      */
@@ -112,6 +115,7 @@ class StaticElement extends FormSchemaBuilder
     /**
      * Create a static <h3> heading element.
      *
+     * @desc Renders a level-three heading.
      * @param string $content The heading text.
      * @return static
      */
@@ -124,6 +128,7 @@ class StaticElement extends FormSchemaBuilder
     /**
      * Create a static <h4> heading element.
      *
+     * @desc Renders a level-four heading.
      * @param string $content The heading text.
      * @return static
      */
@@ -136,6 +141,7 @@ class StaticElement extends FormSchemaBuilder
     /**
      * Create a static <p> paragraph element.
      *
+     * @desc Renders a paragraph containing plain text.
      * @param string $content The paragraph text.
      * @return static
      */
@@ -148,6 +154,7 @@ class StaticElement extends FormSchemaBuilder
     /**
      * Create a static <blockquote> element.
      *
+     * @desc Renders a blockquote for quoted content.
      * @param string $content The quote text.
      * @return static
      */
@@ -160,6 +167,7 @@ class StaticElement extends FormSchemaBuilder
     /**
      * Create a static <a> anchor (link) element.
      *
+     * @desc Renders a hyperlink with configurable URL and target.
      * @param string $href   The URL the link points to.
      * @param string $target The target attribute, defaults to '_blank'.
      * @return static
@@ -176,6 +184,7 @@ class StaticElement extends FormSchemaBuilder
     /**
      * Create a static <img> image element.
      *
+     * @desc Displays an image with optional alt text, title, and dimensions.
      * @param string $src     The image source URL.
      * @param string $alt     The alt text for accessibility.
      * @param string $title   The image title tooltip.
@@ -203,6 +212,7 @@ class StaticElement extends FormSchemaBuilder
     /**
      * Create a static <hr> horizontal rule element.
      *
+     * @desc Renders a visual horizontal divider.
      * @return static
      */
     public static function hr()

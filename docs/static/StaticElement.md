@@ -44,14 +44,14 @@ class StaticElementForm extends VueFormBuilder
 
 | Method | Description |
 | --- | --- |
-| `text` |  |
-| `h1` |  |
-| `h2` |  |
-| `h3` |  |
-| `h4` |  |
-| `p` |  |
-| `blockquote` |  |
-| `a` |  |
-| `img` |  |
-| `hr` |  |
+| `text` | Generates a simple static text block without any HTML tag. |
+| `h1` | Renders a bold level-one heading. |
+| `h2` | Renders a level-two heading. |
+| `h3` | Renders a level-three heading. |
+| `h4` | Renders a level-four heading. |
+| `p` | Renders a paragraph containing plain text. |
+| `blockquote` | Renders a blockquote for quoted content. |
+| `a` | Renders a hyperlink with configurable URL and target. |
+| `img` | Displays an image with optional alt text, title, and dimensions. |
+| `hr` | Renders a visual horizontal divider. |
 
