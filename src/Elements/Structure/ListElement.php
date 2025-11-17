@@ -108,7 +108,15 @@ class ListElement extends FormSchemaBuilder
         'label' => [],
         'required' => [],
     ];
-
+    /**
+     * Create a VueForm List Element from an array of elements.
+     *
+     * @param array $data Array of elements to include in the list.
+     * @return static
+     * @desc This method generates a List Element in VueForm, where each item in the provided
+     *       array becomes a child element in the list. Useful for creating repeatable or
+     *       structured lists of form fields.
+     */
     public static function schema(array $data)
     {
         $element = new static();

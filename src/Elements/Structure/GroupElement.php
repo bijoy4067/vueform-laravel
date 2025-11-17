@@ -85,7 +85,13 @@ class GroupElement extends FormSchemaBuilder
         'required' => [],
     ];
 
-
+    /**
+     * Create a VueForm group element with 1 column per row.
+     *
+     * @param array $data Array of elements to include in the group.
+     * @return static
+     * @desc Generates a VueForm Group Element where each item occupies a full row (1 column per row).
+     */
     public static function rowWith1Columns(array $data)
     {
         $element = new static();
@@ -97,6 +103,14 @@ class GroupElement extends FormSchemaBuilder
 
         return $element;
     }
+
+    /**
+     * Create a VueForm group element with 2 columns per row.
+     *
+     * @param array $data Array of elements to include in the group.
+     * @return static
+     * @desc Generates a VueForm Group Element with 2 items per row.
+     */
     public static function rowWith2Columns(array $data)
     {
         $element = new static();
@@ -108,6 +122,14 @@ class GroupElement extends FormSchemaBuilder
 
         return $element;
     }
+
+    /**
+     * Create a VueForm group element with 3 columns per row.
+     *
+     * @param array $data Array of elements to include in the group.
+     * @return static
+     * @desc Generates a VueForm Group Element with 3 items per row.
+     */
     public static function rowWith3Columns(array $data)
     {
         $element = new static();
@@ -119,6 +141,14 @@ class GroupElement extends FormSchemaBuilder
 
         return $element;
     }
+
+    /**
+     * Create a VueForm group element with 4 columns per row.
+     *
+     * @param array $data Array of elements to include in the group.
+     * @return static
+     * @desc Generates a VueForm Group Element with 4 items per row and a unique random name.
+     */
     public static function rowWith4Columns(array $data)
     {
         $element = new static();
@@ -131,6 +161,14 @@ class GroupElement extends FormSchemaBuilder
 
         return $element;
     }
+
+    /**
+     * Create a VueForm group element with 6 columns per row.
+     *
+     * @param array $data Array of elements to include in the group.
+     * @return static
+     * @desc Generates a VueForm Group Element with 6 items per row.
+     */
     public static function rowWith6Columns(array $data)
     {
         $element = new static();
@@ -182,8 +220,8 @@ class GroupElement extends FormSchemaBuilder
     // }
 
     /**
- * Build a group element dynamically with any number of columns.
- */
+     * Build a group element dynamically with any number of columns.
+     */
     // protected static function makeRowWithColumns(array $data, int $columnsCount = 1)
     // {
     //     $element = new static();

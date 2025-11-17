@@ -164,7 +164,8 @@ class GridElement extends FormSchemaBuilder
         $instance->attributes = [
             'grid' => static::chunks($data, $cols),
             'element' => 'grid-element',
-            'cols' => $cols
+            'cols' => $cols,
+            'name' => static::generateRandomName()
         ];
 
         return $instance;

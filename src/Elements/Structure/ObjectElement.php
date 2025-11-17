@@ -85,4 +85,123 @@ class ObjectElement extends FormSchemaBuilder
         'label' => [],
         'required' => [],
     ];
+
+    /**
+     * Create a VueForm group element with 1 column per row.
+     *
+     * @param array $data Array of elements to include in the row.
+     * @return static
+     * @desc This method generates a group element in VueForm with each item occupying a full row (1 column).
+     */
+    public static function rowWith1Columns(array $data)
+    {
+        $element = new static();
+        $element->attributes = [
+            'type' => 'group',
+            'schema' => self::chunks($data, 1),
+            'element' => 'object-element'
+        ];
+
+        return $element;
+    }
+
+    /**
+     * Create a VueForm group element with 2 columns per row.
+     *
+     * @param array $data Array of elements to include in the row.
+     * @return static
+     * @desc This method generates a group element in VueForm with 2 items per row.
+     */
+    public static function rowWith2Columns(array $data)
+    {
+        $element = new static();
+        $element->attributes = [
+            'type' => 'group',
+            'schema' => self::chunks($data, 2),
+            'element' => 'object-element'
+        ];
+
+        return $element;
+    }
+
+    /**
+     * Create a VueForm group element with 3 columns per row.
+     *
+     * @param array $data Array of elements to include in the row.
+     * @return static
+     * @desc This method generates a group element in VueForm with 3 items per row.
+     */
+    public static function rowWith3Columns(array $data)
+    {
+        $element = new static();
+        $element->attributes = [
+            'type' => 'group',
+            'schema' => self::chunks($data, 3),
+            'element' => 'object-element'
+        ];
+
+        return $element;
+    }
+
+    /**
+     * Create a VueForm group element with 4 columns per row.
+     *
+     * @param array $data Array of elements to include in the row.
+     * @return static
+     * @desc This method generates a group element in VueForm with 4 items per row.
+     */
+    public static function rowWith4Columns(array $data)
+    {
+        $element = new static();
+        $element->attributes = [
+            'type' => 'group',
+            'name' => static::generateRandomName(),
+            'schema' => self::chunks($data, 4),
+            'element' => 'object-element',
+        ];
+
+        return $element;
+    }
+
+    /**
+     * Create a VueForm group element with 6 columns per row.
+     *
+     * @param array $data Array of elements to include in the row.
+     * @return static
+     * @desc This method generates a group element in VueForm with 6 items per row.
+     */
+    public static function rowWith6Columns(array $data)
+    {
+        $element = new static();
+        $element->attributes = [
+            'type' => 'group',
+            'schema' => self::chunks($data, 6),
+            'element' => 'object-element'
+        ];
+
+        return $element;
+    }
+
+    private static function chunks(array $data, $col)
+    {
+        $groups = [];
+
+        foreach ($data as $value) {
+            $instance = new static();
+            $instance->attributes = [
+                'name' => static::generateRandomName(),
+                'schema' => $value,  // Convert to array if object
+                'element' => 'object-element',
+                'columns' => [
+                    'container' => [
+                        'sm' => 12 / $col,
+                        'lg' => 12 / $col,
+                    ],
+                ]
+            ];
+            $groups[] = $instance;
+        }
+
+        return $groups;
+    }
 }

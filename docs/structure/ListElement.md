@@ -49,3 +49,11 @@ class ListElementForm extends VueFormBuilder
     }
 }
 ```
+---
+
+## ⚙️ Available Static Methods
+
+| Method | Description |
+| --- | --- |
+| `schema` | This method generates a List Element in VueForm, where each item in the provided |
+

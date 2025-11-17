@@ -13,6 +13,8 @@ Demonstrates the use of GridElement in Laravel VueForm to create structured
 
 ```php
 use LaravelVueForm\Abstracts\VueFormBuilder;
+use LaravelVueForm\Elements\Static\ButtonElement;
+use LaravelVueForm\Elements\Static\StaticElement;
 use LaravelVueForm\Elements\Structure\GridElement;
 ```
 
@@ -39,12 +41,24 @@ class GridElementForm extends VueFormBuilder
                 ['type' => 'slider', 'name' => 'd']
             ]),
             GridElement::rowWith3Columns([
-                ['type' => 'text', 'name' => 'a', 'placeholder' => 'A'],
-                ['type' => 'select', 'items' => [1, 2, 3], 'name' => 'b', 'placeholder' => 'B'],
-                ['type' => 'date', 'name' => 'c', 'placeholder' => 'C'],
-                ['type' => 'slider', 'name' => 'd']
-            ])
+                ['type' => 'text', 'name' => 'e', 'placeholder' => 'E'],
+                ['type' => 'select', 'items' => [1, 2, 3], 'name' => 'f', 'placeholder' => 'F'],
+                ['type' => 'date', 'name' => 'g', 'placeholder' => 'G'],
+                ['type' => 'slider', 'name' => 'h']
+            ]),
+            ButtonElement::submitButton()
         ];
+    }
+
+    public static function formData($request)
+    {
+        $request->validate([
+            'e' => 'required'
+        ]);
+
+        return response()->json([
+            'status' => 'success'
+        ]);
     }
 }
 ```

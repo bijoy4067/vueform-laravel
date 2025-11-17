@@ -1,11 +1,11 @@
 # Group Element 
 
-A comprehensive demonstration of using GroupElement and ListElement in Laravel VueForm. 
+A comprehensive demonstration of using ObjectElement and ListElement in Laravel VueForm. 
       This form showcases nested column layouts, conditional field rendering, tag selection 
       with custom templates, dynamic remote items, and mixed input types. It includes validation, 
       slot customization, static elements like horizontal dividers, and submit button integration. 
       Ideal for developers looking to implement advanced, structured forms with flexible layouts 
-      and complex user interactions. <a href="https://vueform.com/reference/group-element" target="_blank">Documentation</a>
+      and complex user interactions. <a href="https://vueform.com/reference/object-element" target="_blank">Documentation</a>
 
 ---
 
@@ -17,7 +17,7 @@ use LaravelVueForm\Elements\Fields\TagsElement;
 use LaravelVueForm\Elements\Fields\TextElement;
 use LaravelVueForm\Elements\Static\ButtonElement;
 use LaravelVueForm\Elements\Static\StaticElement;
-use LaravelVueForm\Elements\Structure\GroupElement;
+use LaravelVueForm\Elements\Structure\ObjectElement;
 use LaravelVueForm\Elements\Structure\ListElement;
 ```
 
@@ -26,7 +26,7 @@ use LaravelVueForm\Elements\Structure\ListElement;
 ## 🧩 Example
 
 ```php
-class GroupElementForm extends VueFormBuilder
+class ObjectElementForm extends VueFormBuilder
 {
     protected static $method = 'post';
     /**
@@ -37,13 +37,13 @@ class GroupElementForm extends VueFormBuilder
     protected function buildForm(): array
     {
         return [
-            GroupElement::rowWith4Columns([
-                GroupElement::rowWith4Columns([
+            ObjectElement::rowWith4Columns([
+                ObjectElement::rowWith4Columns([
                     TextElement::name('first_name'),
                     TextElement::name('first_namex')
                 ]),
             ]),
-            GroupElement::rowWith4Columns([
+            ObjectElement::rowWith4Columns([
                 TagsElement::name('category')
                     ->type('tags')
                     ->closeOnSelect(false)
@@ -155,9 +155,9 @@ class GroupElementForm extends VueFormBuilder
 
 | Method | Description |
 | --- | --- |
-| `rowWith1Columns` | Generates a VueForm Group Element where each item occupies a full row (1 column per row). |
-| `rowWith2Columns` | Generates a VueForm Group Element with 2 items per row. |
-| `rowWith3Columns` | Generates a VueForm Group Element with 3 items per row. |
-| `rowWith4Columns` | Generates a VueForm Group Element with 4 items per row and a unique random name. |
-| `rowWith6Columns` | Generates a VueForm Group Element with 6 items per row. |
+| `rowWith1Columns` | This method generates a group element in VueForm with each item occupying a full row (1 column). |
+| `rowWith2Columns` | This method generates a group element in VueForm with 2 items per row. |
+| `rowWith3Columns` | This method generates a group element in VueForm with 3 items per row. |
+| `rowWith4Columns` | This method generates a group element in VueForm with 4 items per row. |
+| `rowWith6Columns` | This method generates a group element in VueForm with 6 items per row. |
 
