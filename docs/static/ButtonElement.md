@@ -30,3 +30,11 @@ class ButtonElementForm extends VueFormBuilder
     }
 }
 ```
+---
+
+## ⚙️ Available Static Methods
+
+| Method | Description |
+| --- | --- |
+| `submitButton` | Create a form submit button |
+

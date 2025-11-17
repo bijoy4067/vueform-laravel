@@ -38,3 +38,20 @@ class StaticElementForm extends VueFormBuilder
     }
 }
 ```
+---
+
+## ⚙️ Available Static Methods
+
+| Method | Description |
+| --- | --- |
+| `text` |  |
+| `h1` |  |
+| `h2` |  |
+| `h3` |  |
+| `h4` |  |
+| `p` |  |
+| `blockquote` |  |
+| `a` |  |
+| `img` |  |
+| `hr` |  |
+
