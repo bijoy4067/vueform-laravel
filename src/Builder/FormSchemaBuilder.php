@@ -4,12 +4,26 @@ namespace LaravelVueForm\Builder;
 
 use Illuminate\Support\Str;
 use LaravelVueForm\Abstracts\AttributesBuilder;
+use LaravelVueForm\Traits\DefaultAttributesTraits;
 
 class FormSchemaBuilder extends AttributesBuilder
 {
+    use DefaultAttributesTraits;
+   
     public array $attributes = [];
 
     protected static array $allowedAttributes = [];
+    protected static array $allowedProperties = [];
+    protected static array $allowedEventAttributes = [];
+    protected static array $allowedSlotAttributes = [];
+
+    public function __construct()
+    {
+        static::$allowedAttributes = array_merge(static::$allowedAttributes, static::$defaultAllowedAttributes);
+        static::$allowedProperties = array_merge(static::$allowedProperties, static::$defaultAllowedProperties);
+        static::$allowedEventAttributes = array_merge(static::$allowedEventAttributes, static::$defaultAllowedEventAttributes);
+        // static::$allowedSlotAttributes = array_merge(static::$allowedSlotAttributes, static::$defaultAllowedSlotAttributes);
+    }
 
     /**
      * Start a new instance with name
