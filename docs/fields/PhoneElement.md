@@ -1,10 +1,5 @@
 # PhoneElementForm
 
-**Class:** `PhoneElementForm`
-
-**Namespace:**  
-`App\VueForm\Form\PhoneElementForm`
-
 ---
 
 ## 🧱 Import Class

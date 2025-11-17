@@ -1,9 +1,4 @@
-# ButtonElementForm
-
-**Class:** `ButtonElementForm`
-
-**Namespace:**  
-`App\VueForm\Static\ButtonElementForm`
+# PhoneElementForm
 
 ---
 
@@ -11,7 +6,7 @@
 
 ```php
 use LaravelVueForm\Abstracts\VueFormBuilder;
-use LaravelVueForm\Elements\Static\ButtonElement;
+use LaravelVueForm\Elements\Fields\PhoneElement;
 ```
 
 ---
@@ -19,7 +14,7 @@ use LaravelVueForm\Elements\Static\ButtonElement;
 ## 🧩 Example
 
 ```php
-class ButtonElementForm extends VueFormBuilder
+class PhoneElementForm extends VueFormBuilder
 {
     protected static $method = 'post';
     /**
@@ -30,8 +25,10 @@ class ButtonElementForm extends VueFormBuilder
     protected function buildForm(): array
     {
         return [
-            ButtonElement::submitButton()
+            PhoneElement::name('phone')
+                ->include(['bd'])
+                ->unmask(true)
         ];
-    }
+    }   
 }
 ```

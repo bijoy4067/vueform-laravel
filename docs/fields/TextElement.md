@@ -2,11 +2,6 @@
 
 A comprehensive form demonstrating various text input types including text, number, email, password, and URL fields with conditional rendering support.
 
-**Class:** `TextElementForm`
-
-**Namespace:**  
-`App\VueForm\Form\TextElementForm`
-
 ---
 
 ## 🧱 Import Class

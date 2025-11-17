@@ -1,10 +1,5 @@
 # StaticElementForm
 
-**Class:** `StaticElementForm`
-
-**Namespace:**  
-`App\VueForm\Static\StaticElementForm`
-
 ---
 
 ## 🧱 Import Class

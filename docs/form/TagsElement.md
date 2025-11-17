@@ -1,10 +1,5 @@
 # TagsElementForm
 
-**Class:** `TagsElementForm`
-
-**Namespace:**  
-`App\VueForm\Form\TagsElementForm`
-
 ---
 
 ## 🧱 Import Class

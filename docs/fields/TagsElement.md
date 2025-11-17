@@ -1,9 +1,4 @@
-# GroupElementForm
-
-**Class:** `GroupElementForm`
-
-**Namespace:**  
-`App\VueForm\Structure\GroupElementForm`
+# TagsElementForm
 
 ---
 
@@ -16,7 +11,6 @@ use LaravelVueForm\Elements\Fields\TextElement;
 use LaravelVueForm\Elements\Static\ButtonElement;
 use LaravelVueForm\Elements\Static\StaticElement;
 use LaravelVueForm\Elements\Structure\GroupElement;
-use LaravelVueForm\Elements\Structure\ListElement;
 ```
 
 ---
@@ -24,7 +18,7 @@ use LaravelVueForm\Elements\Structure\ListElement;
 ## 🧩 Example
 
 ```php
-class GroupElementForm extends VueFormBuilder
+class TagsElementForm extends VueFormBuilder
 {
     protected static $method = 'post';
     /**
@@ -35,27 +29,20 @@ class GroupElementForm extends VueFormBuilder
     protected function buildForm(): array
     {
         return [
-            GroupElement::rowWith4Columns([
-                GroupElement::rowWith4Columns([
-                    TextElement::name('first_name'),
-                    TextElement::name('first_namex')
-                ]),
-            ]),
-            GroupElement::rowWith4Columns([
+            GroupElement::rowWith2Columns([
                 TagsElement::name('category')
                     ->type('tags')
                     ->closeOnSelect(false)
-                    // ->inputType('search')
+                    ->search(true)
+                    ->label('Categoryxx')
+                    ->inputType('search')
                     ->autocomplete('off')
                     ->limit(5)
                     ->rules('required')
-                    ->conditions([
-                        ['first_name', 'not_empty']
+                    ->columns([
+                        'container' => 12,
+                        'wrapper' => 6
                     ])
-                    // ->columns([
-                    //     'container' => 12,
-                    //     'wrapper' => 6
-                    // ])
                     ->items([
                         ['value' => 1, 'label' => 'Category 1', 'color' => 'red', 'name' => 'foo'],
                         ['value' => 2, 'label' => 'Category 2', 'color' => 'red', 'name' => 'foo'],
@@ -91,6 +78,7 @@ class GroupElementForm extends VueFormBuilder
                 TagsElement::name('tags')
                     ->type('tags')
                     ->closeOnSelect(false)
+                    ->label('tagsxx')
                     ->inputType('search')
                     ->autocomplete('off')
                     ->limit(5)
@@ -98,23 +86,20 @@ class GroupElementForm extends VueFormBuilder
                     ->max(5)
                     ->rules('required')
                     ->event([
-                        'select' => 'aaaa',
-                    ]),
+                        'select' => 'aaaa',]),
                 TextElement::name('search'),
                 TextElement::name('number')->inputType('number'),
-            ]),
-            ListElement::schema([
-                TextElement::name('item_name')
-                    ->label('Item Name')
-                    ->rules('required'),
             ]),
             StaticElement::hr(),
             TagsElement::name('rating')
                 ->type('tags')
                 ->closeOnSelect(false)
+                ->search(true)
+                ->label('Category')
                 ->inputType('search')
                 ->autocomplete('off')
                 ->limit(5)
+                ->submit(true)
                 ->columns([
                     'container' => 12,
                     'wrapper' => 6
@@ -136,9 +121,7 @@ class GroupElementForm extends VueFormBuilder
     public static function formData($request)
     {
         $request->validate([
-            'category' => 'required',
-            'first_name' => 'required',
-            'rating' => 'required',
+            'category' => 'required'
         ]);
 
         return response()->json([

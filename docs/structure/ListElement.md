@@ -1,10 +1,5 @@
 # ListElementForm
 
-**Class:** `ListElementForm`
-
-**Namespace:**  
-`App\VueForm\Structure\ListElementForm`
-
 ---
 
 ## 🧱 Import Class
