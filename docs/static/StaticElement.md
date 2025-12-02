@@ -1,10 +1,4 @@
-# Static Element 
-
-A demonstration of static UI components available in Laravel VueForm, including 
-      plain text, headings, horizontal rules, and images. This example showcases how 
-      StaticElement can be used to insert non-interactive content into forms, making it 
-      ideal for creating informational sections, visual dividers, instructional text, 
-      and branding elements within complex form layouts. <a href="https://vueform.com/reference/static-element" target="_blank">Documentation</a>
+# StaticElement
 
 ---
 
@@ -13,6 +7,7 @@ A demonstration of static UI components available in Laravel VueForm, including
 ```php
 use LaravelVueForm\Abstracts\VueFormBuilder;
 use LaravelVueForm\Elements\Static\StaticElement;
+use LaravelVueForm\Elements\Vueform;
 ```
 
 ---
@@ -22,25 +17,20 @@ use LaravelVueForm\Elements\Static\StaticElement;
 ```php
 class StaticElementForm extends VueFormBuilder
 {
-    protected static $method = 'post';
-    /**
-     * Build the form structure.s
-     *
-     * @return array
-     */
-    protected function buildForm(): array
+    protected function buildForm()
     {
-        return [
-            StaticElement::text('asdf'),
-            StaticElement::h1('asdf'),
-            StaticElement::hr(),
-            StaticElement::img(
-                src: 'https://vueform.com/images/logo.svg',
-                height: 40,
-                width: 570
-            )
-                
-        ];
+        return Vueform::name('static-element-form')
+            ->schema([
+                StaticElement::text('asdf'),
+                StaticElement::h1('asdf'),
+                StaticElement::hr(),
+                StaticElement::img(
+                    src: 'https://vueform.com/images/logo.svg',
+                    height: 40,
+                    width: 570
+                )
+
+            ]);
     }
 }
 ```

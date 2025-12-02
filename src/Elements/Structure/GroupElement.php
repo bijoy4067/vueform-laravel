@@ -95,11 +95,7 @@ class GroupElement extends FormSchemaBuilder
     public static function rowWith1Columns(array $data)
     {
         $element = new static();
-        $element->attributes = [
-            'type' => 'group',
-            'schema' => self::chunks($data, 1),
-            'element' => 'group-element'
-        ];
+        $element->attributes = self::buildElement($data, 1);
 
         return $element;
     }
@@ -114,11 +110,7 @@ class GroupElement extends FormSchemaBuilder
     public static function rowWith2Columns(array $data)
     {
         $element = new static();
-        $element->attributes = [
-            'type' => 'group',
-            'schema' => self::chunks($data, 2),
-            'element' => 'group-element'
-        ];
+        $element->attributes = self::buildElement($data, 2);
 
         return $element;
     }
@@ -133,11 +125,7 @@ class GroupElement extends FormSchemaBuilder
     public static function rowWith3Columns(array $data)
     {
         $element = new static();
-        $element->attributes = [
-            'type' => 'group',
-            'schema' => self::chunks($data, 3),
-            'element' => 'group-element'
-        ];
+        $element->attributes = self::buildElement($data, 3);
 
         return $element;
     }
@@ -152,12 +140,7 @@ class GroupElement extends FormSchemaBuilder
     public static function rowWith4Columns(array $data)
     {
         $element = new static();
-        $element->attributes = [
-            'type' => 'group',
-            'name' => static::generateRandomName(),
-            'schema' => self::chunks($data, 4),
-            'element' => 'group-element',
-        ];
+        $element->attributes = self::buildElement($data, 4);
 
         return $element;
     }
@@ -172,13 +155,19 @@ class GroupElement extends FormSchemaBuilder
     public static function rowWith6Columns(array $data)
     {
         $element = new static();
-        $element->attributes = [
-            'type' => 'group',
-            'schema' => self::chunks($data, 6),
-            'element' => 'group-element'
-        ];
+        $element->attributes = self::buildElement($data, 6);
 
         return $element;
+    }
+
+    private static function buildElement(array $data, $col)
+    {
+        return [
+            'type' => 'group',
+            'name' => static::generateRandomName(),
+            'schema' => self::chunks($data, 4),
+            'element-name' => 'group-element',
+        ];
     }
 
     private static function chunks(array $data, $col)
@@ -191,7 +180,7 @@ class GroupElement extends FormSchemaBuilder
                 'type' => 'group',
                 'name' => static::generateRandomName(),
                 'schema' => $value,  // Convert to array if object
-                'element' => 'group-element',
+                'element-name' => 'group-element',
                 'columns' => [
                     'container' => [
                         'sm' => 12 / $col,
@@ -245,7 +234,7 @@ class GroupElement extends FormSchemaBuilder
     //         $instance->attributes = [
     //             'type' => 'group',
     //             'schema' => $value,
-    //             'element' => 'group-element',
+    //             'element-name' => 'group-element',
     //             'columns' => $columns,
     //         ];
 
@@ -255,7 +244,7 @@ class GroupElement extends FormSchemaBuilder
     //     $element->attributes = [
     //         'type' => 'group',
     //         'schema' => $groups,
-    //         'element' => 'group-element',
+    //         'element-name' => 'group-element',
     //     ];
 
     //     return $element;

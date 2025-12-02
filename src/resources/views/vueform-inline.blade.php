@@ -14,8 +14,7 @@
             $html = '';
 
             foreach ($elements as $formElement => $elementData) {
-                $component = $elementData['element'] ?? $formElement;
-
+                $component = $elementData['element-name'] ?? $formElement;
                 // 1. Render children first (pass the schema array recursively)
                 $childHtml = '';
                 if (!empty($elementData['schema']) && is_array($elementData['schema'])) {
@@ -25,6 +24,7 @@
                 // 2. FIX: Remove the 'schema' key from the element's data
                 //    before passing it to the component via the :data prop.
                 unset($elementData['schema']);
+                unset($elementData['element-name']);
 
                 // 3. Render this element, passing its data and the rendered children
                 $html .= view('vueForm::components.core.element-render', [
@@ -39,9 +39,8 @@
     @endphp
 
     {{-- STEP 2: RENDER THE VUE FORM --}}
-    <vue-form-inline :options='{!! json_encode($formOptions, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}'>
+    <vue-form-inline :data='{!! json_encode($formOptions, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}'>
         {!! $renderElements($formElements) !!}
-
     </vue-form-inline>
 
 </div>

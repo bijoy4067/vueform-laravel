@@ -1,6 +1,6 @@
-[![Vueform](https://raw.githubusercontent.com/vueform/vueform/main/.github/assets/banner.svg)](https://vueform.com?cid=vueform)
+<!-- [![Vueform](https://raw.githubusercontent.com/vueform/vueform/main/.github/assets/banner.svg)](https://vueform.com?cid=vueform) -->
 
-# Vueform
+# Vueform Laravel
 
 <p>
   <a href="https://www.npmjs.com/package/@vueform/vueform" target="_blank"><img alt="npm" src="https://img.shields.io/npm/dt/@vueform/vueform?color=%2317c495"></a>

@@ -33,7 +33,7 @@ abstract class VueFormBuilder
      *
      * @return array The raw form structure before being converted to a Vue schema.
      */
-    abstract protected function buildForm(): array;
+    abstract protected function buildForm();
 
     /**
      * Process a single form element object into an array.
@@ -44,6 +44,7 @@ abstract class VueFormBuilder
      */
     private static function processElements(object $value): array
     {
+
         $elementArray = $value->toArray();
 
         if (!empty($value->attributes['schema'])) {
@@ -106,26 +107,15 @@ abstract class VueFormBuilder
         $elements = [];
 
         // Loop through all defined form elements and prepare their schema
-        // dd($this->buildForm());
-        foreach ($this->buildForm() as $value) {
+        $form = $this->buildForm()->toArray();
+        foreach ($form['schema'] as $value) {
             $elements[] = self::processElements($value); // numeric array
         }
-
-        // Prepare the final VueFormBuilder schema configuration
-        static::$schema = [
-            'method' => static::$method,
-            'endpoint' => static::$actionUrl ?? route('laravel-vue-form.processData', FormDataController::encodeScope(static::class)),
-            'validateOn' => 'step|change',
-            // 'displayMessages' => true,
-            'displayErrors' => true,
-            'size' => 'lg',
-            'schema' => $elements, // numeric array preserved
-            'columns' => [
-                'container' => 1,
-            ],
-        ];
-
-        // dd($elements);
+        
+        $form['endpoint'] = static::$actionUrl ?? route('laravel-vue-form.processData', FormDataController::encodeScope(static::class));
+        $form['schema'] = $elements;
+        static::$schema = $form;
+        // dd(static::$schema);
         return view('vueForm::vueform-' . static::$formMode, [
             'formData' => static::$schema,
             'formMode' => static::$formMode,

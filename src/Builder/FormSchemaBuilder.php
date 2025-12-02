@@ -36,7 +36,7 @@ class FormSchemaBuilder extends AttributesBuilder
 
         $instance = new static();
         $instance->attributes['name'] = $value;
-        $instance->attributes['element'] = $formElement;
+        $instance->attributes['element-name'] = $formElement;
         return $instance;
     }
 

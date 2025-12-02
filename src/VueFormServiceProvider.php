@@ -3,6 +3,7 @@
 namespace LaravelVueForm;
 
 use Illuminate\Support\ServiceProvider;
+use LaravelVueForm\Commands\MakeFormClass;
 
 class VueFormServiceProvider extends ServiceProvider
 {
@@ -15,11 +16,19 @@ class VueFormServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'vueForm');
         $this->loadRoutesFrom(__DIR__ . '/Routes/web.php');
 
+        // Register commands
+        // Register command (only when running in console)
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                MakeFormClass::class,
+            ]);
+        }
+
         // ✅ Publish the config file
         $this->publishes([
-            __DIR__ . '/Config/laravel-vueform.php' => config_path('laravel-vueform.php'),
+            __DIR__ . '/Config/vueform-laravel.php' => config_path('vueform-laravel.php'),
             __DIR__ . '/public/assets' => public_path('vueform-laravel'),
-        ], 'laravel-vueform');
+        ], 'vueform-laravel');
     }
 
     /**
@@ -27,10 +36,10 @@ class VueFormServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Merge config to make it available via config('laravel-vueform')
+        // Merge config to make it available via config('vueform-laravel')      
         $this->mergeConfigFrom(
-            __DIR__ . '/Config/laravel-vueform.php',
-            'laravel-vueform'
+            __DIR__ . '/Config/vueform-laravel.php',
+            'vueform-laravel'
         );
 
         $this->app->bind('Laraform\Contracts\Validation\Validator', 'Laraform\Validation\Validator');

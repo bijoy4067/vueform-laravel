@@ -128,7 +128,7 @@ class ListElement extends FormSchemaBuilder
 
         $element->attributes = [
             'schema' => $groups,
-            'element' => 'list-element'
+            'element-name' => 'list-element'
         ];
 
         return $element;
