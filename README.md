@@ -34,9 +34,6 @@ vueform-laravel integrates Vue-based form handling with Laravel. It aims to prov
 
 - PHP >= 8.0 (or the Laravel-required PHP version)
 - Laravel >= 9.x (adjust accordingly)
-- Composer
-- Node.js & npm or Yarn (if compiling frontend assets)
-- (Optional) A Vue 2/3 compatible setup for the frontend
 
 ## Installation
 
@@ -49,33 +46,17 @@ composer require bijoy4067/vueform-laravel
 2. Publish package assets, config, migrations and views:
 
 ```bash
-php artisan vendor:publish --provider="Bijoy4067\VueformLaravel\VueformServiceProvider" --tag="config"
-php artisan vendor:publish --provider="Bijoy4067\VueformLaravel\VueformServiceProvider" --tag="migrations"
-php artisan vendor:publish --provider="Bijoy4067\VueformLaravel\VueformServiceProvider" --tag="views"
-php artisan vendor:publish --provider="Bijoy4067\VueformLaravel\VueformServiceProvider" --tag="assets"
-```
-
-Note: Replace the service provider class name above with the actual provider used in the package.
-
-3. Run migrations:
-
-```bash
-php artisan migrate
-```
-
-4. (Optional) Install and build frontend assets:
-
-```bash
-npm install
-npm run dev
-# or
-yarn
-yarn dev
+php artisan vendor:publish --provider="Bijoy4067\VueformLaravel\VueformServiceProvider"
 ```
 
 ## Configuration
 
-After publishing config, edit `config/vueform.php` to customize:
+Add this following code to `<head></head>` Tag:
+
+```html
+<!-- Load VueForm assets -->
+{{ LaravelVueForm\Abstracts\VueFormBuilder::loadAssets() }}
+```
 
 - route prefixes and middleware
 - model classes for Form and Submission
