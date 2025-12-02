@@ -57,21 +57,18 @@ Add this following code to `<head></head>` Tag:
 <!-- Load VueForm assets -->
 {{ LaravelVueForm\Abstracts\VueFormBuilder::loadAssets() }}
 ```
+## Create Form Component
 
-- route prefixes and middleware
-- model classes for Form and Submission
-- storage settings for attachments
-- validation behavior
-
-## Database / Migrations
-
-The package typically provides migrations for tables such as:
-
-- `forms` — stores form definitions (JSON schema, name, slug, meta)
-- `form_submissions` — stores individual user submissions
-- `form_files` — optional files/attachments linked to submissions
-
-If migrations were published to `database/migrations`, run `php artisan migrate`.
+To create a form component use the following command
+```bash
+php artisan vueform:make FormComponent
+```
+This command will publish the form component to `app/vueform/FormComponent.vue`.
+Or create a form component in any other directory by specifying the path.
+```bash
+php artisan vueform:make Form\FormComponent
+```
+This command will publish the form component to `app/vueform/Form/FormComponent.vue`.
 
 ## Usage
 
