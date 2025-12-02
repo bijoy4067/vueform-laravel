@@ -1,130 +1,202 @@
-<!-- [![Vueform](https://raw.githubusercontent.com/vueform/vueform/main/.github/assets/banner.svg)](https://vueform.com?cid=vueform) -->
+# vueform-laravel
 
-# Vueform Laravel
+A Laravel backend integration for VueForm — provides server-side scaffolding, API endpoints, validation, and optional frontend helpers to use Vue-based form builders in Laravel applications.
 
-<p>
-  <a href="https://www.npmjs.com/package/@vueform/vueform" target="_blank"><img alt="npm" src="https://img.shields.io/npm/dt/@vueform/vueform?color=%2317c495"></a>
-  <a href="https://www.npmjs.com/package/@vueform/vueform" target="_blank"><img alt="npm" src="https://img.shields.io/npm/v/@vueform/vueform?color=%2317c495"></a>
-  <a href="https://github.com/vueform/vueform/blob/main/LICENSE"><img alt="NPM" src="https://img.shields.io/npm/l/%40vueform%2Fvueform?color=%2317c495"></a>
-</p>
+> NOTE: This README is a best-effort draft generated without direct access to the repository files. I can update it to exactly match the repository structure and usage once I can read the files or you provide the file list/archive.
 
-Vueform is an open-source form framework for Vue.js.
+## Table of Contents
 
-It standardizes the entire form building process, while taking care of everything from rendering to validation and processing:
+- About
+- Requirements
+- Installation
+- Configuration
+- Database / Migrations
+- Usage
+  - Backend (Laravel)
+  - Frontend (Vue)
+- API
+- Testing
+- Contributing
+- Changelog
+- License
+- Maintainer
 
-- 25+ form elements with multi-file uploads, date pickers and rich text editor
-- element nesting and repeating
-- a complete theming and templating system with Tailwind support
-- 50+ validators with async, dependent and custom rules
-- conditional logic with and/or condition groups
-- built-in form steps support
-- translating form contents and global i18n support
-- fully accessible
-- ... and many more
+## About
 
-## Get Started
+vueform-laravel integrates Vue-based form handling with Laravel. It aims to provide:
 
-Create your first Vueform project using your favourite package manager:
+- Reusable backend controllers and routes for storing form definitions and submissions
+- Validation rules compatible with Vue form schemas
+- Publishing of assets and optional frontend scaffolding
+- Eloquent models and migrations for persistent form data
 
-```bash
-npm create vueform@latest
-```
+## Requirements
 
-```bash
-yarn create vueform
-```
+- PHP >= 8.0 (or the Laravel-required PHP version)
+- Laravel >= 9.x (adjust accordingly)
+- Composer
+- Node.js & npm or Yarn (if compiling frontend assets)
+- (Optional) A Vue 2/3 compatible setup for the frontend
 
-```bash
-pnpm create vueform
-```
+## Installation
 
-```bash
-bun create vueform
-```
-
-#### Manual Installation
-
-To manually install Vueform, use our [Installation Wizard](https://vueform.com/docs/installation?cid=vueform). This wizard will guide you through the necessary steps for a hassle-free setup.
-
-## Documentation
-
-For a detailed understanding of Vueform, its features, and how to use them, refer to our [Documentation](https://vueform.com/docs/rendering-forms?cid=vueform).
-
-## Examples
-
-Explore real-world applications of Vueform with some of our examples. Whether you're building a simple contact form or a complex multi-step questionnaire, these examples will give you ideas how to leverage Vueform features in your projects.
-
-- [Simple form](https://vueform.com/examples/basics-simple-form?cid=vueform)
-- [Complex form](https://vueform.com/examples/basics-complex-form?cid=vueform)
-- [Multi-step form](https://vueform.com/examples/basics-multi-step-form?cid=vueform)
-- [Inline form builder](https://vueform.com/examples/basics-form-builder?cid=vueform)
-- ... more to come
-
-## Drag and Drop
-
-Build forms even quicker using our drag and drop form builder tool and export the code as a native Vue component: [https://builder.vueform.com/demo](https://builder.vueform.com/demo?cid=vueform)
-
-[![Vuefom Builder](https://raw.githubusercontent.com/vueform/vueform/main/.github/assets/builder.gif)](https://builder.vueform.com/demo?cid=vueform)
-
-## Contribute
-
-We welcome contributors of all levels and backgrounds. Whether you're fixing bugs, enhancing functionality, or updating documentation, your efforts help strengthen Vueform for everyone.
-
-Here are a few ideas how can your contribute:
-
-- **Report bugs** to help us maintain stability. Please check our [reporting bugs](https://vueform.com/community/reporting-bugs?cid=vueform) guide.
-- **Share ideas** for innovative features or improvements in [Ideas](https://github.com/vueform/vueform/discussions/categories/ideas).
-- **Ask questions** to clarify doubts in [Questions](https://github.com/vueform/vueform/discussions/categories/questions) and let others find it later.
-- **Send pull** requests for code enhancements or fixes. Please check our [contribution guide](https://vueform.com/community/contribution-guide?cid=vueform#send-a-pull-request).
-- **Help with translating** Vueform to new [languages](https://github.com/vueform/vueform/tree/main/locales).
-
-## Development
-
-For those interested in diving deeper into Vueform's inner workings, you can set up a local development environment. Please follow our guide for setup instructions.
-
-### Clone
-
-Clone Vueform into your local environment.
+1. Install via Composer (replace package name if different):
 
 ```bash
-git clone https://github.com/vueform/vueform.git
+composer require bijoy4067/vueform-laravel
 ```
 
-### Setup
-
-[Setup](https://vueform.com/docs/installation?cid=vueform#manual-installation) Vueform in a test environment and import the source files for Vueform plugin.
-
-```js
-import { vueform } from '@vueform/vueform/src'
-```
-
-Now you can make changes in the `src` directory and you should see their effect in your test environment.
-
-### Test
-
-Once you're finished make sure that all the tests are still passing.
+2. Publish package assets, config, migrations and views:
 
 ```bash
-npm run test
+php artisan vendor:publish --provider="Bijoy4067\VueformLaravel\VueformServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Bijoy4067\VueformLaravel\VueformServiceProvider" --tag="migrations"
+php artisan vendor:publish --provider="Bijoy4067\VueformLaravel\VueformServiceProvider" --tag="views"
+php artisan vendor:publish --provider="Bijoy4067\VueformLaravel\VueformServiceProvider" --tag="assets"
 ```
 
-### Build
+Note: Replace the service provider class name above with the actual provider used in the package.
 
-If everything looks good, run the build script.
+3. Run migrations:
 
 ```bash
-npm run build
+php artisan migrate
 ```
 
-## Follow Us
+4. (Optional) Install and build frontend assets:
 
-<p>
-  <a href="https://discord.gg/WhX2nG6GTQ" target="_blank"><img src="https://raw.githubusercontent.com/vueform/vueform/main/.github/assets/discord.svg" alt="Vueform on Discord" title="Vueform on Discord"></a>&nbsp;&nbsp;
-  <a href="https://twitter.com/vueform" target="_blank"><img src="https://raw.githubusercontent.com/vueform/vueform/main/.github/assets/x.svg" alt="Vueform on X" title="Vueform on X"></a>&nbsp;&nbsp;
-  <a href="https://www.linkedin.com/company/vueform" target="_blank"><img src="https://raw.githubusercontent.com/vueform/vueform/main/.github/assets/linkedin.svg" alt="Vueform on LinkedIn" title="Vueform on LinkedIn"></a>&nbsp;&nbsp;
-  <a href="https://github.com/vueform" target="_blank"><img src="https://raw.githubusercontent.com/vueform/vueform/main/.github/assets/github.svg" alt="Vueform on GitHub" title="Vueform on GitHub"></a>
-</p>
+```bash
+npm install
+npm run dev
+# or
+yarn
+yarn dev
+```
+
+## Configuration
+
+After publishing config, edit `config/vueform.php` to customize:
+
+- route prefixes and middleware
+- model classes for Form and Submission
+- storage settings for attachments
+- validation behavior
+
+## Database / Migrations
+
+The package typically provides migrations for tables such as:
+
+- `forms` — stores form definitions (JSON schema, name, slug, meta)
+- `form_submissions` — stores individual user submissions
+- `form_files` — optional files/attachments linked to submissions
+
+If migrations were published to `database/migrations`, run `php artisan migrate`.
+
+## Usage
+
+### Backend
+
+- Models: `Form`, `FormSubmission` (or similarly named)
+- Controllers: `FormController`, `FormSubmissionController`
+- Routes: the package registers routes under a configurable prefix, e.g. `/api/forms` or `/forms`
+
+Typical examples:
+
+Create a form (server-side):
+```php
+use Bijoy4067\VueformLaravel\Models\Form;
+
+$form = Form::create([
+    'name' => 'Contact',
+    'slug' => 'contact',
+    'schema' => json_encode($schema), // Vue form schema
+]);
+```
+
+Submit to backend (server-side validation via FormRequest):
+```php
+Route::post('/forms/{form}/submit', [FormSubmissionController::class, 'store']);
+```
+
+### Frontend (Vue)
+
+The package may include example Vue components to render forms from JSON schema. Typical usage:
+
+```vue
+<template>
+  <div>
+    <VueForm :schema="form.schema" @submit="submitForm" />
+  </div>
+</template>
+
+<script>
+export default {
+  props: ['form'],
+  methods: {
+    async submitForm(payload) {
+      await axios.post(`/api/forms/${this.form.id}/submit`, payload);
+    }
+  }
+}
+</script>
+```
+
+Adjust component names and endpoints to match what the package provides.
+
+## API
+
+Common endpoints (replace names/prefixes as appropriate):
+
+- GET /api/forms — list available forms
+- GET /api/forms/{slug} — get form schema and metadata
+- POST /api/forms/{form}/submit — submit form data
+- GET /api/forms/{form}/submissions — list submissions (admin)
+
+Authentication and middleware are configurable.
+
+## Testing
+
+If the repository includes tests, run them with:
+
+```bash
+composer test
+# or
+php artisan test
+```
+
+Add tests for controllers, requests, models, and API endpoints as appropriate.
+
+## Contributing
+
+Thanks for considering contributing! Suggested workflow:
+
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b feat/my-feature`
+3. Add tests and documentation for changes.
+4. Open a pull request describing your changes.
+
+Please follow the repository's coding standards and include unit/integration tests for new features.
+
+## Changelog
+
+Refer to the repository's changelog or releases for version history. If none, consider adding a `CHANGELOG.md` following Keep a Changelog format.
 
 ## License
 
-[MIT](https://github.com/vueform/vueform/blob/main/LICENSE)
+Specify the license used by the project (e.g., MIT). If not yet set, add a LICENSE file and update this section.
+
+## Maintainer
+
+- Repository: bijoy4067/vueform-laravel
+- Author/Maintainer: bijoy4067
+
+## Final notes
+
+This README is a draft. To make it fully accurate I can:
+- Read the repository files and replace placeholders (service provider class, published tags, exact route URIs, model names).
+- Extract examples from real controllers, config, and views.
+
+Tell me if you want me to:
+1. Retry reading the GitHub repo now and update this README precisely; or
+2. Upload the repo / paste the files and I will generate the README from them; or
+3. Accept this draft as-is and I’ll make further manual refinements.
