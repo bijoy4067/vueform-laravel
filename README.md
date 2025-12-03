@@ -12,7 +12,8 @@ A Laravel backend integration for VueForm — provides server-side scaffolding, 
 - [Configuration](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#configuration)
 - [Create Form Component](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#create-form-component)
 - [Usage](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#usage)
-- [API](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#api)
+- [Render Form](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#add-form-to-blade)
+  - 
 - [Testing](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#testing)
 - [Contributing](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#contributing)
 - [Changelog](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#changelog)
@@ -109,25 +110,63 @@ class FormComponent extends VueFormBuilder
 }
 ```
 Get more Example [VueForm](https://github.com/bijoy4067/vueform-laravel/tree/main/docs)
-## API
+## Render Form
+### Update Controller
 
-Common endpoints (replace names/prefixes as appropriate):
-
-- GET /api/forms — list available forms
-- GET /api/forms/{slug} — get form schema and metadata
-- POST /api/forms/{form}/submit — submit form data
-- GET /api/forms/{form}/submissions — list submissions (admin)
+Add this code to your controller before `view()` response
+```php
+public function index()
+{
+    return view('welcome', [
+        'formComponent' => app(GroupElementForm::class)
+    ]);
+}
+```
 
 Authentication and middleware are configurable.
 
-## Testing
+### Update Blade File
+
+Add the following code anywhere in the `<body></body>`.
+```php
+{!! $vueFormData->build() !!}
+```
+
+### Blade File Example
 
 If the repository includes tests, run them with:
 
-```bash
-composer test
-# or
-php artisan test
+```php
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Load VueForm assets -->
+    {{ LaravelVueForm\Abstracts\VueFormBuilder::loadAssets() }}
+
+    <script src="{{ asset('js/custom.js') }}"></script>
+</head>
+
+<body
+    class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
+    <div class="container">
+        <div class="col-12 mx-auto mt-5">
+            {!! $formComponent->build() !!}
+        </div>
+    </div>
+</body>
+
+</html>
 ```
 
 Add tests for controllers, requests, models, and API endpoints as appropriate.
