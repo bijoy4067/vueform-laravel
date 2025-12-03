@@ -27,6 +27,7 @@ A Laravel backend integration for VueForm — server-side form builders, validat
 vueform-laravel provides a server-first way to define forms for VueForm-powered frontends. Instead of building the schema in JavaScript only, you define forms in PHP classes (builders) that return a `Vueform` schema. This keeps validation, defaults and submission logic close to your Laravel application.
 
 Benefits
+
 - Single source of truth for form schema and server validation.
 - Easy reuse of form components across controllers and projects.
 - Built-in patterns for conditional fields, remote options and complex structures (groups, lists).
@@ -47,13 +48,15 @@ Benefits
 (Brief — only required if you are installing the package into a project)
 
 > Add the package (replace with the correct package name if published differently):
+
 ```bash
 composer require bijoy4067/vueform-laravel
 ```
 
 > publish vendor assets (config, views, migrations) if provided by the package:
+
 ```bash
-php artisan vendor:publish --provider="Bijoy4067\VueformLaravel\VueformServiceProvider"
+php artisan vendor:publish --provider="LaravelVueForm\VueFormServiceProvider"
 ```
 
 If you only want to reference example files in `app/VueForm`, you can copy them into your application namespace and adjust imports.
@@ -94,6 +97,7 @@ This will scaffold a file (for example `app/VueForm/FormComponent.php`). You can
 A form builder class extends `LaravelVueForm\Abstracts\VueFormBuilder` and returns a `Vueform` schema inside `buildForm()`.
 
 Minimal example `app\VueForm\FormComponent.php` (Text input + submit):
+
 ```php
 <?php
 
@@ -126,6 +130,7 @@ class FormComponent extends VueFormBuilder
 ```
 
 Key patterns demonstrated in the examples directory:
+
 - Text fields with types and conditions (TextElement).
 - Tags / multi-select with static or remote items (TagsElement).
 - Phone inputs with country include and unmask options (PhoneElement).
@@ -133,17 +138,23 @@ Key patterns demonstrated in the examples directory:
 - Static elements (text, headings, images) and ButtonElement helpers.
 
 Copyable snippets
+
 - Conditional field:
+
 ```php
 TextElement::name('number')
     ->inputType('number')
     ->conditions([['search', 'not_empty']])
 ```
+
 - Tags with remote items:
+
 ```php
 TagsElement::name('tags')->items('https://api.example.com/tags/json')->max(5)
 ```
+
 - Phone field:
+
 ```php
 PhoneElement::name('phone')->include(['bd'])->unmask(true)
 ```
@@ -153,12 +164,14 @@ PhoneElement::name('phone')->include(['bd'])->unmask(true)
 ## Render Form
 
 You can either:
+
 - Render the form in Blade with helper output (convenient for server-rendered pages), or
 - Return the JSON schema to a SPA and let frontend code mount the form.
 
 ### Update controller
 
 Simple controller example
+
 ```php
 <?php
 
@@ -192,6 +205,7 @@ Render the form in your Blade template. The builder usually exposes a `build()` 
 ```
 
 Full minimal Blade example:
+
 ```blade
 <!doctype html>
 <html>
@@ -208,6 +222,7 @@ Full minimal Blade example:
 ```
 
 Notes:
+
 - If you return JSON for a SPA, your frontend should mount the VueForm component and load the schema.
 - If your form should post to a custom API, set the endpoint in the schema or use a controller route and handle submission in a controller method.
 
@@ -216,6 +231,7 @@ Notes:
 ## Contributing
 
 Contributions are welcome. Suggested workflow:
+
 1. Fork the repository.
 2. Create a feature branch: `git checkout -b feat/my-feature`
 3. Add tests and documentation for your change.
@@ -239,7 +255,7 @@ Declare your project license (e.g., MIT). Add a `LICENSE` file to the repository
 
 ## Maintainer
 
-- Repository: bijoy4067/vueform-laravel  
+- Repository: bijoy4067/vueform-laravel
 - Maintainer: bijoy4067
 
 ---
@@ -247,16 +263,19 @@ Declare your project license (e.g., MIT). Add a `LICENSE` file to the repository
 ## Additional notes for different skill levels
 
 For beginners
+
 - Start by copying the example form classes in `app/VueForm/*`.
 - Render them in a Blade view using `->build()` and test submission using the provided `formData()` method.
 - Keep logic simple and duplicate essential validation on the server.
 
 For intermediate users
+
 - Use `->items($url)` for remote options and implement a server-side search endpoint with pagination.
 - Use `->conditions()` to hide/show fields; always revalidate hidden fields server-side.
 - Organize forms in namespaces (e.g., App\VueForm, Structure, Static).
 
 For advanced users / pros
+
 - Extend element classes to add custom controls, or register new element types with the VueForm renderer.
 - Cache compiled form schemas (Redis / file cache) to avoid rebuilding complex schemas on every request.
 - Apply strict input validation and sanitize any HTML used for slots/templates to avoid XSS.
