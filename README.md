@@ -6,11 +6,10 @@ A Laravel backend integration for VueForm — provides server-side scaffolding, 
 
 ## Table of Contents
 
-- About
+- [About](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#about)
 - Requirements
 - Installation
 - Configuration
-- Database / Migrations
 - Usage
   - Backend (Laravel)
   - Frontend (Vue)
