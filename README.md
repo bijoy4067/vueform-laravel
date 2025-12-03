@@ -158,25 +158,30 @@ You can either:
 
 ### Update controller
 
-Pass an instance of your form builder into the view:
-
+Simple controller example
 ```php
-use App\VueForm\Structure\GroupElementForm;
+<?php
 
-public function index()
+namespace App\Http\Controllers;
+
+use App\VueForm\FormComponent;
+use Illuminate\Http\Request;
+
+class FormController extends Controller
 {
-    // Instantiate via container to respect dependencies
-    $formComponent = app(GroupElementForm::class);
+    public function index()
+    {
+        $formComponent = app(FormComponent::class);
+        return view('welcome', compact('formComponent'));
 
-    return view('welcome', compact('formComponent'));
+        // or
+
+        return view('welcome', [
+          'formComponent' => app(FormComponent::class)
+        ]);
+    }
 }
 ```
-
-Alternative: return JSON schema directly:
-```php
-return response()->json( (new GroupElementForm())->toArray() );
-```
-(Implementations may vary — use the builder's API that your version exposes.)
 
 ### Update Blade
 
@@ -258,13 +263,6 @@ For advanced users / pros
 - Write thorough unit tests for builder output (assert keys and critical attributes) and HTTP tests for `formData()`.
 
 ---
-
-If you'd like, I can:
-- Convert each example under `app/VueForm` into a short doc page or individual README sections.
-- Produce a single controller + route example that returns a JSON schema and a submit endpoint.
-- Generate PHPUnit/Laravel test examples for the included form builders.
-
-Which of those would you prefer next?
 
 ## Maintainer
 
