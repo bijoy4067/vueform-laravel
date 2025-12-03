@@ -93,7 +93,7 @@ This will scaffold a file (for example `app/VueForm/FormComponent.php`). You can
 
 A form builder class extends `LaravelVueForm\Abstracts\VueFormBuilder` and returns a `Vueform` schema inside `buildForm()`.
 
-Minimal example (Text input + submit):
+Minimal example `app\VueForm\FormComponent.php` (Text input + submit):
 ```php
 <?php
 
@@ -104,7 +104,7 @@ use LaravelVueForm\Elements\Fields\TextElement;
 use LaravelVueForm\Elements\Static\ButtonElement;
 use LaravelVueForm\Elements\Vueform;
 
-class TextElementForm extends VueFormBuilder
+class FormComponent extends VueFormBuilder
 {
     protected function buildForm()
     {
