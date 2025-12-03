@@ -1,4 +1,12 @@
-# TagsElement
+# Tags Input Element 
+
+A fully-featured demonstration of the TagsElement field in Laravel VueForm. 
+      This example showcases tag selection with custom templates, dynamic item sources, 
+      searchability, column-based layout grouping, and event handling. It also includes 
+      mixed field types, slot customization, remote data loading, validation rules, 
+      and integration with static elements such as headings and horizontal dividers. 
+      Ideal for developers looking to implement advanced tag-based input fields with 
+      flexible UI rendering and form submission workflows. <a href="https://vueform.com/reference/tags-element" target="_blank">Documentation</a>
 
 ---
 

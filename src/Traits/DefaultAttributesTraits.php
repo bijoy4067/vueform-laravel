@@ -2,6 +2,7 @@
 
 namespace LaravelVueForm\Traits;
 
+
 trait DefaultAttributesTraits 
 {
     protected static array $defaultAllowedAttributes = [
@@ -12,6 +13,7 @@ trait DefaultAttributesTraits
         'type',
         'wrapper',
     ];
+
 
     protected static array $defaultAllowedProperties = [
         'available',
