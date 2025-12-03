@@ -12,9 +12,9 @@ A Laravel backend integration for VueForm — provides server-side scaffolding, 
 - [Configuration](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#configuration)
 - [Create Form Component](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#create-form-component)
 - [Usage](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#usage)
-- [Render Form](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#add-form-to-blade)
-  - 
-- [Testing](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#testing)
+- [Render Form](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#render-form-1)
+  - [Update controller](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#update-controller)
+  - [Update Blade](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#update-blade-file)
 - [Contributing](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#contributing)
 - [Changelog](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#changelog)
 - [License](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#license)
@@ -194,14 +194,3 @@ Specify the license used by the project (e.g., MIT). If not yet set, add a LICEN
 
 - Repository: bijoy4067/vueform-laravel
 - Author/Maintainer: bijoy4067
-
-## Final notes
-
-This README is a draft. To make it fully accurate I can:
-- Read the repository files and replace placeholders (service provider class, published tags, exact route URIs, model names).
-- Extract examples from real controllers, config, and views.
-
-Tell me if you want me to:
-1. Retry reading the GitHub repo now and update this README precisely; or
-2. Upload the repo / paste the files and I will generate the README from them; or
-3. Accept this draft as-is and I’ll make further manual refinements.
