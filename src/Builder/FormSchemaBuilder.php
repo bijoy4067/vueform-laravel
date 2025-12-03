@@ -48,12 +48,10 @@ class FormSchemaBuilder extends AttributesBuilder
      */
     public function __call(string $method, array $arguments): static
     {
-        dd($method, $arguments);
-        if (!array_key_exists('name', $this->attributes)) {
-            dd($method, $arguments);
-            $this->attributes = static::name();
-        }
-        dd($this->attributes);
+        // if (!array_key_exists('name', $this->attributes)) {
+        //     $this->attributes = static::name();
+        // }
+
         if (method_exists($this, $method)) {
             return $this->$method(...$arguments);
         }
