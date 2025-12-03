@@ -1,152 +1,166 @@
-# app/VueForm — Quick reference
+# VueForm Laravel Backend — Examples
 
-This folder contains example server-side form builders used by the local demo / testing UI. Files are PHP form classes grouped by type:
+This file collects focused examples (no installation instructions) drawn from the example builders in app/VueForm/*.
 
--   Fields/
-    -   PhoneElementForm.php
-    -   TagsElementForm.php
-    -   TextElementForm.php
--   Static/
-    -   ButtonElementForm.php
-    -   StaticElementForm.php
--   Structure/
-    -   GroupElementForm.php
-    -   ListElementForm.php
+Files referenced:
+- app/VueForm/Fields/TextElementForm.php  
+  https://github.com/bijoy4067/vueform-laravel-backend/blob/main/app/VueForm/Fields/TextElementForm.php
+- app/VueForm/Fields/TagsElementForm.php  
+  https://github.com/bijoy4067/vueform-laravel-backend/blob/main/app/VueForm/Fields/TagsElementForm.php
+- app/VueForm/Fields/PhoneElementForm.php  
+  https://github.com/bijoy4067/vueform-laravel-backend/blob/main/app/VueForm/Fields/PhoneElementForm.php
+- app/VueForm/Structure/GroupElementForm.php  
+  https://github.com/bijoy4067/vueform-laravel-backend/blob/main/app/VueForm/Structure/GroupElementForm.php
+- app/VueForm/Structure/ListElementForm.php  
+  https://github.com/bijoy4067/vueform-laravel-backend/blob/main/app/VueForm/Structure/ListElementForm.php
+- app/VueForm/Static/StaticElementForm.php  
+  https://github.com/bijoy4067/vueform-laravel-backend/blob/main/app/VueForm/Static/StaticElementForm.php
+- app/VueForm/Static/ButtonElementForm.php  
+  https://github.com/bijoy4067/vueform-laravel-backend/blob/main/app/VueForm/Static/ButtonElementForm.php
 
-Purpose
+---
 
--   Each class builds a VueForm schema (the package uses @vueform/vueform on the frontend).
--   Use these classes to serve a JSON schema or render a Blade / Inertia view that mounts a Vue form.
+## Text input example
+Demonstrates text, number, email, password and url fields, defaults, conditional visibility and an addon slot.
 
-Quick notes
-
--   If a class exposes only a protected buildForm(), add a small public adapter (e.g. toArray() or static schema()) to return the built schema for controllers.
--   Examples below assume each form class can provide an array schema via static method `schema()` or instance method `toArray()`. Adjust to your class API.
-
-1. Route + controller (serve HTML page that mounts Vue)
-
+Key excerpt:
 ```php
-// filepath: routes/web.php
-// ...existing code...
-Route::get('/vueform/{name}', [App\Http\Controllers\VueFormController::class, 'show']);
+Vueform::name('text-element-form')
+    ->default([
+        'search' => 'Search',
+        'number' => '123456',
+        'email' => 'user@example.com',
+        'password' => 'password123',
+        'url' => 'https://example.com',
+    ])
+    ->schema([
+        TextElement::name('search')->info(null),
+        TextElement::name('addon')->slots([
+            'addon-before' => '<i class="fa fa-search"></i>'
+        ]),
+        TextElement::name('number')
+            ->inputType('number')
+            ->conditions([ ['search', 'not_empty'] ]),
+        TextElement::name('email')->inputType('email'),
+        TextElement::name('password')->inputType('password'),
+        TextElement::name('url')->inputType('url'),
+        ButtonElement::submitButton()
+    ]);
 ```
 
+Example form handler (validation + JSON response):
 ```php
-// filepath: app/Http/Controllers/VueFormController.php
-// ...existing code...
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use App\VueForm\Fields\PhoneElementForm; // example
-
-class VueFormController extends Controller
+public static function formData($request)
 {
-    public function show(Request $request, $name)
-    {
-        $map = [
-            'phone' => \App\VueForm\Fields\PhoneElementForm::class,
-            'tags'  => \App\VueForm\Fields\TagsElementForm::class,
-            'text'  => \App\VueForm\Fields\TextElementForm::class,
-            // add other mappings...
-        ];
+    $request->validate([
+        'search' => 'required'
+    ]);
 
-        $class = $map[$name] ?? PhoneElementForm::class;
-
-        // Prefer a public static schema() or toArray() on the form class
-        $schema = is_callable([$class, 'schema']) ? $class::schema() : (new $class())->toArray();
-
-        return view('vueform.show', ['schema' => $schema]);
-    }
+    return response()->json(['status' => 'success']);
 }
 ```
 
-```blade
-// filepath: resources/views/vueform/show.blade.php
-<!doctype html>
-<html>
-<head>
-  @vite('resources/js/vueform-app.js') {{-- or mix('js/vueform-app.js') for Mix --}}
-</head>
-<body>
-  <div id="vueform-root" data-schema='@json($schema)'></div>
-</body>
-</html>
-```
+---
 
-2. Vue bootstrap (Vue 3 + @vueform/vueform)
+## Tags (multi-select) example
+Shows tags with custom slots, static items or remote items, limits and events.
 
-```js
-// filepath: resources/js/vueform-app.js
-import { createApp, h } from "vue";
-import { Form } from "@vueform/vueform"; // or your wrapper component
-
-const el = document.getElementById("vueform-root");
-if (el) {
-    const schema = JSON.parse(el.dataset.schema || "{}");
-    const App = {
-        render: () =>
-            h(Form, {
-                schema,
-                onSubmit: (data) => console.log("submit", data),
-            }),
-    };
-    createApp(App).mount("#vueform-root");
-}
-```
-
-3. Serve schema as JSON (useful for SPA or remote forms)
-
+Key excerpt:
 ```php
-// filepath: routes/api.php
-// ...existing code...
-Route::get('/form-schema/{name}', function ($name) {
-    $map = [
-        'phone' => \App\VueForm\Fields\PhoneElementForm::class,
-        // ...
-    ];
-    $class = $map[$name] ?? \App\VueForm\Fields\PhoneElementForm::class;
-    $schema = is_callable([$class, 'schema']) ? $class::schema() : (new $class())->toArray();
-    return response()->json($schema);
-});
+TagsElement::name('category')
+    ->type('tags')
+    ->closeOnSelect(false)
+    ->search(true)
+    ->label('Categoryxx')
+    ->inputType('search')
+    ->limit(5)
+    ->rules('required')
+    ->items([
+        ['value' => 1, 'label' => 'Category 1', 'color' => 'red', 'name' => 'foo'],
+        ['value' => 2, 'label' => 'Category 2', 'color' => 'red', 'name' => 'foo'],
+        ['value' => 3, 'label' => 'Category 3', 'color' => 'red', 'name' => 'foo']
+    ])
+    ->slots([
+        'tag' => '<span class="badge w-auto" style="background-color: {{ option.color}}; ...">{{ option.label }}</span>',
+        'info' => '<span>gggg ddd ddd</span>',
+        'before' => '<h1 style="color: blue;"> Please select categories cc</h1>',
+    ]),
 ```
 
-4. Inertia example
-
+Remote items example:
 ```php
-// filepath: app/Http/Controllers/VueFormInertiaController.php
-use Inertia\Inertia;
-public function inertiaShow($name)
-{
-    $schema = \App\VueForm\Fields\PhoneElementForm::schema();
-    return Inertia::render('VueFormPage', ['schema' => $schema]);
-}
+TagsElement::name('tags')
+    ->items('http://localhost:8000/tags/json')
+    ->max(5);
 ```
 
-5. Livewire note
+---
 
--   Livewire can render the blade mount point and pass schema JSON via `@json()`. Mount the Vue form inside Livewire components; keep event/submit integration via API endpoints.
+## Group & List structure examples
+Arrange fields into rows/columns and create repeatable list items.
 
-6. Build front-end assets
+Group example (row with columns, conditional show):
+```php
+GroupElement::rowWith4Columns([
+    TextElement::name('first_name'),
+    TagsElement::name('category')->conditions([['first_name','not_empty']]),
+    TextElement::name('search'),
+    TextElement::name('number')->inputType('number'),
+]),
+```
 
--   If using Vite:
-    -   npm install
-    -   npm run dev (local)
-    -   npm run build (production)
--   If using Mix:
-    -   npm install
-    -   npm run dev / npm run watch
--   Make sure @vueform/vueform is installed in the app (npm install @vueform/vueform).
+List (repeatable schema) example:
+```php
+ListElement::schema([
+    TextElement::name('item_name')->label('Item Name')->rules('required'),
+    GroupElement::rowWith4Columns([
+        GroupElement::rowWith4Columns([
+            TextElement::name('first_name'),
+            TextElement::name('first_name_old')
+        ]),
+    ]),
+])
+```
 
-7. Adding a new server form
+---
 
--   Copy any file in this folder, build the schema (Vueform::name(...)->schema([...]) or the package-specific builder).
--   Expose it via a route/controller mapping.
--   Provide a public schema() or toArray() accessor if needed.
+## Phone element example
+Phone input with country include and unmask option:
+```php
+PhoneElement::name('phone')
+    ->include(['bd'])
+    ->unmask(true)
+```
 
-8. Troubleshooting
+---
 
--   If schema does not render: clear view/cache: `php artisan view:clear && php artisan cache:clear && php artisan route:clear`
--   If component not mounting: confirm script is loaded and element ID matches.
--   If package pathing issues: check composer autoload and namespaces.
+## Static elements & submit button
+Static content helpers (text, headers, hr, image) and a submit button helper.
 
-9. Recommended commit: add this README and keep `app/VueForm` as canonical examples for end users.
+Static elements:
+```php
+StaticElement::text('asdf'),
+StaticElement::h1('asdf'),
+StaticElement::hr(),
+StaticElement::img(src: 'https://vueform.com/images/logo.svg', height: 40, width: 570)
+```
+
+Submit button:
+```php
+ButtonElement::submitButton()
+```
+
+---
+
+## Minimal usage notes
+- Each example builder returns a configured Vueform instance inside buildForm().
+- Many examples include a static formData($request) method to validate request input and return JSON — place your submission logic there.
+- Use conditions() to show/hide elements based on other field values, and items() for static or remote options.
+
+---
+
+If you want, I can:
+- Produce a single consolidated example file (controller or route) that returns one of these form schemas as JSON and demonstrates calling the static formData on submit.
+- Or generate smaller focused README sections per form type (text, tags, phone, group, list, static).
+
+Which would you prefer?
