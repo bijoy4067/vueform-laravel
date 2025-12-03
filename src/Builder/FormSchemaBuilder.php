@@ -9,7 +9,7 @@ use LaravelVueForm\Traits\DefaultAttributesTraits;
 class FormSchemaBuilder extends AttributesBuilder
 {
     use DefaultAttributesTraits;
-   
+
     public array $attributes = [];
 
     protected static array $allowedAttributes = [];
@@ -48,10 +48,6 @@ class FormSchemaBuilder extends AttributesBuilder
      */
     public function __call(string $method, array $arguments): static
     {
-        // if (!array_key_exists('name', $this->attributes)) {
-        //     $this->attributes = static::name();
-        // }
-
         if (method_exists($this, $method)) {
             return $this->$method(...$arguments);
         }
