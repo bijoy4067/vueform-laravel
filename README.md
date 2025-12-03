@@ -7,18 +7,18 @@ A Laravel backend integration for VueForm — provides server-side scaffolding, 
 ## Table of Contents
 
 - [About](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#about)
-- Requirements
-- Installation
-- Configuration
-- Usage
-  - Backend (Laravel)
-  - Frontend (Vue)
-- API
-- Testing
-- Contributing
-- Changelog
-- License
-- Maintainer
+- [Requirements](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#requirements)
+- [Installation](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#installation)
+- [Configuration](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#configuration)
+- [Usage](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#usage)
+  - [Backend (Laravel)](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#backend-laravel)
+  - [Frontend (Vue)](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#frontend-vue)
+- [API](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#api)
+- [Testing](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#testing)
+- [Contributing](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#contributing)
+- [Changelog](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#changelog)
+- [License](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#license)
+- [Maintainer](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#maintainer)
 
 ## About
 
