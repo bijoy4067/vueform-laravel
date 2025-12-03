@@ -97,7 +97,7 @@ Minimal example (Text input + submit):
 ```php
 <?php
 
-namespace App\VueForm\Fields;
+namespace App\VueForm;
 
 use LaravelVueForm\Abstracts\VueFormBuilder;
 use LaravelVueForm\Elements\Fields\TextElement;
@@ -254,7 +254,7 @@ For beginners
 For intermediate users
 - Use `->items($url)` for remote options and implement a server-side search endpoint with pagination.
 - Use `->conditions()` to hide/show fields; always revalidate hidden fields server-side.
-- Organize forms in namespaces (e.g., App\VueForm\Fields, Structure, Static).
+- Organize forms in namespaces (e.g., App\VueForm, Structure, Static).
 
 For advanced users / pros
 - Extend element classes to add custom controls, or register new element types with the VueForm renderer.
