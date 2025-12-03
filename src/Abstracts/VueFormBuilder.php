@@ -115,7 +115,7 @@ abstract class VueFormBuilder
         $form['endpoint'] = static::$actionUrl ?? route('laravel-vue-form.processData', FormDataController::encodeScope(static::class));
         $form['schema'] = $elements;
         static::$schema = $form;
-        // dd(static::$schema);
+        dd(static::$schema);
         return view('vueForm::vueform-' . static::$formMode, [
             'formData' => static::$schema,
             'formMode' => static::$formMode,

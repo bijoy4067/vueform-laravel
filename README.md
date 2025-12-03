@@ -10,9 +10,8 @@ A Laravel backend integration for VueForm — provides server-side scaffolding, 
 - [Requirements](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#requirements)
 - [Installation](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#installation)
 - [Configuration](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#configuration)
+- [Create Form Component](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#create-form-component)
 - [Usage](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#usage)
-  - [Backend (Laravel)](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#backend-laravel)
-  - [Frontend (Vue)](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#frontend-vue)
 - [API](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#api)
 - [Testing](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#testing)
 - [Contributing](https://github.com/bijoy4067/vueform-laravel/tree/main?tab=readme-ov-file#contributing)
@@ -62,64 +61,54 @@ To create a form component use the following command
 ```bash
 php artisan vueform:make FormComponent
 ```
-This command will publish the form component to `app/vueform/FormComponent.vue`.
+This command will publish the form component to `app/vueform/FormComponent.php`.
 Or create a form component in any other directory by specifying the path.
 ```bash
 php artisan vueform:make Form\FormComponent
 ```
-This command will publish the form component to `app/vueform/Form/FormComponent.vue`.
+This command will publish the form component to `app/vueform/Form/FormComponent.php`.
 
 ## Usage
 
-### Backend
+Typical examples of `app/vueform/FormComponent.php`:
 
-- Models: `Form`, `FormSubmission` (or similarly named)
-- Controllers: `FormController`, `FormSubmissionController`
-- Routes: the package registers routes under a configurable prefix, e.g. `/api/forms` or `/forms`
-
-Typical examples:
-
-Create a form (server-side):
 ```php
-use Bijoy4067\VueformLaravel\Models\Form;
+<?php
 
-$form = Form::create([
-    'name' => 'Contact',
-    'slug' => 'contact',
-    'schema' => json_encode($schema), // Vue form schema
-]);
-```
+namespace App\VueForm;
 
-Submit to backend (server-side validation via FormRequest):
-```php
-Route::post('/forms/{form}/submit', [FormSubmissionController::class, 'store']);
-```
+use LaravelVueForm\Abstracts\VueFormBuilder;
+use LaravelVueForm\Elements\Fields\TextElement;
+use LaravelVueForm\Elements\Static\ButtonElement;
+use LaravelVueForm\Elements\Vueform;
 
-### Frontend (Vue)
-
-The package may include example Vue components to render forms from JSON schema. Typical usage:
-
-```vue
-<template>
-  <div>
-    <VueForm :schema="form.schema" @submit="submitForm" />
-  </div>
-</template>
-
-<script>
-export default {
-  props: ['form'],
-  methods: {
-    async submitForm(payload) {
-      await axios.post(`/api/forms/${this.form.id}/submit`, payload);
+class FormComponent extends VueFormBuilder
+{
+    protected function buildForm()
+    {
+        return Vueform::name('text-element-form')
+            ->schema([
+                TextElement::name('search')
+                    ->info(null),
+                ButtonElement::submitButton()
+            ]);
     }
-  }
+
+
+    // you will get submit data into formData method if you not defined endpoint.
+    public static function formData($request)
+    {
+        $request->validate([
+            'search' => 'required'
+        ]);
+
+        return response()->json([
+            'status' => 'success'
+        ]);
+    }
 }
-</script>
 ```
-
-Adjust component names and endpoints to match what the package provides.
-
+Get more Example [VueForm]()
 ## API
 
 Common endpoints (replace names/prefixes as appropriate):

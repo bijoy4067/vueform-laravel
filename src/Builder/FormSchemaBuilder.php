@@ -28,8 +28,11 @@ class FormSchemaBuilder extends AttributesBuilder
     /**
      * Start a new instance with name
      */
-    public static function name(string $value): static
+    public static function name(string $value = null): static
     {
+        if (empty($value)) {
+            $value = static::generateRandomName();
+        }
         $class = static::class;
         $shortName = class_basename($class);
         $formElement = Str::of($shortName)->kebab()->value();
@@ -45,6 +48,12 @@ class FormSchemaBuilder extends AttributesBuilder
      */
     public function __call(string $method, array $arguments): static
     {
+        dd($method, $arguments);
+        if (!array_key_exists('name', $this->attributes)) {
+            dd($method, $arguments);
+            $this->attributes = static::name();
+        }
+        dd($this->attributes);
         if (method_exists($this, $method)) {
             return $this->$method(...$arguments);
         }
