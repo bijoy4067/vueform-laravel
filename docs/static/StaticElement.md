@@ -42,6 +42,55 @@ class StaticElementForm extends VueFormBuilder
 ```
 ---
 
+## ⚙️ Allowed Attributes
+
+| Name | Data Type |
+| --- | --- |
+| `addClass` | array|object|string|function |
+| `addClasses` | object|function |
+| `after` | object|string|number |
+| `align` | string |
+| `allowHtml` | boolean |
+| `alt` | string |
+| `attrs` | object |
+| `before` | object|string|number |
+| `between` | object|string|number |
+| `bottom` | string|number |
+| `columns` | object|string|number |
+| `conditions` | array |
+| `content` | string|object|function |
+| `description` | string|object |
+| `expressions` | boolean |
+| `height` | string |
+| `href` | string |
+| `id` | string |
+| `info` | string|object |
+| `infoPosition` | string |
+| `inline` | boolean |
+| `label` | string|object|function |
+| `name` | string|number |
+| `overrideClass` | array|object|string|function |
+| `overrideClasses` | object|function |
+| `presets` | array |
+| `removeClass` | array|object|function |
+| `removeClasses` | object|function |
+| `replaceClass` | object|function |
+| `replaceClasses` | object|function |
+| `size` | string |
+| `slots` | object |
+| `src` | string |
+| `tag` | string |
+| `target` | string |
+| `templates` | object |
+| `title` | string |
+| `top` | string|number |
+| `view` | string |
+| `views` | object |
+| `width` | string |
+| `wrap` | boolean |
+
+---
+
 ## ⚙️ Available Static Methods
 
 | Method | Description |

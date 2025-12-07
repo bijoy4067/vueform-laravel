@@ -33,3 +33,56 @@ class PhoneElementForm extends VueFormBuilder
     }
 }
 ```
+---
+
+## ⚙️ Allowed Attributes
+
+| Name | Data Type |
+| --- | --- |
+| `addClass` | array|object|string|function |
+| `addClasses` | object|function |
+| `after` | object|string|number |
+| `allowIncomplete` | boolean |
+| `attrs` | object |
+| `autocomplete` | string|number |
+| `before` | object|string|number |
+| `between` | object|string|number |
+| `columns` | object|string|number |
+| `conditions` | array |
+| `debounce` | number |
+| `default` | string|number|object |
+| `description` | string|object |
+| `disabled` | boolean|function|array|object |
+| `displayErrors` | boolean |
+| `exclude` | array |
+| `fieldName` | string|object |
+| `floating` | string|boolean|object |
+| `formatData` | function |
+| `formatLoad` | function |
+| `id` | string |
+| `include` | array |
+| `info` | string|object |
+| `infoPosition` | string |
+| `inline` | boolean |
+| `label` | string|object|function |
+| `loading` | boolean |
+| `messages` | object |
+| `name` | string|number |
+| `overrideClass` | array|object|string|function |
+| `overrideClasses` | object|function |
+| `placeholder` | string|object |
+| `presets` | array |
+| `readonly` | boolean|function|array|object |
+| `removeClass` | array|object|function |
+| `removeClasses` | object|function |
+| `replaceClass` | object|function |
+| `replaceClasses` | object|function |
+| `rules` | array|string|object |
+| `size` | string |
+| `slots` | object |
+| `submit` | boolean |
+| `templates` | object |
+| `unmask` | boolean |
+| `view` | string |
+| `views` | object |
+

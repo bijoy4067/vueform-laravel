@@ -135,3 +135,92 @@ class TagsElementForm extends VueFormBuilder
     }
 }
 ```
+---
+
+## ⚙️ Allowed Attributes
+
+| Name | Data Type |
+| --- | --- |
+| `addClass` | array|object|string|function |
+| `addClasses` | object|function |
+| `addOptionOn` | array |
+| `after` | object|string|number |
+| `allowAbsent` | boolean |
+| `appendNewOption` | boolean |
+| `appendTo` | string |
+| `appendToBody` | boolean |
+| `attrs` | object |
+| `autocomplete` | string |
+| `before` | object|string|number |
+| `between` | object|string|number |
+| `breakTags` | boolean |
+| `canClear` | boolean |
+| `caret` | boolean |
+| `clearOnRefetch` | boolean |
+| `clearOnSearch` | boolean |
+| `clearOnSelect` | boolean |
+| `closeOnDeselect` | boolean |
+| `closeOnSelect` | boolean |
+| `columns` | object|string|number |
+| `conditions` | array |
+| `create` | boolean |
+| `dataKey` | string |
+| `default` | array |
+| `delay` | number |
+| `description` | string|object |
+| `disabled` | boolean|function|array|object |
+| `displayErrors` | boolean |
+| `extendOptions` | object |
+| `fieldName` | string|object |
+| `filterResults` | boolean |
+| `floating` | string|boolean|object |
+| `formatData` | function |
+| `formatLoad` | function |
+| `groupHideEmpty` | boolean |
+| `groupLabel` | string |
+| `groupOptions` | string |
+| `groupSelect` | boolean |
+| `groups` | boolean |
+| `hideSelected` | boolean |
+| `id` | string |
+| `info` | string|object |
+| `infoPosition` | string |
+| `inline` | boolean |
+| `inputType` | string |
+| `items` | object|array|function|string |
+| `label` | string|object|function |
+| `labelProp` | string |
+| `limit` | number |
+| `loading` | boolean |
+| `max` | number |
+| `messages` | object |
+| `minChars` | number |
+| `name` | string|number |
+| `noOptionsText` | string|object |
+| `noResultsText` | string|object |
+| `object` | boolean |
+| `openDirection` | string |
+| `overrideClass` | array|object|string|function |
+| `overrideClasses` | object|function |
+| `placeholder` | string|object |
+| `presets` | array |
+| `removeClass` | array|object|function |
+| `removeClasses` | object|function |
+| `replaceClass` | object|function |
+| `replaceClasses` | object|function |
+| `resolveOnLoad` | boolean |
+| `rules` | array|string|object |
+| `search` | boolean |
+| `searchParam` | string |
+| `showOptions` | boolean |
+| `size` | string |
+| `slots` | object |
+| `strict` | boolean |
+| `submit` | boolean |
+| `templates` | object |
+| `trackBy` | string|array |
+| `type` | string |
+| `valueProp` | string |
+| `view` | string |
+| `views` | object |
+

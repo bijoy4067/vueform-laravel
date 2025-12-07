@@ -47,6 +47,59 @@ class ListElementForm extends VueFormBuilder
 ```
 ---
 
+## ⚙️ Allowed Attributes
+
+| Name | Data Type |
+| --- | --- |
+| `addClass` | array|object|string|function |
+| `addClasses` | object|function |
+| `addText` | string |
+| `after` | object|string|number |
+| `before` | object|string|number |
+| `between` | object|string|number |
+| `columns` | object|string|number |
+| `conditions` | array |
+| `controls` | object |
+| `default` | array |
+| `description` | string|object |
+| `disabled` | boolean|function|array|object |
+| `displayErrors` | boolean |
+| `element` | object |
+| `fieldName` | string|object |
+| `formatData` | function |
+| `formatLoad` | function |
+| `id` | string |
+| `info` | string|object |
+| `infoPosition` | string |
+| `initial` | number |
+| `inline` | boolean |
+| `label` | string|object|function |
+| `max` | number |
+| `messages` | object |
+| `min` | number |
+| `name` | string|number |
+| `object` | object |
+| `order` | string |
+| `orderBy` | string |
+| `overrideClass` | array|object|string|function |
+| `overrideClasses` | object|function |
+| `presets` | array |
+| `removeClass` | array|object|function |
+| `removeClasses` | object|function |
+| `replaceClass` | object|function |
+| `replaceClasses` | object|function |
+| `rules` | array|string|object |
+| `size` | string |
+| `slots` | object |
+| `sort` | boolean |
+| `storeOrder` | string |
+| `submit` | boolean |
+| `templates` | object |
+| `view` | string |
+| `views` | object |
+
+---
+
 ## ⚙️ Available Static Methods
 
 | Method | Description |

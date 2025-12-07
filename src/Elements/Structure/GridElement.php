@@ -7,81 +7,94 @@ use LaravelVueForm\Builder\FormSchemaBuilder;
 class GridElement extends FormSchemaBuilder
 {
     protected static array $allowedAttributes = [
-        'addClass',
-        'addClasses',
-        'after',
-        'align',
-        'before',
-        'between',
-        'colHeader',
-        'cols',
-        'columns',
-        'default',
-        'description',
-        'displayErrors',
-        'fieldName',
-        'formatData',
-        'formatLoad',
-        'grid',
-        'info',
-        'infoPosition',
-        'inline',
-        'label',
-        'maxWidth',
-        'messages',
-        'minWidth',
-        'overrideClass',
-        'overrideClasses',
-        'presets',
-        'removeClass',
-        'removeClasses',
-        'replaceClass',
-        'replaceClasses',
-        'rowHeader',
-        'rows',
-        'rules',
-        'scrollable',
-        'size',
-        'slots',
-        'submit',
-        'templates',
-        'valign',
-        'view',
-        'views',
-        'widths',
+        'addClass' => 'array|object|string|function',
+        'addClasses' => 'object|function',
+        'after' => 'object|string|number',
+        'align' => 'string',
+        'before' => 'object|string|number',
+        'between' => 'object|string|number',
+        'colHeader' => 'boolean',
+        'cols' => 'number',
+        'columns' => 'object|string|number',
+        'conditions' => 'array',
+        'default' => 'object',
+        'description' => 'string|object',
+        'displayErrors' => 'boolean',
+        'fieldName' => 'string|object',
+        'formatData' => 'function',
+        'formatLoad' => 'function',
+        'grid' => 'array',
+        'id' => 'string',
+        'info' => 'string|object',
+        'infoPosition' => 'string',
+        'inline' => 'boolean',
+        'label' => 'string|object|function',
+        'maxWidth' => 'string|number',
+        'messages' => 'object',
+        'minWidth' => 'string|number',
+        'name' => 'string|number',
+        'overrideClass' => 'array|object|string|function',
+        'overrideClasses' => 'object|function',
+        'presets' => 'array',
+        'removeClass' => 'array|object|function',
+        'removeClasses' => 'object|function',
+        'replaceClass' => 'object|function',
+        'replaceClasses' => 'object|function',
+        'rowHeader' => 'boolean',
+        'rows' => 'number',
+        'rules' => 'array|string|object',
+        'scrollable' => 'boolean',
+        'size' => 'string',
+        'slots' => 'object',
+        'submit' => 'boolean',
+        'templates' => 'object',
+        'valign' => 'string',
+        'view' => 'string',
+        'views' => 'object',
+        'widths' => 'array',
     ];
 
     protected static array $allowedProperties = [
-        'aria',
-        'busy',
-        'cells',
-        'children_',
-        'classes',
-        'data',
-        'dataPath',
-        'debouncing',
-        'dirty',
-        'error',
-        'errors',
-        'fitWidth',
-        'gridStyle',
-        'hasLabel',
-        'hidden',
-        'invalid',
-        'isDefault',
-        'isFilled',
-        'isRequired',
-        'isTableView',
-        'messageBag',
-        'pending',
-        'requestData',
-        'resolvedRows',
-        'size',
-        'useCustomFilled',
-        'validated',
-        'value',
-        'view',
-        'visible',
+        'aria' => 'object',
+        'available' => 'boolean',
+        'busy' => 'boolean',
+        'cells' => 'array',
+        'children_' => 'object',
+        'classes' => 'object',
+        'container' => 'HTMLElement',
+        'data' => 'object',
+        'dataPath' => 'string',
+        'debouncing' => 'boolean',
+        'dirty' => 'boolean',
+        'el_' => 'VueformElement',
+        'error' => 'string',
+        'errors' => 'array',
+        'fieldId' => 'string',
+        'fitWidth' => 'boolean',
+        'form_' => 'Vueform',
+        'gridStyle' => 'object',
+        'hasLabel' => 'boolean',
+        'hidden' => 'boolean',
+        'invalid' => 'boolean',
+        'isDefault' => 'boolean',
+        'isFilled' => 'boolean',
+        'isRequired' => 'boolean',
+        'isTableView' => 'boolean',
+        'messageBag' => 'MessageBag',
+        'mounted' => 'boolean',
+        'parent' => 'VNode',
+        'path' => 'string',
+        'pending' => 'boolean',
+        'requestData' => 'object',
+        'resolvedRows' => 'array',
+        'size' => 'string',
+        'template' => 'object',
+        'theme' => 'object',
+        'useCustomFilled' => 'boolean',
+        'validated' => 'boolean',
+        'value' => 'any',
+        'view' => 'string',
+        'visible' => 'boolean',
     ];
 
     protected static array $allowedEventAttributes = [
@@ -102,7 +115,8 @@ class GridElement extends FormSchemaBuilder
 
     /**
      * @desc Arrange the given data into a single column row.
-     * @param array $data The data to be arranged in the row.
+     *
+     * @param  array  $data  The data to be arranged in the row.
      * @return GridElement The arranged grid data.
      */
     public static function rowWith1Columns(array $data)
@@ -112,7 +126,8 @@ class GridElement extends FormSchemaBuilder
 
     /**
      * @desc Arrange the given data into a two-column row.
-     * @param array $data The data to be arranged in the row.
+     *
+     * @param  array  $data  The data to be arranged in the row.
      * @return GridElement The arranged grid data.
      */
     public static function rowWith2Columns(array $data)
@@ -122,7 +137,8 @@ class GridElement extends FormSchemaBuilder
 
     /**
      * @desc Arrange the given data into a three-column row.
-     * @param array $data The data to be arranged in the row.
+     *
+     * @param  array  $data  The data to be arranged in the row.
      * @return GridElement The arranged grid data.
      */
     public static function rowWith3Columns(array $data)
@@ -132,7 +148,8 @@ class GridElement extends FormSchemaBuilder
 
     /**
      * @desc Arrange the given data into a four-column row.
-     * @param array $data The data to be arranged in the row.
+     *
+     * @param  array  $data  The data to be arranged in the row.
      * @return GridElement The arranged grid data.
      */
     public static function rowWith4Columns(array $data)
@@ -142,7 +159,8 @@ class GridElement extends FormSchemaBuilder
 
     /**
      * @desc Arrange the given data into a six-column row.
-     * @param array $data The data to be arranged in the row.
+     *
+     * @param  array  $data  The data to be arranged in the row.
      * @return GridElement The arranged grid data.
      */
     public static function rowWith6Columns(array $data)
@@ -160,12 +178,12 @@ class GridElement extends FormSchemaBuilder
 
     private static function grid(array $data, int $cols)
     {
-        $instance = new static();
+        $instance = new static;
         $instance->attributes = [
             'grid' => static::chunks($data, $cols),
             'element-name' => 'grid-element',
             'cols' => $cols,
-            'name' => static::generateRandomName()
+            'name' => static::generateRandomName(),
         ];
 
         return $instance;

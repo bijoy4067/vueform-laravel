@@ -33,6 +33,52 @@ class ButtonElementForm extends VueFormBuilder
 ```
 ---
 
+## ⚙️ Allowed Attributes
+
+| Name | Data Type |
+| --- | --- |
+| `addClass` | array|object|string|function |
+| `addClasses` | object|function |
+| `after` | object|string|number |
+| `align` | string |
+| `before` | object|string|number |
+| `between` | object|string|number |
+| `buttonClass` | string|array|object |
+| `buttonLabel` | string|object|function |
+| `buttonType` | string |
+| `columns` | object|string|number |
+| `conditions` | array |
+| `danger` | boolean |
+| `description` | string|object |
+| `disabled` | boolean|function|array|object |
+| `full` | boolean |
+| `href` | string |
+| `id` | string |
+| `info` | string|object |
+| `infoPosition` | string |
+| `inline` | boolean |
+| `label` | string|object|function |
+| `loading` | function|boolean |
+| `name` | string|number |
+| `overrideClass` | array|object|string|function |
+| `overrideClasses` | object|function |
+| `presets` | array |
+| `removeClass` | array|object|function |
+| `removeClasses` | object|function |
+| `replaceClass` | object|function |
+| `replaceClasses` | object|function |
+| `resets` | boolean |
+| `secondary` | boolean |
+| `size` | string |
+| `slots` | object |
+| `submits` | boolean |
+| `target` | string |
+| `templates` | object |
+| `view` | string |
+| `views` | object |
+
+---
+
 ## ⚙️ Available Static Methods
 
 | Method | Description |

@@ -64,6 +64,58 @@ class GridElementForm extends VueFormBuilder
 ```
 ---
 
+## ⚙️ Allowed Attributes
+
+| Name | Data Type |
+| --- | --- |
+| `addClass` | array|object|string|function |
+| `addClasses` | object|function |
+| `after` | object|string|number |
+| `align` | string |
+| `before` | object|string|number |
+| `between` | object|string|number |
+| `colHeader` | boolean |
+| `cols` | number |
+| `columns` | object|string|number |
+| `conditions` | array |
+| `default` | object |
+| `description` | string|object |
+| `displayErrors` | boolean |
+| `fieldName` | string|object |
+| `formatData` | function |
+| `formatLoad` | function |
+| `grid` | array |
+| `id` | string |
+| `info` | string|object |
+| `infoPosition` | string |
+| `inline` | boolean |
+| `label` | string|object|function |
+| `maxWidth` | string|number |
+| `messages` | object |
+| `minWidth` | string|number |
+| `name` | string|number |
+| `overrideClass` | array|object|string|function |
+| `overrideClasses` | object|function |
+| `presets` | array |
+| `removeClass` | array|object|function |
+| `removeClasses` | object|function |
+| `replaceClass` | object|function |
+| `replaceClasses` | object|function |
+| `rowHeader` | boolean |
+| `rows` | number |
+| `rules` | array|string|object |
+| `scrollable` | boolean |
+| `size` | string |
+| `slots` | object |
+| `submit` | boolean |
+| `templates` | object |
+| `valign` | string |
+| `view` | string |
+| `views` | object |
+| `widths` | array |
+
+---
+
 ## ⚙️ Available Static Methods
 
 | Method | Description |

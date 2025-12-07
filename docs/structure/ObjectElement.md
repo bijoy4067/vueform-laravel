@@ -151,6 +151,49 @@ class ObjectElementForm extends VueFormBuilder
 ```
 ---
 
+## ⚙️ Allowed Attributes
+
+| Name | Data Type |
+| --- | --- |
+| `addClass` | array|object|string|function |
+| `addClasses` | object|function |
+| `after` | object|string|number |
+| `before` | object|string|number |
+| `between` | object|string|number |
+| `columns` | object|string|number |
+| `conditions` | array |
+| `default` | object |
+| `description` | string|object |
+| `displayErrors` | boolean |
+| `embed` | boolean |
+| `fieldName` | string|object |
+| `formatData` | function |
+| `formatLoad` | function |
+| `id` | string |
+| `info` | string|object |
+| `infoPosition` | string |
+| `inline` | boolean |
+| `label` | string|object|function |
+| `messages` | object |
+| `name` | string|number |
+| `overrideClass` | array|object|string|function |
+| `overrideClasses` | object|function |
+| `presets` | array |
+| `removeClass` | array|object|function |
+| `removeClasses` | object|function |
+| `replaceClass` | object|function |
+| `replaceClasses` | object|function |
+| `rules` | array|string|object |
+| `schema` | object |
+| `size` | string |
+| `slots` | object |
+| `submit` | boolean |
+| `templates` | object |
+| `view` | string |
+| `views` | object |
+
+---
+
 ## ⚙️ Available Static Methods
 
 | Method | Description |

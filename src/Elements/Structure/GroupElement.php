@@ -7,66 +7,79 @@ use LaravelVueForm\Builder\FormSchemaBuilder;
 class GroupElement extends FormSchemaBuilder
 {
     protected static array $allowedAttributes = [
-        'addClass',
-        'addClasses',
-        'after',
-        'before',
-        'between',
-        'columns',
-        'default',
-        'description',
-        'displayErrors',
-        'fieldName',
-        'formatData',
-        'formatLoad',
-        'info',
-        'infoPosition',
-        'inline',
-        'label',
-        'messages',
-        'overrideClass',
-        'overrideClasses',
-        'presets',
-        'removeClass',
-        'removeClasses',
-        'replaceClass',
-        'replaceClasses',
-        'rules',
-        'schema',
-        'size',
-        'slots',
-        'submit',
-        'templates',
-        'view',
-        'views',
+        'addClass' => 'array|object|string|function',
+        'addClasses' => 'object|function',
+        'after' => 'object|string|number',
+        'before' => 'object|string|number',
+        'between' => 'object|string|number',
+        'columns' => 'object|string|number',
+        'conditions' => 'array',
+        'default' => 'object',
+        'description' => 'string|object',
+        'displayErrors' => 'boolean',
+        'fieldName' => 'string|object',
+        'formatData' => 'function',
+        'formatLoad' => 'function',
+        'id' => 'string',
+        'info' => 'string|object',
+        'infoPosition' => 'string',
+        'inline' => 'boolean',
+        'label' => 'string|object|function',
+        'messages' => 'object',
+        'name' => 'string|number',
+        'overrideClass' => 'array|object|string|function',
+        'overrideClasses' => 'object|function',
+        'presets' => 'array',
+        'removeClass' => 'array|object|function',
+        'removeClasses' => 'object|function',
+        'replaceClass' => 'object|function',
+        'replaceClasses' => 'object|function',
+        'rules' => 'array|string|object',
+        'schema' => 'object',
+        'size' => 'string',
+        'slots' => 'object',
+        'submit' => 'boolean',
+        'templates' => 'object',
+        'view' => 'string',
+        'views' => 'object',
     ];
 
     protected static array $allowedProperties = [
-        'aria',
-        'busy',
-        'children_',
-        'classes',
-        'data',
-        'dataPath',
-        'debouncing',
-        'dirty',
-        'error',
-        'errors',
-        'hasLabel',
-        'hidden',
-        'invalid',
-        'isDefault',
-        'isFilled',
-        'isRequired',
-        'messageBag',
-        'pending',
-        'requestData',
-        'size',
-        'useCustomFilled',
-        'validated',
-        'value',
-        'view',
-        'visible',
+        'aria' => 'object',
+        'available' => 'boolean',
+        'busy' => 'boolean',
+        'children_' => 'object',
+        'classes' => 'object',
+        'container' => 'HTMLElement',
+        'data' => 'object',
+        'dataPath' => 'string',
+        'debouncing' => 'boolean',
+        'dirty' => 'boolean',
+        'el_' => 'VueformElement',
+        'error' => 'string',
+        'errors' => 'array',
+        'fieldId' => 'string',
+        'form_' => 'Vueform',
+        'hasLabel' => 'boolean',
+        'hidden' => 'boolean',
+        'invalid' => 'boolean',
+        'isDefault' => 'boolean',
+        'isFilled' => 'boolean',
+        'isRequired' => 'boolean',
+        'messageBag' => 'MessageBag',
+        'mounted' => 'boolean',
+        'parent' => 'VNode',
+        'path' => 'string',
+        'pending' => 'boolean',
+        'requestData' => 'object',
+        'size' => 'string',
+        'template' => 'object',
+        'theme' => 'object',
+        'useCustomFilled' => 'boolean',
+        'validated' => 'boolean',
+        'value' => 'any',
+        'view' => 'string',
+        'visible' => 'boolean',
     ];
 
     protected static array $allowedEventAttributes = [
@@ -88,13 +101,14 @@ class GroupElement extends FormSchemaBuilder
     /**
      * Create a VueForm group element with 1 column per row.
      *
-     * @param array $data Array of elements to include in the group.
+     * @param  array  $data  Array of elements to include in the group.
      * @return static
+     *
      * @desc Generates a VueForm Group Element where each item occupies a full row (1 column per row).
      */
     public static function rowWith1Columns(array $data)
     {
-        $element = new static();
+        $element = new static;
         $element->attributes = self::buildElement($data, 1);
 
         return $element;
@@ -103,13 +117,14 @@ class GroupElement extends FormSchemaBuilder
     /**
      * Create a VueForm group element with 2 columns per row.
      *
-     * @param array $data Array of elements to include in the group.
+     * @param  array  $data  Array of elements to include in the group.
      * @return static
+     *
      * @desc Generates a VueForm Group Element with 2 items per row.
      */
     public static function rowWith2Columns(array $data)
     {
-        $element = new static();
+        $element = new static;
         $element->attributes = self::buildElement($data, 2);
 
         return $element;
@@ -118,13 +133,14 @@ class GroupElement extends FormSchemaBuilder
     /**
      * Create a VueForm group element with 3 columns per row.
      *
-     * @param array $data Array of elements to include in the group.
+     * @param  array  $data  Array of elements to include in the group.
      * @return static
+     *
      * @desc Generates a VueForm Group Element with 3 items per row.
      */
     public static function rowWith3Columns(array $data)
     {
-        $element = new static();
+        $element = new static;
         $element->attributes = self::buildElement($data, 3);
 
         return $element;
@@ -133,13 +149,14 @@ class GroupElement extends FormSchemaBuilder
     /**
      * Create a VueForm group element with 4 columns per row.
      *
-     * @param array $data Array of elements to include in the group.
+     * @param  array  $data  Array of elements to include in the group.
      * @return static
+     *
      * @desc Generates a VueForm Group Element with 4 items per row and a unique random name.
      */
     public static function rowWith4Columns(array $data)
     {
-        $element = new static();
+        $element = new static;
         $element->attributes = self::buildElement($data, 4);
 
         return $element;
@@ -148,13 +165,14 @@ class GroupElement extends FormSchemaBuilder
     /**
      * Create a VueForm group element with 6 columns per row.
      *
-     * @param array $data Array of elements to include in the group.
+     * @param  array  $data  Array of elements to include in the group.
      * @return static
+     *
      * @desc Generates a VueForm Group Element with 6 items per row.
      */
     public static function rowWith6Columns(array $data)
     {
-        $element = new static();
+        $element = new static;
         $element->attributes = self::buildElement($data, 6);
 
         return $element;
@@ -175,7 +193,7 @@ class GroupElement extends FormSchemaBuilder
         $groups = [];
 
         foreach ($data as $value) {
-            $instance = new static();
+            $instance = new static;
             $instance->attributes = [
                 'type' => 'group',
                 'name' => static::generateRandomName(),
@@ -186,7 +204,7 @@ class GroupElement extends FormSchemaBuilder
                         'sm' => 12 / $col,
                         'lg' => 12 / $col,
                     ],
-                ]
+                ],
             ];
             $groups[] = $instance;
         }
