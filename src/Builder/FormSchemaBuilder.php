@@ -19,11 +19,17 @@ class FormSchemaBuilder extends AttributesBuilder
 
     public function __construct()
     {
-        // dd(static::$defaultAllowedAttributes, );
-        // static::$allowedAttributes = static::$allowedAttributes;
-        static::$allowedProperties = array_merge(static::$allowedProperties, static::$defaultAllowedProperties);
+        // Merge default → custom
+        static::$allowedAttributes = array_merge(
+            static::$defaultAllowedAttributes,
+            static::$allowedAttributes
+        );
+
+        static::$allowedProperties = array_merge(
+            static::$defaultAllowedProperties,
+            static::$allowedProperties
+        );
         static::$allowedEventAttributes = array_merge(static::$allowedEventAttributes, static::$defaultAllowedEventAttributes);
-        // static::$allowedSlotAttributes = array_merge(static::$allowedSlotAttributes, static::$defaultAllowedSlotAttributes);
     }
 
     /**
@@ -55,6 +61,9 @@ class FormSchemaBuilder extends AttributesBuilder
         }
         // dd(in_array($method, static::$allowedAttributes), static::$allowedAttributes, $method);
         if (in_array($method, array_keys(static::$allowedAttributes))) {
+            // argument validation
+            $this->argumentValidation($method, $arguments[0] ?? null, static::$allowedAttributes[$method]);
+
             $this->attributes[$method] = $arguments[0] ?? null;
             return $this;
         }
@@ -87,5 +96,48 @@ class FormSchemaBuilder extends AttributesBuilder
     {
         $this->attributes['conditions'] = $conditions ?? [];
         return $this;
+    }
+
+    private function argumentValidation(string $attribute, $value, string $typeDefinition): void
+    {
+        // Split multiple types
+        $allowedTypes = explode('|', $typeDefinition);
+        $isValid = false;
+
+        foreach ($allowedTypes as $type) {
+            $type = trim($type);
+            if ($type === 'mixed') {
+                $isValid = true;
+                break;
+            }
+            if ($type === 'function' && is_callable($value)) {
+                $isValid = true;
+                break;
+            }
+            if ($type === 'array' && is_array($value)) {
+                $isValid = true;
+                break;
+            }
+            if ($type === 'object' && is_object($value) || is_array($value)) {
+                $isValid = true;
+                break;
+            }
+            if ($type === 'boolean' && is_bool($value)) {
+                $isValid = true;
+                break;
+            }
+            if ($type === 'string' && is_string($value)) {
+                $isValid = true;
+                break;
+            }
+            if ($type === 'number' && is_numeric($value)) {
+                $isValid = true;
+                break;
+            }
+        }
+
+        if (!$isValid) {
+            throw new \InvalidArgumentException("Invalid value for attribute '{$attribute}'. Expected: {$typeDefinition}.");
+        }
     }
 }
