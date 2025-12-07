@@ -1,31 +1,31 @@
-<?php 
+<?php
 
 namespace LaravelVueForm\Traits;
 
 
-trait DefaultAttributesTraits 
+trait DefaultAttributesTraits
 {
     protected static array $defaultAllowedAttributes = [
-        'conditions',
-        'container',
-        'id',
-        'name',
-        'type',
-        'wrapper',
+        'conditions' => 'array',
+        'container' => 'string',
+        'id' => 'string',
+        'name' => 'string',
+        'type' => 'string',
+        'wrapper' => 'string',
     ];
 
 
     protected static array $defaultAllowedProperties = [
-        'available',
-        'container',
-        'el_',
-        'fieldId',
-        'form_',
-        'mounted',
-        'parent',
-        'path',
-        'template',
-        'theme',
+        'available' => 'array',
+        'container' => 'string',
+        'el_' => 'VueformElement',
+        'fieldId' => 'string',
+        'form_' => 'Vueform',
+        'mounted' => 'boolean',
+        'parent' => 'VueformElement',
+        'path' => 'string',
+        'template' => 'object',
+        'theme' => 'object',
     ];
 
     protected static array $defaultAllowedEventAttributes = [

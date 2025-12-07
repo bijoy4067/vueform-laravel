@@ -19,7 +19,8 @@ class FormSchemaBuilder extends AttributesBuilder
 
     public function __construct()
     {
-        static::$allowedAttributes = array_merge(static::$allowedAttributes, static::$defaultAllowedAttributes);
+        // dd(static::$defaultAllowedAttributes, );
+        // static::$allowedAttributes = static::$allowedAttributes;
         static::$allowedProperties = array_merge(static::$allowedProperties, static::$defaultAllowedProperties);
         static::$allowedEventAttributes = array_merge(static::$allowedEventAttributes, static::$defaultAllowedEventAttributes);
         // static::$allowedSlotAttributes = array_merge(static::$allowedSlotAttributes, static::$defaultAllowedSlotAttributes);
@@ -48,11 +49,12 @@ class FormSchemaBuilder extends AttributesBuilder
      */
     public function __call(string $method, array $arguments): static
     {
+        // if custom method exists, call it
         if (method_exists($this, $method)) {
             return $this->$method(...$arguments);
         }
-
-        if (in_array($method, static::$allowedAttributes, true)) {
+        // dd(in_array($method, static::$allowedAttributes), static::$allowedAttributes, $method);
+        if (in_array($method, array_keys(static::$allowedAttributes))) {
             $this->attributes[$method] = $arguments[0] ?? null;
             return $this;
         }

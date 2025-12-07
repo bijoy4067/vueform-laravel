@@ -59,8 +59,6 @@ composer require bijoy4067/vueform-laravel
 php artisan vendor:publish --provider="LaravelVueForm\VueFormServiceProvider"
 ```
 
-If you only want to reference example files in `app/VueForm`, you can copy them into your application namespace and adjust imports.
-
 ---
 
 ## Configuration
