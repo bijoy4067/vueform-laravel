@@ -47,13 +47,13 @@ Benefits
 
 (Brief — only required if you are installing the package into a project)
 
-> Add the package (replace with the correct package name if published differently):
+Add the package (replace with the correct package name if published differently):
 
 ```bash
 composer require bijoy4067/vueform-laravel
 ```
 
-> publish vendor assets (config, views, migrations) if provided by the package:
+publish vendor assets (config, views, migrations) if provided by the package:
 
 ```bash
 php artisan vendor:publish --provider="LaravelVueForm\VueFormServiceProvider"
