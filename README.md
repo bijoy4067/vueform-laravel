@@ -13,15 +13,13 @@ A Laravel backend integration for VueForm — server-side form builders, validat
 - [Render Form](#render-form)
   - [Update controller](#update-controller)
   - [Update Blade](#update-blade)
+- [Reference](#reference)
 - [Contributing](#contributing)
 - [Changelog](#changelog)
 - [License](#license)
-- [Maintainer](#maintainer)
-
 ---
 
 ## About
-
 vueform-laravel provides a server-first way to define forms for VueForm-powered frontends. Instead of building the schema in JavaScript only, you define forms in PHP classes (builders) that return a `Vueform` schema. This keeps validation, defaults and submission logic close to your Laravel application.
 
 Benefits
@@ -34,7 +32,6 @@ Benefits
 ---
 
 ## Requirements
-
 - PHP 8.0+ (or the version required by your Laravel installation)
 - Laravel 9.x or newer (adjust accordingly if you use a different LTS)
 - The LaravelVueForm library (this package depends on its abstractions and element classes)
@@ -42,7 +39,6 @@ Benefits
 ---
 
 ## Installation
-
 Add this form builder composer package to your laravel application by using following command.
 
 ```bash
@@ -55,10 +51,7 @@ publish vendor assets
 php artisan vendor:publish --tag=vueform-laravel --force
 ```
 
----
-
 ## Configuration
-
 Load required front-end assets once in your main layout (inside `<head>`):
 
 ```php
@@ -85,10 +78,7 @@ return [
 ]
 ```
 
----
-
 ## Create Form Component
-
 Create form (Vueform laravel php class) by using following command
 
 ```bash
@@ -100,7 +90,6 @@ This will create a file to `app/VueForm/FormComponent.php`. You can also create 
 ---
 
 ## Usage
-
 Add Form Elements schema and setting up Form such as (`endpoint, submit method`) etc inside `buildForm()` method.
 
 Minimal example `app\VueForm\FormComponent.php` (Text input + submit button):
@@ -162,13 +151,12 @@ public static function validatedFormData($request)
 ```
 
 ## Render Form
-
 To render this form to browser you can follow following methods
 
 - Add this Form to `Controller -> blade`.
 - Globally add anywhere in any blade file
 
-### Update controller
+#### Update controller
 
 controller + Blade example
 
@@ -242,7 +230,7 @@ Example:
 </html>
 ```
 
-### Update Blade
+#### Update Blade
 
 Render the Form Globally in your any Blade file.
 
@@ -289,3 +277,26 @@ Example of your Blade file:
 </html>
 ```
 
+## Reference
+Fowwing items are used to develop this package
+- [Laravel](https://laravel.com)
+- [Vue 3](https://vuejs.org/)
+- [Vuefrom](#installation)
+- [Meterial Theme](#configuration)
+
+## Contributing
+Contributions are welcome. Suggested workflow:
+
+    1. Fork the repository.
+    2. Create a feature branch: `git checkout -b feat/my-feature`
+    3. Add tests and documentation for your change.
+    4. Open a pull request with a clear description and test results.
+
+Please follow PSR coding standards and include unit/integration tests for new features.
+
+
+## Changelog
+Maintain a `CHANGELOG.md` following Keep a Changelog if you publish releases. Each release should list breaking changes, new features, and fixes.
+
+## License
+Declare your project license (e.g., MIT). Add a `LICENSE` file to the repository and update this section with the chosen license name and a short note.
