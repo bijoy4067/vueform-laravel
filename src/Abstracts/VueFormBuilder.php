@@ -4,67 +4,90 @@ namespace LaravelVueForm\Abstracts;
 
 use LaravelVueForm\Controllers\FormDataController;
 
+/**
+ * VueFormBuilder
+ * ==============
+ *
+ * This is the main base class for building VueForm schemas using PHP.
+ *
+ * Purpose (in simple words):
+ * - You define a form in PHP
+ * - This class converts it into a Vue-friendly schema
+ * - Vue renders the form in the browser
+ *
+ * This class does NOT handle UI rendering logic.
+ * It only prepares clean, structured data for Vue.
+ *
+ * Flow overview:
+ * 1. buildForm() → developer defines form elements
+ * 2. processElements() → normalize + resolve paths
+ * 3. build() → return array OR rendered Vue view
+ * 4. getFormValidationRules() → Laravel validation rules
+ */
 abstract class VueFormBuilder
 {
-    /**
-     * @var string The form submission URL endpoint.
-     */
+    /** Form submit URL (optional). Auto-generated if null. */
     protected static $actionUrl = null;
 
-    /**
-     * @var string The HTTP method to be used for form submission.
-     */
-    protected static $method = 'GET';
+    /** HTTP method used when submitting the form */
+    protected static $method = 'POST';
 
-    /**
-     * @var array The complete form schema to be passed to VueFormBuilder.
-     */
+    /** Final VueForm schema after processing */
     protected static $schema = [];
 
+    /** Rendering mode (inline, modal, etc.) */
     protected static $formMode = 'inline';
+
+    /**
+     * Stack used to track parent element names.
+     * Helps build nested data paths like: user.address.street
+     */
     private static array $elementsKey = [];
+
+    /**
+     * Lookup table for element names → full data paths
+     * Used to resolve conditional logic dependencies
+     */
     private static array $lookup = []; // name => full path lookup
 
     /**
-     * Define the form structure.
-     * 
-     * Each subclass must implement this method to specify the form fields
-     * and their configuration.
-     *
-     * @return array The raw form structure before being converted to a Vue schema.
+     * Developers define their form structure here.
+     * Must return a Form object or compatible structure.
      */
     abstract protected function buildForm();
 
     /**
-     * Process a single form element object into an array.
-     * Keeps numeric array keys to allow multiple elements of the same type.
+     * Converts element objects into plain arrays.
      *
-     * @param object $value
-     * @return array
+     * Why this exists:
+     * - Vue needs JSON-friendly data
+     * - PHP objects are normalized here
+     * - Nested schemas are handled recursively
      */
     private static function processElements(object $value): array
     {
 
+        // Convert element object into array format
         $elementArray = $value->toArray();
 
         if (!empty($value->attributes['schema'])) {
             $children = [];
             foreach ($value->attributes['schema'] as $child) {
 
-                // Track parent keys
+                // Push current element name to the path stack
                 self::$elementsKey[] = $value->attributes['name'] ?? '';
 
                 if (is_array($child)) {
 
-                    // Build the child's dataPath
+                    // Build full dot-notated data path
                     $child['dataPath'] = implode('.', array_filter(self::$elementsKey));
 
-                    // Store in lookup for condition path resolving
+                    // Save path for condition resolution
                     if (!empty($child['name'])) {
                         self::$lookup[$child['name']] = $child['dataPath'];
                     }
 
-                    // Process conditions option to replace names with dataPaths
+                    // Replace condition field names with full data paths
                     if (isset($child['conditions'])) {
                         foreach ($child['conditions'] as $conditionKey => $condition) {
                             $targetName = $condition[0]; // e.g. 'first_name'
@@ -75,7 +98,7 @@ abstract class VueFormBuilder
                         }
                     }
 
-                    // Recursively process nested schema if exists
+                    // Handle nested child elements (groups, lists, etc.)
                     if (array_key_exists('schema', $child) && is_array($child['schema'])) {
                         foreach ($child['schema'] as $value) {
                             if (is_object($value)) {
@@ -90,6 +113,7 @@ abstract class VueFormBuilder
                     $children[] = self::processElements($child);
                 }
 
+                // Remove current element from path stack
                 array_pop(self::$elementsKey); // restore stack
             }
             $elementArray['schema'] = $children;
@@ -97,21 +121,24 @@ abstract class VueFormBuilder
         return $elementArray;
     }
 
-    /** 
-     * Build the Vue form data and render the HTML component.
+    /**
+     * Builds the final form output.
      *
-     * @return string The rendered HTML string for embedding the VueFormBuilder.
+     * Modes:
+     * - 'html'  → rendered Vue component
+     * - 'array' → raw schema data
      */
     public function build($response = 'html'): string|array
     {
         $elements = [];
 
-        // Loop through all defined form elements and prepare their schema
+        // Get raw form definition from child class
         $form = $this->buildForm()->toArray();
         foreach ($form['schema'] as $value) {
             $elements[] = self::processElements($value); // numeric array
         }
 
+        // Set submit endpoint (custom or auto-generated)
         $form['endpoint'] = static::$actionUrl ?? route('laravel-vue-form.processData', FormDataController::encodeScope(static::class));
         $form['schema'] = $elements;
         static::$schema = $form;
@@ -119,17 +146,27 @@ abstract class VueFormBuilder
         if ($response === 'array') {
             return static::$schema;
         }
+        // Render Vue form view
         return view('vueForm::vueform-' . static::$formMode, [
             'formData' => static::$schema,
             'formMode' => static::$formMode,
         ])->render();
     }
 
+    /**
+     * Loads required VueForm CSS and JavaScript assets
+     */
     public static function loadAssets()
     {
         return view('vueForm::components.core.asset-load');
     }
 
+    /**
+     * Extract Laravel validation rules from the form schema.
+     *
+     * Output format:
+     * field.path => ['required', 'string', ...]
+     */
     public function getFormValidationRules($schema = null, $parentPath = ''): array
     {
         $rules = [];
@@ -138,7 +175,7 @@ abstract class VueFormBuilder
         foreach ($schema as $element) {
             // If element has a name & rules
             if (!empty($element['name']) && !empty($element['rules'])) {
-                // dd($element);
+                // Register validation rules for this field
                 $field = $parentPath
                     ? "{$parentPath}.{$element['name']}"
                     : $element['name'];
@@ -146,12 +183,12 @@ abstract class VueFormBuilder
                 $rules[$field] = $element['rules'];
             }
 
-            // Handle nested schema (GroupElement, ListElement, etc.)
+            // Recursively collect rules from nested elements
             if (!empty($element['schema']) && is_array($element['schema'])) {
                 $nestedPath = !empty($element['name'])
                     ? ($parentPath ? "{$parentPath}.{$element['name']}" : $element['name'])
                     : $parentPath;
-                // dd($element['schema'], $nestedPath);
+                
                 $rules = array_merge(
                     $rules,
                     $this->getFormValidationRules($element['schema'], $nestedPath)
