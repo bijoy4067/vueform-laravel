@@ -17,9 +17,11 @@ A Laravel backend integration for VueForm — server-side form builders, validat
 - [Contributing](#contributing)
 - [Changelog](#changelog)
 - [License](#license)
+
 ---
 
 ## About
+
 vueform-laravel provides a server-first way to define forms for VueForm-powered frontends. Instead of building the schema in JavaScript only, you define forms in PHP classes (builders) that return a `Vueform` schema. This keeps validation, defaults and submission logic close to your Laravel application.
 
 Benefits
@@ -32,6 +34,7 @@ Benefits
 ---
 
 ## Requirements
+
 - PHP 8.0+ (or the version required by your Laravel installation)
 - Laravel 9.x or newer (adjust accordingly if you use a different LTS)
 - The LaravelVueForm library (this package depends on its abstractions and element classes)
@@ -39,6 +42,7 @@ Benefits
 ---
 
 ## Installation
+
 Add this form builder composer package to your laravel application by using following command.
 
 ```bash
@@ -52,6 +56,7 @@ php artisan vendor:publish --tag=vueform-laravel --force
 ```
 
 ## Configuration
+
 Load required front-end assets once in your main layout (inside `<head>`):
 
 ```php
@@ -79,6 +84,7 @@ return [
 ```
 
 ## Create Form Component
+
 Create form (Vueform laravel php class) by using following command
 
 ```bash
@@ -90,6 +96,7 @@ This will create a file to `app/VueForm/FormComponent.php`. You can also create 
 ---
 
 ## Usage
+
 Add Form Elements schema and setting up Form such as (`endpoint, submit method`) etc inside `buildForm()` method.
 
 Minimal example `app\VueForm\FormComponent.php` (Text input + submit button):
@@ -128,9 +135,10 @@ class FormComponent extends VueFormBuilder
 Key point of this example:
 
 - Endpoint.
-    - Endpoint will be auto generate if you not defiend `protected static $actionUrl = 'site.com/api-endpoint';`.
+  - Endpoint will be auto generate if you not defiend `protected static $actionUrl = 'site.com/api-endpoint';`.
 - Form Submit method
-    - By default it submit form by post method you can defined method by `protected static $method = 'GET';`.
+
+  - By default it submit form by post method you can defined method by `protected static $method = 'GET';`.
 
 - Added text input field and submit button to the form.
 - After submit form, you can get form submited data to `formData($request)` or `validatedFormData($request)` method.
@@ -151,6 +159,7 @@ public static function validatedFormData($request)
 ```
 
 ## Render Form
+
 To render this form to browser you can follow following methods
 
 - Add this Form to `Controller -> blade`.
@@ -191,6 +200,7 @@ Add following php code to `example.blade.php` file.
 ```
 
 Example:
+
 ```html
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -278,13 +288,16 @@ Example of your Blade file:
 ```
 
 ## Reference
+
 Fowwing items are used to develop this package
+
 - [Laravel](https://laravel.com)
-- [Vue 3](https://vuejs.org/)
-- [Vuefrom](#installation)
-- [Meterial Theme](#configuration)
+- [Vue 3](https://vuejs.org)
+- [Vuefrom](https://vueform.com)
+- [Meterial Theme](https://material-theme.com)
 
 ## Contributing
+
 Contributions are welcome. Suggested workflow:
 
     1. Fork the repository.
@@ -294,9 +307,10 @@ Contributions are welcome. Suggested workflow:
 
 Please follow PSR coding standards and include unit/integration tests for new features.
 
-
 ## Changelog
+
 Maintain a `CHANGELOG.md` following Keep a Changelog if you publish releases. Each release should list breaking changes, new features, and fixes.
 
 ## License
+
 Declare your project license (e.g., MIT). Add a `LICENSE` file to the repository and update this section with the chosen license name and a short note.
