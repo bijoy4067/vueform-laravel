@@ -128,16 +128,10 @@ class Vueform extends FormSchemaBuilder
         'empty' => [],
     ];
 
-    // public static function schema($data)
-    // {
-    //     $instance = new static();
-    //     $instance->attributes = [
-    //         'schema' => $data,  // Convert to array if object
-    //         'element' => 'vue-form',
-    //     ];
-    //     dd($instance);
-    //     return $instance->toArray();
-    // }
+    public static function build()
+    {
+        return static::name();
+    }
 
     public function showSuccessAlert($type = 'toast')
     {

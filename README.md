@@ -2,8 +2,6 @@
 
 A Laravel backend integration for VueForm — server-side form builders, validation helpers, and example components that produce JSON schemas consumed by VueForm frontends. This README targets all kinds of developers: beginners who want a minimal working example, intermediate users who need clear patterns, and advanced users who want performance, customization and testing tips.
 
-> NOTE: This README is written to match the repository structure and common usage patterns. If something does not match your local setup, adjust namespaces/paths accordingly.
-
 ## Table of Contents
 
 - [About](#about)
@@ -45,15 +43,13 @@ Benefits
 
 ## Installation
 
-(Brief — only required if you are installing the package into a project)
-
-Add the package (replace with the correct package name if published differently):
+Add this form builder composer package to your laravel application by using following command.
 
 ```bash
 composer require bijoy4067/vueform-laravel
 ```
 
-publish vendor assets (config, views, migrations) if provided by the package:
+publish vendor assets
 
 ```bash
 php artisan vendor:publish --tag=vueform-laravel --force
@@ -65,36 +61,49 @@ php artisan vendor:publish --tag=vueform-laravel --force
 
 Load required front-end assets once in your main layout (inside `<head>`):
 
-```blade
+```php
 <!-- Load VueForm assets (scripts & styles required by the renderer) -->
 {{ LaravelVueForm\Abstracts\VueFormBuilder::loadAssets() }}
 ```
 
 Ensure `csrf-token` meta is present (used by AJAX submissions):
 
-```blade
-<meta name="csrf-token" content="{{ csrf_token() }}">
+```html
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+```
+
+Updata your form style (color, padding, margin) etc, form `config/vueform-laravel.php`. After update make reload to your form style will be applied to your form
+
+```php
+<?php
+
+return [
+    'styles' => [
+        '--vf-primary' => '#6200ee', // you can modify here
+        //... other style
+    ]
+]
 ```
 
 ---
 
 ## Create Form Component
 
-You can create a form builder class to describe your form. Example CLI (if provided by the package):
+Create form (Vueform laravel php class) by using following command
 
 ```bash
 php artisan vueform:make FormComponent
 ```
 
-This will scaffold a file (for example `app/VueForm/FormComponent.php`). You can also create files manually anywhere inside `app/` and ensure namespaces are correct.
+This will create a file to `app/VueForm/FormComponent.php`. You can also create files manually anywhere inside `app/VueForm`.
 
 ---
 
 ## Usage
 
-A form builder class extends `LaravelVueForm\Abstracts\VueFormBuilder` and returns a `Vueform` schema inside `buildForm()`.
+Add Form Elements schema and setting up Form such as (`endpoint, submit method`) etc inside `buildForm()` method.
 
-Minimal example `app\VueForm\FormComponent.php` (Text input + submit):
+Minimal example `app\VueForm\FormComponent.php` (Text input + submit button):
 
 ```php
 <?php
@@ -110,10 +119,10 @@ class FormComponent extends VueFormBuilder
 {
     protected function buildForm()
     {
-        return Vueform::name('text-element-form')
+        return Vueform::build() // must add name
             ->schema([
-                TextElement::name('search')->info(null),
-                ButtonElement::submitButton()
+                TextElement::name('search')->info(null), // text input field
+                ButtonElement::submitButton() // submit button
             ]);
     }
 
@@ -127,48 +136,41 @@ class FormComponent extends VueFormBuilder
 }
 ```
 
-Key patterns demonstrated in the examples directory:
+Key point of this example:
 
-- Text fields with types and conditions (TextElement).
-- Tags / multi-select with static or remote items (TagsElement).
-- Phone inputs with country include and unmask options (PhoneElement).
-- Layout primitives: GroupElement (rows/columns), ListElement (repeatable items).
-- Static elements (text, headings, images) and ButtonElement helpers.
+- Endpoint.
+    - Endpoint will be auto generate if you not defiend `protected static $actionUrl = 'site.com/api-endpoint';`.
+- Form Submit method
+    - By default it submit form by post method you can defined method by `protected static $method = 'GET';`.
 
-Copyable snippets
+- Added text input field and submit button to the form.
+- After submit form, you can get form submited data to `formData($request)` or `validatedFormData($request)` method.
 
-- Conditional field:
+`validatedFormData()` method provided only validated request data. If form has errors then return by defalut (Laravel validation pattern error)
 
-```php
-TextElement::name('number')
-    ->inputType('number')
-    ->conditions([['search', 'not_empty']])
-```
-
-- Tags with remote items:
+> Example of `validatedFormData()` method:
 
 ```php
-TagsElement::name('tags')->items('https://api.example.com/tags/json')->max(5)
+// Called when form is submitted (if no custom endpoint is configured)
+
+public static function validatedFormData($request)
+{
+    dd($request);
+    // OR
+    dd(request()->all());
+}
 ```
-
-- Phone field:
-
-```php
-PhoneElement::name('phone')->include(['bd'])->unmask(true)
-```
-
----
 
 ## Render Form
 
-You can either:
+To render this form to browser you can follow following methods
 
-- Render the form in Blade with helper output (convenient for server-rendered pages), or
-- Return the JSON schema to a SPA and let frontend code mount the form.
+- Add this Form to `Controller -> blade`.
+- Globally add anywhere in any blade file
 
 ### Update controller
 
-Simple controller example
+controller + Blade example
 
 ```php
 <?php
@@ -183,105 +185,107 @@ class FormController extends Controller
     public function index()
     {
         $formComponent = app(FormComponent::class);
-        return view('welcome', compact('formComponent'));
+        return view('example', compact('formComponent'));
 
         // or
 
-        return view('welcome', [
+        return view('example', [
           'formComponent' => app(FormComponent::class)
         ]);
     }
 }
 ```
 
-### Update Blade
+Add following php code to `example.blade.php` file.
 
-Render the form in your Blade template. The builder usually exposes a `build()` helper that returns HTML + initialization scripts:
-
-```blade
+```php
 {!! $formComponent->build() !!}
 ```
 
-Full minimal Blade example:
+Example:
+```html
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-```blade
-<!doctype html>
-<html>
-<head>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    {{ LaravelVueForm\Abstracts\VueFormBuilder::loadAssets() }}
-</head>
-<body>
-    <div class="container">
-        {!! $formComponent->build() !!}
-    </div>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <title>{{ config('app.name', 'Laravel') }}</title>
+
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="csrf-token" content="{{ csrf_token() }}">
+            <title>{{ config('app.name', 'Laravel') }}</title>
+
+            <!-- Fonts -->
+            <link rel="preconnect" href="https://fonts.bunny.net">
+            <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+
+            <!-- Styles / Scripts -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+            {{ LaravelVueForm\Abstracts\VueFormBuilder::loadAssets() }}
+        </head>
+
+    <body>
+        <div class="container mx-auto">
+            <div class="col-12 mx-auto mt-5">
+
+                <!-- Reander form -->
+                {!! $vueFormData->build() !!}
+            </div>
+        </div>
+    </body>
+
 </html>
 ```
 
-Notes:
+### Update Blade
 
-- If you return JSON for a SPA, your frontend should mount the VueForm component and load the schema.
-- If your form should post to a custom API, set the endpoint in the schema or use a controller route and handle submission in a controller method.
+Render the Form Globally in your any Blade file.
 
----
+```php
+{!! (new \App\VueForm\Fields\PhoneElementForm())->build() !!}
+```
 
-## Contributing
+Example of your Blade file:
 
-Contributions are welcome. Suggested workflow:
+```html
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-1. Fork the repository.
-2. Create a feature branch: `git checkout -b feat/my-feature`
-3. Add tests and documentation for your change.
-4. Open a pull request with a clear description and test results.
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <title>{{ config('app.name', 'Laravel') }}</title>
 
-Please follow PSR coding standards and include unit/integration tests for new features.
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="csrf-token" content="{{ csrf_token() }}">
+            <title>{{ config('app.name', 'Laravel') }}</title>
 
----
+            <!-- Fonts -->
+            <link rel="preconnect" href="https://fonts.bunny.net">
+            <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
-## Changelog
+            <!-- Styles / Scripts -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-Maintain a `CHANGELOG.md` following Keep a Changelog if you publish releases. Each release should list breaking changes, new features, and fixes.
+            {{ LaravelVueForm\Abstracts\VueFormBuilder::loadAssets() }}
+        </head>
 
----
+    <body>
+        <div class="container mx-auto">
+            <div class="col-12 mx-auto mt-5">
+                {!! (new \App\VueForm\Fields\PhoneElementForm())->build() !!}
+            </div>
+        </div>
+    </body>
 
-## License
+</html>
+```
 
-Declare your project license (e.g., MIT). Add a `LICENSE` file to the repository and update this section with the chosen license name and a short note.
-
----
-
-## Maintainer
-
-- Repository: bijoy4067/vueform-laravel
-- Maintainer: bijoy4067
-
----
-
-## Additional notes for different skill levels
-
-For beginners
-
-- Start by copying the example form classes in `app/VueForm/*`.
-- Render them in a Blade view using `->build()` and test submission using the provided `formData()` method.
-- Keep logic simple and duplicate essential validation on the server.
-
-For intermediate users
-
-- Use `->items($url)` for remote options and implement a server-side search endpoint with pagination.
-- Use `->conditions()` to hide/show fields; always revalidate hidden fields server-side.
-- Organize forms in namespaces (e.g., App\VueForm, Structure, Static).
-
-For advanced users / pros
-
-- Extend element classes to add custom controls, or register new element types with the VueForm renderer.
-- Cache compiled form schemas (Redis / file cache) to avoid rebuilding complex schemas on every request.
-- Apply strict input validation and sanitize any HTML used for slots/templates to avoid XSS.
-- Write thorough unit tests for builder output (assert keys and critical attributes) and HTTP tests for `formData()`.
-
----
-
-## Maintainer
-
-- Repository: bijoy4067/vueform-laravel
-- Author/Maintainer: bijoy4067
