@@ -146,43 +146,43 @@ class GroupElementForm extends VueFormBuilder
 
 ## ⚙️ Allowed Attributes
 
-| Name | Data Type |
-| --- | --- |
-| `addClass` | array|object|string|function |
-| `addClasses` | object|function |
-| `after` | object|string|number |
-| `before` | object|string|number |
-| `between` | object|string|number |
-| `columns` | object|string|number |
-| `conditions` | array |
-| `default` | object |
-| `description` | string|object |
-| `displayErrors` | boolean |
-| `fieldName` | string|object |
-| `formatData` | function |
-| `formatLoad` | function |
-| `id` | string |
-| `info` | string|object |
-| `infoPosition` | string |
-| `inline` | boolean |
-| `label` | string|object|function |
-| `messages` | object |
-| `name` | string|number |
-| `overrideClass` | array|object|string|function |
-| `overrideClasses` | object|function |
-| `presets` | array |
-| `removeClass` | array|object|function |
-| `removeClasses` | object|function |
-| `replaceClass` | object|function |
-| `replaceClasses` | object|function |
-| `rules` | array|string|object |
-| `schema` | object |
-| `size` | string |
-| `slots` | object |
-| `submit` | boolean |
-| `templates` | object |
-| `view` | string |
-| `views` | object |
+| Name | Data Type | Default | Example |
+| ---- | ---- | ---- | ---- |
+| addClass | `array\|object\|string\|function` | null | `GroupElement::name("name")->addClass()` |
+| addClasses | `object\|function` | null | `GroupElement::name("name")->addClasses()` |
+| after | `object\|string\|number` | null | `GroupElement::name("name")->after()` |
+| before | `object\|string\|number` | null | `GroupElement::name("name")->before()` |
+| between | `object\|string\|number` | null | `GroupElement::name("name")->between()` |
+| columns | `object\|string\|number` | null | `GroupElement::name("name")->columns()` |
+| conditions | `array` | null | `GroupElement::name("name")->conditions()` |
+| default | `object` | null | `GroupElement::name("name")->default()` |
+| description | `string\|object` | null | `GroupElement::name("name")->description()` |
+| displayErrors | `boolean` | null | `GroupElement::name("name")->displayErrors()` |
+| fieldName | `string\|object` | null | `GroupElement::name("name")->fieldName()` |
+| formatData | `function` | null | `GroupElement::name("name")->formatData()` |
+| formatLoad | `function` | null | `GroupElement::name("name")->formatLoad()` |
+| id | `string` | null | `GroupElement::name("name")->id()` |
+| info | `string\|object` | null | `GroupElement::name("name")->info()` |
+| infoPosition | `string` | null | `GroupElement::name("name")->infoPosition()` |
+| inline | `boolean` | null | `GroupElement::name("name")->inline()` |
+| label | `string\|object\|function` | null | `GroupElement::name("name")->label()` |
+| messages | `object` | null | `GroupElement::name("name")->messages()` |
+| name | `string\|number` | null | `GroupElement::name("name")->name()` |
+| overrideClass | `array\|object\|string\|function` | null | `GroupElement::name("name")->overrideClass()` |
+| overrideClasses | `object\|function` | null | `GroupElement::name("name")->overrideClasses()` |
+| presets | `array` | null | `GroupElement::name("name")->presets()` |
+| removeClass | `array\|object\|function` | null | `GroupElement::name("name")->removeClass()` |
+| removeClasses | `object\|function` | null | `GroupElement::name("name")->removeClasses()` |
+| replaceClass | `object\|function` | null | `GroupElement::name("name")->replaceClass()` |
+| replaceClasses | `object\|function` | null | `GroupElement::name("name")->replaceClasses()` |
+| rules | `array\|string\|object` | null | `GroupElement::name("name")->rules()` |
+| schema | `object` | null | `GroupElement::name("name")->schema()` |
+| size | `string` | null | `GroupElement::name("name")->size()` |
+| slots | `object` | null | `GroupElement::name("name")->slots()` |
+| submit | `boolean` | null | `GroupElement::name("name")->submit()` |
+| templates | `object` | null | `GroupElement::name("name")->templates()` |
+| view | `string` | null | `GroupElement::name("name")->view()` |
+| views | `object` | null | `GroupElement::name("name")->views()` |
 
 ---
 

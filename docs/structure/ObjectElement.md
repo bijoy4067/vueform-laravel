@@ -153,44 +153,44 @@ class ObjectElementForm extends VueFormBuilder
 
 ## ⚙️ Allowed Attributes
 
-| Name | Data Type |
-| --- | --- |
-| `addClass` | array|object|string|function |
-| `addClasses` | object|function |
-| `after` | object|string|number |
-| `before` | object|string|number |
-| `between` | object|string|number |
-| `columns` | object|string|number |
-| `conditions` | array |
-| `default` | object |
-| `description` | string|object |
-| `displayErrors` | boolean |
-| `embed` | boolean |
-| `fieldName` | string|object |
-| `formatData` | function |
-| `formatLoad` | function |
-| `id` | string |
-| `info` | string|object |
-| `infoPosition` | string |
-| `inline` | boolean |
-| `label` | string|object|function |
-| `messages` | object |
-| `name` | string|number |
-| `overrideClass` | array|object|string|function |
-| `overrideClasses` | object|function |
-| `presets` | array |
-| `removeClass` | array|object|function |
-| `removeClasses` | object|function |
-| `replaceClass` | object|function |
-| `replaceClasses` | object|function |
-| `rules` | array|string|object |
-| `schema` | object |
-| `size` | string |
-| `slots` | object |
-| `submit` | boolean |
-| `templates` | object |
-| `view` | string |
-| `views` | object |
+| Name | Data Type | Default | Example |
+| ---- | ---- | ---- | ---- |
+| addClass | `array\|object\|string\|function` | null | `ObjectElement::name("name")->addClass()` |
+| addClasses | `object\|function` | null | `ObjectElement::name("name")->addClasses()` |
+| after | `object\|string\|number` | null | `ObjectElement::name("name")->after()` |
+| before | `object\|string\|number` | null | `ObjectElement::name("name")->before()` |
+| between | `object\|string\|number` | null | `ObjectElement::name("name")->between()` |
+| columns | `object\|string\|number` | null | `ObjectElement::name("name")->columns()` |
+| conditions | `array` | null | `ObjectElement::name("name")->conditions()` |
+| default | `object` | null | `ObjectElement::name("name")->default()` |
+| description | `string\|object` | null | `ObjectElement::name("name")->description()` |
+| displayErrors | `boolean` | null | `ObjectElement::name("name")->displayErrors()` |
+| embed | `boolean` | null | `ObjectElement::name("name")->embed()` |
+| fieldName | `string\|object` | null | `ObjectElement::name("name")->fieldName()` |
+| formatData | `function` | null | `ObjectElement::name("name")->formatData()` |
+| formatLoad | `function` | null | `ObjectElement::name("name")->formatLoad()` |
+| id | `string` | null | `ObjectElement::name("name")->id()` |
+| info | `string\|object` | null | `ObjectElement::name("name")->info()` |
+| infoPosition | `string` | null | `ObjectElement::name("name")->infoPosition()` |
+| inline | `boolean` | null | `ObjectElement::name("name")->inline()` |
+| label | `string\|object\|function` | null | `ObjectElement::name("name")->label()` |
+| messages | `object` | null | `ObjectElement::name("name")->messages()` |
+| name | `string\|number` | null | `ObjectElement::name("name")->name()` |
+| overrideClass | `array\|object\|string\|function` | null | `ObjectElement::name("name")->overrideClass()` |
+| overrideClasses | `object\|function` | null | `ObjectElement::name("name")->overrideClasses()` |
+| presets | `array` | null | `ObjectElement::name("name")->presets()` |
+| removeClass | `array\|object\|function` | null | `ObjectElement::name("name")->removeClass()` |
+| removeClasses | `object\|function` | null | `ObjectElement::name("name")->removeClasses()` |
+| replaceClass | `object\|function` | null | `ObjectElement::name("name")->replaceClass()` |
+| replaceClasses | `object\|function` | null | `ObjectElement::name("name")->replaceClasses()` |
+| rules | `array\|string\|object` | null | `ObjectElement::name("name")->rules()` |
+| schema | `object` | null | `ObjectElement::name("name")->schema()` |
+| size | `string` | null | `ObjectElement::name("name")->size()` |
+| slots | `object` | null | `ObjectElement::name("name")->slots()` |
+| submit | `boolean` | null | `ObjectElement::name("name")->submit()` |
+| templates | `object` | null | `ObjectElement::name("name")->templates()` |
+| view | `string` | null | `ObjectElement::name("name")->view()` |
+| views | `object` | null | `ObjectElement::name("name")->views()` |
 
 ---
 

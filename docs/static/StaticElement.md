@@ -44,50 +44,50 @@ class StaticElementForm extends VueFormBuilder
 
 ## ⚙️ Allowed Attributes
 
-| Name | Data Type |
-| --- | --- |
-| `addClass` | array|object|string|function |
-| `addClasses` | object|function |
-| `after` | object|string|number |
-| `align` | string |
-| `allowHtml` | boolean |
-| `alt` | string |
-| `attrs` | object |
-| `before` | object|string|number |
-| `between` | object|string|number |
-| `bottom` | string|number |
-| `columns` | object|string|number |
-| `conditions` | array |
-| `content` | string|object|function |
-| `description` | string|object |
-| `expressions` | boolean |
-| `height` | string |
-| `href` | string |
-| `id` | string |
-| `info` | string|object |
-| `infoPosition` | string |
-| `inline` | boolean |
-| `label` | string|object|function |
-| `name` | string|number |
-| `overrideClass` | array|object|string|function |
-| `overrideClasses` | object|function |
-| `presets` | array |
-| `removeClass` | array|object|function |
-| `removeClasses` | object|function |
-| `replaceClass` | object|function |
-| `replaceClasses` | object|function |
-| `size` | string |
-| `slots` | object |
-| `src` | string |
-| `tag` | string |
-| `target` | string |
-| `templates` | object |
-| `title` | string |
-| `top` | string|number |
-| `view` | string |
-| `views` | object |
-| `width` | string |
-| `wrap` | boolean |
+| Name | Data Type | Default | Example |
+| ---- | ---- | ---- | ---- |
+| addClass | `array\|object\|string\|function` | null | `StaticElement::name("name")->addClass()` |
+| addClasses | `object\|function` | null | `StaticElement::name("name")->addClasses()` |
+| after | `object\|string\|number` | null | `StaticElement::name("name")->after()` |
+| align | `string` | null | `StaticElement::name("name")->align()` |
+| allowHtml | `boolean` | null | `StaticElement::name("name")->allowHtml()` |
+| alt | `string` | null | `StaticElement::name("name")->alt()` |
+| attrs | `object` | null | `StaticElement::name("name")->attrs()` |
+| before | `object\|string\|number` | null | `StaticElement::name("name")->before()` |
+| between | `object\|string\|number` | null | `StaticElement::name("name")->between()` |
+| bottom | `string\|number` | null | `StaticElement::name("name")->bottom()` |
+| columns | `object\|string\|number` | null | `StaticElement::name("name")->columns()` |
+| conditions | `array` | null | `StaticElement::name("name")->conditions()` |
+| content | `string\|object\|function` | null | `StaticElement::name("name")->content()` |
+| description | `string\|object` | null | `StaticElement::name("name")->description()` |
+| expressions | `boolean` | null | `StaticElement::name("name")->expressions()` |
+| height | `string` | null | `StaticElement::name("name")->height()` |
+| href | `string` | null | `StaticElement::name("name")->href()` |
+| id | `string` | null | `StaticElement::name("name")->id()` |
+| info | `string\|object` | null | `StaticElement::name("name")->info()` |
+| infoPosition | `string` | null | `StaticElement::name("name")->infoPosition()` |
+| inline | `boolean` | null | `StaticElement::name("name")->inline()` |
+| label | `string\|object\|function` | null | `StaticElement::name("name")->label()` |
+| name | `string\|number` | null | `StaticElement::name("name")->name()` |
+| overrideClass | `array\|object\|string\|function` | null | `StaticElement::name("name")->overrideClass()` |
+| overrideClasses | `object\|function` | null | `StaticElement::name("name")->overrideClasses()` |
+| presets | `array` | null | `StaticElement::name("name")->presets()` |
+| removeClass | `array\|object\|function` | null | `StaticElement::name("name")->removeClass()` |
+| removeClasses | `object\|function` | null | `StaticElement::name("name")->removeClasses()` |
+| replaceClass | `object\|function` | null | `StaticElement::name("name")->replaceClass()` |
+| replaceClasses | `object\|function` | null | `StaticElement::name("name")->replaceClasses()` |
+| size | `string` | null | `StaticElement::name("name")->size()` |
+| slots | `object` | null | `StaticElement::name("name")->slots()` |
+| src | `string` | null | `StaticElement::name("name")->src()` |
+| tag | `string` | null | `StaticElement::name("name")->tag()` |
+| target | `string` | null | `StaticElement::name("name")->target()` |
+| templates | `object` | null | `StaticElement::name("name")->templates()` |
+| title | `string` | null | `StaticElement::name("name")->title()` |
+| top | `string\|number` | null | `StaticElement::name("name")->top()` |
+| view | `string` | null | `StaticElement::name("name")->view()` |
+| views | `object` | null | `StaticElement::name("name")->views()` |
+| width | `string` | null | `StaticElement::name("name")->width()` |
+| wrap | `boolean` | null | `StaticElement::name("name")->wrap()` |
 
 ---
 

@@ -7,20 +7,20 @@ use LaravelVueForm\Builder\FormSchemaBuilder;
 class HiddenElement extends FormSchemaBuilder
 {
     protected static array $allowedAttributes = [
-        'conditions' => 'array',
-        'default' => 'string|number|object',
-        'displayErrors' => 'boolean',
-        'expression' => 'string|object',
-        'fieldName' => 'string|object',
-        'forceNumbers' => 'boolean',
-        'formatData' => 'function',
-        'formatLoad' => 'function',
-        'id' => 'string',
-        'messages' => 'object',
-        'meta' => 'boolean',
-        'name' => 'string|number',
-        'rules' => 'array|string|object',
-        'submit' => 'boolean',
+        'conditions' => 'array', // default: '[]'
+        'default' => 'string|number|object', // default: 'null'
+        'displayErrors' => 'boolean', // default: 'true'
+        'expression' => 'string|object', // default: 'undefined'
+        'fieldName' => 'string|object', // default: 'name|label'
+        'forceNumbers' => 'boolean', // default: 'null'
+        'formatData' => 'function', // default: 'null'
+        'formatLoad' => 'function', // default: 'null'
+        'id' => 'string', // default: 'null'
+        'messages' => 'object', // default: '{}'
+        'meta' => 'boolean', // default: 'false'
+        'name' => 'string|number', // default: 'undefined'
+        'rules' => 'array|string|object', // default: 'null'
+        'submit' => 'boolean', // default: 'true'
     ];
 
     protected static array $allowedProperties = [

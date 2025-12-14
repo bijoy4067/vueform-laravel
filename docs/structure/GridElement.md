@@ -66,53 +66,53 @@ class GridElementForm extends VueFormBuilder
 
 ## ⚙️ Allowed Attributes
 
-| Name | Data Type |
-| --- | --- |
-| `addClass` | array|object|string|function |
-| `addClasses` | object|function |
-| `after` | object|string|number |
-| `align` | string |
-| `before` | object|string|number |
-| `between` | object|string|number |
-| `colHeader` | boolean |
-| `cols` | number |
-| `columns` | object|string|number |
-| `conditions` | array |
-| `default` | object |
-| `description` | string|object |
-| `displayErrors` | boolean |
-| `fieldName` | string|object |
-| `formatData` | function |
-| `formatLoad` | function |
-| `grid` | array |
-| `id` | string |
-| `info` | string|object |
-| `infoPosition` | string |
-| `inline` | boolean |
-| `label` | string|object|function |
-| `maxWidth` | string|number |
-| `messages` | object |
-| `minWidth` | string|number |
-| `name` | string|number |
-| `overrideClass` | array|object|string|function |
-| `overrideClasses` | object|function |
-| `presets` | array |
-| `removeClass` | array|object|function |
-| `removeClasses` | object|function |
-| `replaceClass` | object|function |
-| `replaceClasses` | object|function |
-| `rowHeader` | boolean |
-| `rows` | number |
-| `rules` | array|string|object |
-| `scrollable` | boolean |
-| `size` | string |
-| `slots` | object |
-| `submit` | boolean |
-| `templates` | object |
-| `valign` | string |
-| `view` | string |
-| `views` | object |
-| `widths` | array |
+| Name | Data Type | Default | Example |
+| ---- | ---- | ---- | ---- |
+| addClass | `array\|object\|string\|function` | null | `GridElement::name("name")->addClass()` |
+| addClasses | `object\|function` | null | `GridElement::name("name")->addClasses()` |
+| after | `object\|string\|number` | null | `GridElement::name("name")->after()` |
+| align | `string` | null | `GridElement::name("name")->align()` |
+| before | `object\|string\|number` | null | `GridElement::name("name")->before()` |
+| between | `object\|string\|number` | null | `GridElement::name("name")->between()` |
+| colHeader | `boolean` | null | `GridElement::name("name")->colHeader()` |
+| cols | `number` | null | `GridElement::name("name")->cols()` |
+| columns | `object\|string\|number` | null | `GridElement::name("name")->columns()` |
+| conditions | `array` | null | `GridElement::name("name")->conditions()` |
+| default | `object` | null | `GridElement::name("name")->default()` |
+| description | `string\|object` | null | `GridElement::name("name")->description()` |
+| displayErrors | `boolean` | null | `GridElement::name("name")->displayErrors()` |
+| fieldName | `string\|object` | null | `GridElement::name("name")->fieldName()` |
+| formatData | `function` | null | `GridElement::name("name")->formatData()` |
+| formatLoad | `function` | null | `GridElement::name("name")->formatLoad()` |
+| grid | `array` | null | `GridElement::name("name")->grid()` |
+| id | `string` | null | `GridElement::name("name")->id()` |
+| info | `string\|object` | null | `GridElement::name("name")->info()` |
+| infoPosition | `string` | null | `GridElement::name("name")->infoPosition()` |
+| inline | `boolean` | null | `GridElement::name("name")->inline()` |
+| label | `string\|object\|function` | null | `GridElement::name("name")->label()` |
+| maxWidth | `string\|number` | null | `GridElement::name("name")->maxWidth()` |
+| messages | `object` | null | `GridElement::name("name")->messages()` |
+| minWidth | `string\|number` | null | `GridElement::name("name")->minWidth()` |
+| name | `string\|number` | null | `GridElement::name("name")->name()` |
+| overrideClass | `array\|object\|string\|function` | null | `GridElement::name("name")->overrideClass()` |
+| overrideClasses | `object\|function` | null | `GridElement::name("name")->overrideClasses()` |
+| presets | `array` | null | `GridElement::name("name")->presets()` |
+| removeClass | `array\|object\|function` | null | `GridElement::name("name")->removeClass()` |
+| removeClasses | `object\|function` | null | `GridElement::name("name")->removeClasses()` |
+| replaceClass | `object\|function` | null | `GridElement::name("name")->replaceClass()` |
+| replaceClasses | `object\|function` | null | `GridElement::name("name")->replaceClasses()` |
+| rowHeader | `boolean` | null | `GridElement::name("name")->rowHeader()` |
+| rows | `number` | null | `GridElement::name("name")->rows()` |
+| rules | `array\|string\|object` | null | `GridElement::name("name")->rules()` |
+| scrollable | `boolean` | null | `GridElement::name("name")->scrollable()` |
+| size | `string` | null | `GridElement::name("name")->size()` |
+| slots | `object` | null | `GridElement::name("name")->slots()` |
+| submit | `boolean` | null | `GridElement::name("name")->submit()` |
+| templates | `object` | null | `GridElement::name("name")->templates()` |
+| valign | `string` | null | `GridElement::name("name")->valign()` |
+| view | `string` | null | `GridElement::name("name")->view()` |
+| views | `object` | null | `GridElement::name("name")->views()` |
+| widths | `array` | null | `GridElement::name("name")->widths()` |
 
 ---
 

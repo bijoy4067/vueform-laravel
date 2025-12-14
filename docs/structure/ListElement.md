@@ -49,54 +49,54 @@ class ListElementForm extends VueFormBuilder
 
 ## ⚙️ Allowed Attributes
 
-| Name | Data Type |
-| --- | --- |
-| `addClass` | array|object|string|function |
-| `addClasses` | object|function |
-| `addText` | string |
-| `after` | object|string|number |
-| `before` | object|string|number |
-| `between` | object|string|number |
-| `columns` | object|string|number |
-| `conditions` | array |
-| `controls` | object |
-| `default` | array |
-| `description` | string|object |
-| `disabled` | boolean|function|array|object |
-| `displayErrors` | boolean |
-| `element` | object |
-| `fieldName` | string|object |
-| `formatData` | function |
-| `formatLoad` | function |
-| `id` | string |
-| `info` | string|object |
-| `infoPosition` | string |
-| `initial` | number |
-| `inline` | boolean |
-| `label` | string|object|function |
-| `max` | number |
-| `messages` | object |
-| `min` | number |
-| `name` | string|number |
-| `object` | object |
-| `order` | string |
-| `orderBy` | string |
-| `overrideClass` | array|object|string|function |
-| `overrideClasses` | object|function |
-| `presets` | array |
-| `removeClass` | array|object|function |
-| `removeClasses` | object|function |
-| `replaceClass` | object|function |
-| `replaceClasses` | object|function |
-| `rules` | array|string|object |
-| `size` | string |
-| `slots` | object |
-| `sort` | boolean |
-| `storeOrder` | string |
-| `submit` | boolean |
-| `templates` | object |
-| `view` | string |
-| `views` | object |
+| Name | Data Type | Default | Example |
+| ---- | ---- | ---- | ---- |
+| addClass | `array\|object\|string\|function` | null | `ListElement::name("name")->addClass()` |
+| addClasses | `object\|function` | null | `ListElement::name("name")->addClasses()` |
+| addText | `string` | null | `ListElement::name("name")->addText()` |
+| after | `object\|string\|number` | null | `ListElement::name("name")->after()` |
+| before | `object\|string\|number` | null | `ListElement::name("name")->before()` |
+| between | `object\|string\|number` | null | `ListElement::name("name")->between()` |
+| columns | `object\|string\|number` | null | `ListElement::name("name")->columns()` |
+| conditions | `array` | null | `ListElement::name("name")->conditions()` |
+| controls | `object` | null | `ListElement::name("name")->controls()` |
+| default | `array` | null | `ListElement::name("name")->default()` |
+| description | `string\|object` | null | `ListElement::name("name")->description()` |
+| disabled | `boolean\|function\|array\|object` | null | `ListElement::name("name")->disabled()` |
+| displayErrors | `boolean` | null | `ListElement::name("name")->displayErrors()` |
+| element | `object` | null | `ListElement::name("name")->element()` |
+| fieldName | `string\|object` | null | `ListElement::name("name")->fieldName()` |
+| formatData | `function` | null | `ListElement::name("name")->formatData()` |
+| formatLoad | `function` | null | `ListElement::name("name")->formatLoad()` |
+| id | `string` | null | `ListElement::name("name")->id()` |
+| info | `string\|object` | null | `ListElement::name("name")->info()` |
+| infoPosition | `string` | null | `ListElement::name("name")->infoPosition()` |
+| initial | `number` | null | `ListElement::name("name")->initial()` |
+| inline | `boolean` | null | `ListElement::name("name")->inline()` |
+| label | `string\|object\|function` | null | `ListElement::name("name")->label()` |
+| max | `number` | null | `ListElement::name("name")->max()` |
+| messages | `object` | null | `ListElement::name("name")->messages()` |
+| min | `number` | null | `ListElement::name("name")->min()` |
+| name | `string\|number` | null | `ListElement::name("name")->name()` |
+| object | `object` | null | `ListElement::name("name")->object()` |
+| order | `string` | null | `ListElement::name("name")->order()` |
+| orderBy | `string` | null | `ListElement::name("name")->orderBy()` |
+| overrideClass | `array\|object\|string\|function` | null | `ListElement::name("name")->overrideClass()` |
+| overrideClasses | `object\|function` | null | `ListElement::name("name")->overrideClasses()` |
+| presets | `array` | null | `ListElement::name("name")->presets()` |
+| removeClass | `array\|object\|function` | null | `ListElement::name("name")->removeClass()` |
+| removeClasses | `object\|function` | null | `ListElement::name("name")->removeClasses()` |
+| replaceClass | `object\|function` | null | `ListElement::name("name")->replaceClass()` |
+| replaceClasses | `object\|function` | null | `ListElement::name("name")->replaceClasses()` |
+| rules | `array\|string\|object` | null | `ListElement::name("name")->rules()` |
+| size | `string` | null | `ListElement::name("name")->size()` |
+| slots | `object` | null | `ListElement::name("name")->slots()` |
+| sort | `boolean` | null | `ListElement::name("name")->sort()` |
+| storeOrder | `string` | null | `ListElement::name("name")->storeOrder()` |
+| submit | `boolean` | null | `ListElement::name("name")->submit()` |
+| templates | `object` | null | `ListElement::name("name")->templates()` |
+| view | `string` | null | `ListElement::name("name")->view()` |
+| views | `object` | null | `ListElement::name("name")->views()` |
 
 ---
 

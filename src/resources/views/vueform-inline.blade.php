@@ -44,6 +44,3 @@
     </vue-form-inline>
 
 </div>
-<script>
-    window.VUEFORM_STYLES = @json(config('vueform-laravel.styles'));
-</script>

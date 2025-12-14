@@ -35,47 +35,47 @@ class ButtonElementForm extends VueFormBuilder
 
 ## ⚙️ Allowed Attributes
 
-| Name | Data Type |
-| --- | --- |
-| `addClass` | array|object|string|function |
-| `addClasses` | object|function |
-| `after` | object|string|number |
-| `align` | string |
-| `before` | object|string|number |
-| `between` | object|string|number |
-| `buttonClass` | string|array|object |
-| `buttonLabel` | string|object|function |
-| `buttonType` | string |
-| `columns` | object|string|number |
-| `conditions` | array |
-| `danger` | boolean |
-| `description` | string|object |
-| `disabled` | boolean|function|array|object |
-| `full` | boolean |
-| `href` | string |
-| `id` | string |
-| `info` | string|object |
-| `infoPosition` | string |
-| `inline` | boolean |
-| `label` | string|object|function |
-| `loading` | function|boolean |
-| `name` | string|number |
-| `overrideClass` | array|object|string|function |
-| `overrideClasses` | object|function |
-| `presets` | array |
-| `removeClass` | array|object|function |
-| `removeClasses` | object|function |
-| `replaceClass` | object|function |
-| `replaceClasses` | object|function |
-| `resets` | boolean |
-| `secondary` | boolean |
-| `size` | string |
-| `slots` | object |
-| `submits` | boolean |
-| `target` | string |
-| `templates` | object |
-| `view` | string |
-| `views` | object |
+| Name | Data Type | Default | Example |
+| ---- | ---- | ---- | ---- |
+| addClass | `array\|object\|string\|function` | null | `ButtonElement::name("name")->addClass()` |
+| addClasses | `object\|function` | null | `ButtonElement::name("name")->addClasses()` |
+| after | `object\|string\|number` | null | `ButtonElement::name("name")->after()` |
+| align | `string` | null | `ButtonElement::name("name")->align()` |
+| before | `object\|string\|number` | null | `ButtonElement::name("name")->before()` |
+| between | `object\|string\|number` | null | `ButtonElement::name("name")->between()` |
+| buttonClass | `string\|array\|object` | null | `ButtonElement::name("name")->buttonClass()` |
+| buttonLabel | `string\|object\|function` | null | `ButtonElement::name("name")->buttonLabel()` |
+| buttonType | `string` | null | `ButtonElement::name("name")->buttonType()` |
+| columns | `object\|string\|number` | null | `ButtonElement::name("name")->columns()` |
+| conditions | `array` | null | `ButtonElement::name("name")->conditions()` |
+| danger | `boolean` | null | `ButtonElement::name("name")->danger()` |
+| description | `string\|object` | null | `ButtonElement::name("name")->description()` |
+| disabled | `boolean\|function\|array\|object` | null | `ButtonElement::name("name")->disabled()` |
+| full | `boolean` | null | `ButtonElement::name("name")->full()` |
+| href | `string` | null | `ButtonElement::name("name")->href()` |
+| id | `string` | null | `ButtonElement::name("name")->id()` |
+| info | `string\|object` | null | `ButtonElement::name("name")->info()` |
+| infoPosition | `string` | null | `ButtonElement::name("name")->infoPosition()` |
+| inline | `boolean` | null | `ButtonElement::name("name")->inline()` |
+| label | `string\|object\|function` | null | `ButtonElement::name("name")->label()` |
+| loading | `function\|boolean` | null | `ButtonElement::name("name")->loading()` |
+| name | `string\|number` | null | `ButtonElement::name("name")->name()` |
+| overrideClass | `array\|object\|string\|function` | null | `ButtonElement::name("name")->overrideClass()` |
+| overrideClasses | `object\|function` | null | `ButtonElement::name("name")->overrideClasses()` |
+| presets | `array` | null | `ButtonElement::name("name")->presets()` |
+| removeClass | `array\|object\|function` | null | `ButtonElement::name("name")->removeClass()` |
+| removeClasses | `object\|function` | null | `ButtonElement::name("name")->removeClasses()` |
+| replaceClass | `object\|function` | null | `ButtonElement::name("name")->replaceClass()` |
+| replaceClasses | `object\|function` | null | `ButtonElement::name("name")->replaceClasses()` |
+| resets | `boolean` | null | `ButtonElement::name("name")->resets()` |
+| secondary | `boolean` | null | `ButtonElement::name("name")->secondary()` |
+| size | `string` | null | `ButtonElement::name("name")->size()` |
+| slots | `object` | null | `ButtonElement::name("name")->slots()` |
+| submits | `boolean` | null | `ButtonElement::name("name")->submits()` |
+| target | `string` | null | `ButtonElement::name("name")->target()` |
+| templates | `object` | null | `ButtonElement::name("name")->templates()` |
+| view | `string` | null | `ButtonElement::name("name")->view()` |
+| views | `object` | null | `ButtonElement::name("name")->views()` |
 
 ---
 

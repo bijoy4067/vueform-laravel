@@ -139,88 +139,87 @@ class TagsElementForm extends VueFormBuilder
 
 ## ⚙️ Allowed Attributes
 
-| Name | Data Type |
-| --- | --- |
-| `addClass` | array|object|string|function |
-| `addClasses` | object|function |
-| `addOptionOn` | array |
-| `after` | object|string|number |
-| `allowAbsent` | boolean |
-| `appendNewOption` | boolean |
-| `appendTo` | string |
-| `appendToBody` | boolean |
-| `attrs` | object |
-| `autocomplete` | string |
-| `before` | object|string|number |
-| `between` | object|string|number |
-| `breakTags` | boolean |
-| `canClear` | boolean |
-| `caret` | boolean |
-| `clearOnRefetch` | boolean |
-| `clearOnSearch` | boolean |
-| `clearOnSelect` | boolean |
-| `closeOnDeselect` | boolean |
-| `closeOnSelect` | boolean |
-| `columns` | object|string|number |
-| `conditions` | array |
-| `create` | boolean |
-| `dataKey` | string |
-| `default` | array |
-| `delay` | number |
-| `description` | string|object |
-| `disabled` | boolean|function|array|object |
-| `displayErrors` | boolean |
-| `extendOptions` | object |
-| `fieldName` | string|object |
-| `filterResults` | boolean |
-| `floating` | string|boolean|object |
-| `formatData` | function |
-| `formatLoad` | function |
-| `groupHideEmpty` | boolean |
-| `groupLabel` | string |
-| `groupOptions` | string |
-| `groupSelect` | boolean |
-| `groups` | boolean |
-| `hideSelected` | boolean |
-| `id` | string |
-| `info` | string|object |
-| `infoPosition` | string |
-| `inline` | boolean |
-| `inputType` | string |
-| `items` | object|array|function|string |
-| `label` | string|object|function |
-| `labelProp` | string |
-| `limit` | number |
-| `loading` | boolean |
-| `max` | number |
-| `messages` | object |
-| `minChars` | number |
-| `name` | string|number |
-| `noOptionsText` | string|object |
-| `noResultsText` | string|object |
-| `object` | boolean |
-| `openDirection` | string |
-| `overrideClass` | array|object|string|function |
-| `overrideClasses` | object|function |
-| `placeholder` | string|object |
-| `presets` | array |
-| `removeClass` | array|object|function |
-| `removeClasses` | object|function |
-| `replaceClass` | object|function |
-| `replaceClasses` | object|function |
-| `resolveOnLoad` | boolean |
-| `rules` | array|string|object |
-| `search` | boolean |
-| `searchParam` | string |
-| `showOptions` | boolean |
-| `size` | string |
-| `slots` | object |
-| `strict` | boolean |
-| `submit` | boolean |
-| `templates` | object |
-| `trackBy` | string|array |
-| `type` | string |
-| `valueProp` | string |
-| `view` | string |
-| `views` | object |
+| Name | Data Type | Default | Example |
+| ---- | ---- | ---- | ---- |
+| addClass | `array\|object\|string\|function` | null | `TagsElement::name("name")->addClass()` |
+| addClasses | `object\|function` | {} | `TagsElement::name("name")->addClasses()` |
+| addOptionOn | `array` | ["enter"] | `TagsElement::name("name")->addOptionOn()` |
+| after | `object\|string\|number` | null | `TagsElement::name("name")->after()` |
+| allowAbsent | `boolean` | false | `TagsElement::name("name")->allowAbsent()` |
+| appendNewOption | `boolean` | true | `TagsElement::name("name")->appendNewOption()` |
+| appendTo | `string` | undefined | `TagsElement::name("name")->appendTo()` |
+| appendToBody | `boolean` | false | `TagsElement::name("name")->appendToBody()` |
+| attrs | `object` | {} | `TagsElement::name("name")->attrs()` |
+| autocomplete | `string` | undefined | `TagsElement::name("name")->autocomplete()` |
+| before | `object\|string\|number` | null | `TagsElement::name("name")->before()` |
+| between | `object\|string\|number` | null | `TagsElement::name("name")->between()` |
+| breakTags | `boolean` | false | `TagsElement::name("name")->breakTags()` |
+| canClear | `boolean` | true | `TagsElement::name("name")->canClear()` |
+| caret | `boolean` | true | `TagsElement::name("name")->caret()` |
+| clearOnRefetch | `boolean` | false | `TagsElement::name("name")->clearOnRefetch()` |
+| clearOnSearch | `boolean` | false | `TagsElement::name("name")->clearOnSearch()` |
+| clearOnSelect | `boolean` | true | `TagsElement::name("name")->clearOnSelect()` |
+| closeOnDeselect | `boolean` | false | `TagsElement::name("name")->closeOnDeselect()` |
+| closeOnSelect | `boolean` | true | `TagsElement::name("name")->closeOnSelect()` |
+| columns | `object\|string\|number` | null | `TagsElement::name("name")->columns()` |
+| conditions | `array` | [] | `TagsElement::name("name")->conditions()` |
+| create | `boolean` | false | `TagsElement::name("name")->create()` |
+| dataKey | `string` | undefined | `TagsElement::name("name")->dataKey()` |
+| default | `array` | [] | `TagsElement::name("name")->default()` |
+| delay | `number` | -1 | `TagsElement::name("name")->delay()` |
+| description | `string\|object` | null | `TagsElement::name("name")->description()` |
+| disabled | `boolean\|function\|array\|object` | false | `TagsElement::name("name")->disabled()` |
+| displayErrors | `boolean` | true | `TagsElement::name("name")->displayErrors()` |
+| extendOptions | `object` | {} | `TagsElement::name("name")->extendOptions()` |
+| fieldName | `string\|object` | name|label | `TagsElement::name("name")->fieldName()` |
+| filterResults | `boolean` | true | `TagsElement::name("name")->filterResults()` |
+| floating | `string\|boolean\|object` | null | `TagsElement::name("name")->floating()` |
+| formatData | `function` | null | `TagsElement::name("name")->formatData()` |
+| formatLoad | `function` | null | `TagsElement::name("name")->formatLoad()` |
+| groupHideEmpty | `boolean` | false | `TagsElement::name("name")->groupHideEmpty()` |
+| groupLabel | `string` | label | `TagsElement::name("name")->groupLabel()` |
+| groupOptions | `string` | items | `TagsElement::name("name")->groupOptions()` |
+| groupSelect | `boolean` | true | `TagsElement::name("name")->groupSelect()` |
+| groups | `boolean` | false | `TagsElement::name("name")->groups()` |
+| hideSelected | `boolean` | true | `TagsElement::name("name")->hideSelected()` |
+| id | `string` | null | `TagsElement::name("name")->id()` |
+| info | `string\|object` | null | `TagsElement::name("name")->info()` |
+| infoPosition | `string` | right | `TagsElement::name("name")->infoPosition()` |
+| inline | `boolean` | false | `TagsElement::name("name")->inline()` |
+| inputType | `string` | text | `TagsElement::name("name")->inputType()` |
+| items | `object\|array\|function\|string` | {} | `TagsElement::name("name")->items()` |
+| label | `string\|object\|function` | null | `TagsElement::name("name")->label()` |
+| labelProp | `string` | label | `TagsElement::name("name")->labelProp()` |
+| limit | `number` | -1 | `TagsElement::name("name")->limit()` |
+| loading | `boolean` | false | `TagsElement::name("name")->loading()` |
+| max | `number` | -1 | `TagsElement::name("name")->max()` |
+| messages | `object` | {} | `TagsElement::name("name")->messages()` |
+| minChars | `number` | 0 | `TagsElement::name("name")->minChars()` |
+| name | `string\|number` | undefined | `TagsElement::name("name")->name()` |
+| noOptionsText | `string\|object` | locale.multiselect.noOptions | `TagsElement::name("name")->noOptionsText()` |
+| noResultsText | `string\|object` | locale.multiselect.noResults | `TagsElement::name("name")->noResultsText()` |
+| object | `boolean` | false | `TagsElement::name("name")->object()` |
+| openDirection | `string` | bottom | `TagsElement::name("name")->openDirection()` |
+| overrideClass | `array\|object\|string\|function` | null | `TagsElement::name("name")->overrideClass()` |
+| overrideClasses | `object\|function` | {} | `TagsElement::name("name")->overrideClasses()` |
+| placeholder | `string\|object` | null | `TagsElement::name("name")->placeholder()` |
+| presets | `array` | [] | `TagsElement::name("name")->presets()` |
+| removeClass | `array\|object\|function` | null | `TagsElement::name("name")->removeClass()` |
+| removeClasses | `object\|function` | {} | `TagsElement::name("name")->removeClasses()` |
+| replaceClass | `object\|function` | null | `TagsElement::name("name")->replaceClass()` |
+| replaceClasses | `object\|function` | {} | `TagsElement::name("name")->replaceClasses()` |
+| resolveOnLoad | `boolean` | true | `TagsElement::name("name")->resolveOnLoad()` |
+| rules | `array\|string\|object` | null | `TagsElement::name("name")->rules()` |
+| search | `boolean` | false | `TagsElement::name("name")->search()` |
+| searchParam | `string` | query | `TagsElement::name("name")->searchParam()` |
+| showOptions | `boolean` | true | `TagsElement::name("name")->showOptions()` |
+| size | `string` | undefined | `TagsElement::name("name")->size()` |
+| slots | `object` | {} | `TagsElement::name("name")->slots()` |
+| strict | `boolean` | true | `TagsElement::name("name")->strict()` |
+| submit | `boolean` | true | `TagsElement::name("name")->submit()` |
+| templates | `object` | {} | `TagsElement::name("name")->templates()` |
+| trackBy | `string\|array` | label | `TagsElement::name("name")->trackBy()` |
+| valueProp | `string` | value | `TagsElement::name("name")->valueProp()` |
+| view | `string` | undefined | `TagsElement::name("name")->view()` |
+| views | `object` | {} | `TagsElement::name("name")->views()` |
 
