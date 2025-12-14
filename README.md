@@ -56,7 +56,7 @@ composer require bijoy4067/vueform-laravel
 publish vendor assets (config, views, migrations) if provided by the package:
 
 ```bash
-php artisan vendor:publish --provider="LaravelVueForm\VueFormServiceProvider"
+php artisan vendor:publish --tag=vueform-laravel --force
 ```
 
 ---

@@ -36,7 +36,7 @@ class GroupElementForm extends VueFormBuilder
             ->schema([
                 GroupElement::rowWith4Columns([
                     TextElement::name('first_name'),
-                        // ->rules('required'),
+                    // ->rules('required'),
                     TagsElement::name('category')
                         ->type('tags')
                         ->closeOnSelect(false)
@@ -101,7 +101,7 @@ class GroupElementForm extends VueFormBuilder
                 ListElement::schema([
                     TextElement::name('item_name')
                         ->label('Item Name')
-                        // ->rules('required'),
+                    // ->rules('required'),
                 ]),
                 StaticElement::hr(),
                 TagsElement::name('rating')
