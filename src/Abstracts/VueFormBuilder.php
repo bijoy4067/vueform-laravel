@@ -102,7 +102,7 @@ abstract class VueFormBuilder
      *
      * @return string The rendered HTML string for embedding the VueFormBuilder.
      */
-    public function build(): string
+    public function build($response = 'html'): string|array
     {
         $elements = [];
 
@@ -111,11 +111,14 @@ abstract class VueFormBuilder
         foreach ($form['schema'] as $value) {
             $elements[] = self::processElements($value); // numeric array
         }
-        
+
         $form['endpoint'] = static::$actionUrl ?? route('laravel-vue-form.processData', FormDataController::encodeScope(static::class));
         $form['schema'] = $elements;
         static::$schema = $form;
         // dd(static::$schema);
+        if ($response === 'array') {
+            return static::$schema;
+        }
         return view('vueForm::vueform-' . static::$formMode, [
             'formData' => static::$schema,
             'formMode' => static::$formMode,
@@ -125,5 +128,37 @@ abstract class VueFormBuilder
     public static function loadAssets()
     {
         return view('vueForm::components.core.asset-load');
+    }
+
+    public function getFormValidationRules($schema = null, $parentPath = ''): array
+    {
+        $rules = [];
+        $schema = $schema ?? $this->build('array')['schema'];
+        $parentPath = '';
+        foreach ($schema as $element) {
+            // If element has a name & rules
+            if (!empty($element['name']) && !empty($element['rules'])) {
+                // dd($element);
+                $field = $parentPath
+                    ? "{$parentPath}.{$element['name']}"
+                    : $element['name'];
+
+                $rules[$field] = $element['rules'];
+            }
+
+            // Handle nested schema (GroupElement, ListElement, etc.)
+            if (!empty($element['schema']) && is_array($element['schema'])) {
+                $nestedPath = !empty($element['name'])
+                    ? ($parentPath ? "{$parentPath}.{$element['name']}" : $element['name'])
+                    : $parentPath;
+                // dd($element['schema'], $nestedPath);
+                $rules = array_merge(
+                    $rules,
+                    $this->getFormValidationRules($element['schema'], $nestedPath)
+                );
+            }
+        }
+
+        return $rules;
     }
 }

@@ -36,14 +36,14 @@ class GroupElementForm extends VueFormBuilder
             ->schema([
                 GroupElement::rowWith4Columns([
                     TextElement::name('first_name'),
-                    // ->rules('required'),
                     TagsElement::name('category')
                         ->type('tags')
+                        ->rules('required')
                         ->closeOnSelect(false)
                         // ->inputType('search')
                         ->autocomplete('off')
                         ->limit(5)
-                        // ->rules('required')
+                        ->rules('required')
                         ->conditions([
                             ['first_name', 'not_empty']
                         ])
@@ -89,7 +89,7 @@ class GroupElementForm extends VueFormBuilder
                         ->inputType('search')
                         ->autocomplete('off')
                         ->limit(5)
-                        ->items('http://localhost:8000/tags/json')
+                        ->items('http://127.0.0.1:8000/tags/json')
                         ->max(5)
                         // ->rules('required')
                         ->event([
@@ -106,6 +106,7 @@ class GroupElementForm extends VueFormBuilder
                 StaticElement::hr(),
                 TagsElement::name('rating')
                     ->type('tags')
+                    ->rules('required|min:1|max:5')
                     ->closeOnSelect(false)
                     ->inputType('search')
                     ->autocomplete('off')
@@ -128,18 +129,27 @@ class GroupElementForm extends VueFormBuilder
             ->showSuccessAlert(); // show success toaster alert
     }
 
-    public static function formData($request)
+    public static function validatedFormData($request)
     {
-        $request->validate([
-            'category' => 'required',
-            'first_name' => 'required',
-            'rating' => 'required',
-        ]);
-
-        return response()->json([
-            'status' => 'success'
-        ]);
+        return response()->json(
+            [
+                'status' => 'success'
+            ]
+        );
     }
+
+    // public static function formData($request)
+    // {
+    //     $request->validate([
+    //         'category' => 'required',
+    //         'first_name' => 'required',
+    //         'rating' => 'required',
+    //     ]);
+
+    //     return response()->json([
+    //         'status' => 'success'
+    //     ]);
+    // }
 }
 ```
 ---
