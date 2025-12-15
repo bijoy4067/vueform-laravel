@@ -20,7 +20,7 @@ class SelectElementForm extends VueFormBuilder
 {
     protected function buildForm()
     {
-        return Vueform::name('select-element-form')
+        return Vueform::build()
             ->schema([
                 SelectElement::name('options')
                     ->label('Select Options')

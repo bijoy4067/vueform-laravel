@@ -24,7 +24,7 @@ class ButtonElementForm extends VueFormBuilder
 {
     protected function buildForm()
     {
-        return Vueform::name('button-element-form')
+        return Vueform::build()
             ->schema([
                 ButtonElement::submitButton()
             ]);

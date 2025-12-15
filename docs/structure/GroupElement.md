@@ -31,7 +31,7 @@ class GroupElementForm extends VueFormBuilder
 {
     protected function buildForm()
     {
-        return Vueform::name('group-element-form')
+        return Vueform::build()
             ->ajax(false) // submit on page
             ->schema([
                 GroupElement::rowWith4Columns([

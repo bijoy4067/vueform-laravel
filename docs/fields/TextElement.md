@@ -22,7 +22,7 @@ class TextElementForm extends VueFormBuilder
 {
     protected function buildForm()
     {
-        return Vueform::name('text-element-form')
+        return Vueform::build()
             ->default([
                 'search' => 'Search',
                 'number' => '123456',

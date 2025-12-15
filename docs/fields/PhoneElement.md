@@ -24,7 +24,7 @@ class PhoneElementForm extends VueFormBuilder
 {
     protected function buildForm()
     {
-        return Vueform::name('phone-element-form')
+        return Vueform::build()
             ->schema([
                 PhoneElement::name('phone')
                     ->include(['bd'])

@@ -25,7 +25,7 @@ class StaticElementForm extends VueFormBuilder
 {
     protected function buildForm()
     {
-        return Vueform::name('static-element-form')
+        return Vueform::build()
             ->schema([
                 StaticElement::text('asdf'),
                 StaticElement::h1('asdf'),

@@ -31,7 +31,7 @@ class TagsElementForm extends VueFormBuilder
 {
     protected function buildForm()
     {
-        return Vueform::name('tags-element-form')
+        return Vueform::build()
             ->schema([
                 GroupElement::rowWith2Columns([
                     TagsElement::name('category')

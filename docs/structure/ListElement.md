@@ -28,7 +28,7 @@ class ListElementForm extends VueFormBuilder
 {
     protected function buildForm()
     {
-        return Vueform::name('list-element-from')
+        return Vueform::build()
             ->schema([
                 ListElement::schema([
                     TextElement::name('item_name')
