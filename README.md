@@ -1,4 +1,4 @@
-[![Vueform Laravel](https://raw.githubusercontent.com/bijoy4067/vueform-laravel/main/.github/assets/logo.png)](https://vueform.com?cid=vueform)
+[![Vueform Laravel](https://raw.githubusercontent.com/bijoy4067/vueform-laravel/refs/heads/main/.github/assets/logo.png?token=GHSAT0AAAAAADOCXVS76EVJL563UDY4IQ2G2J7KWCQ)](https://vueform.com?cid=vueform)
 
 # VueForm Laravel - Server-Side Form Builder for Laravel & Vue 3
 
