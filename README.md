@@ -1,105 +1,138 @@
-# vueform-laravel
+# VueForm Laravel - Server-Side Form Builder for Laravel & Vue 3
 
-A Laravel backend integration for VueForm — server-side form builders, validation helpers, and example components that produce JSON schemas consumed by VueForm frontends. This README targets all kinds of developers: beginners who want a minimal working example, intermediate users who need clear patterns, and advanced users who want performance, customization and testing tips.
+[![Latest Version](https://img.shields.io/packagist/v/bijoy4067/vueform-laravel)](https://packagist.org/packages/bijoy4067/vueform-laravel)
+[![License](https://img.shields.io/packagist/l/bijoy4067/vueform-laravel)](LICENSE)
+[![PHP Version](https://img.shields.io/packagist/php-v/bijoy4067/vueform-laravel)](https://packagist.org/packages/bijoy4067/vueform-laravel)
 
-## Table of Contents
+**Build powerful, production-ready Laravel forms with Vue 3 without writing JavaScript.** VueForm Laravel is a comprehensive PHP form builder that seamlessly integrates VueForm's reactive UI components with Laravel's robust backend validation and routing system. Define your forms entirely in PHP, leverage server-side validation, and render beautiful Material Design forms instantly in your Blade templates.
 
-- [About](#about)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Create Form Component](#create-form-component)
-- [Usage](#usage)
-- [Render Form](#render-form)
-  - [Update controller](#update-controller)
-  - [Update Blade](#update-blade)
-- [Reference](#reference)
-- [Contributing](#contributing)
-- [Changelog](#changelog)
-- [License](#license)
+## 🎯 Why VueForm Laravel?
 
----
+### Developer-First Form Building
 
-## About
+- **Zero JavaScript Required** - Build complex forms using only PHP classes
+- **Server-Side Schema Generation** - Forms are defined in Laravel, validated in Laravel, and rendered automatically
+- **Material Design UI** - Pre-built, customizable Material Theme components included
+- **No Frontend Build Process** - All CSS and JS assets are pre-compiled and bundled
 
-vueform-laravel provides a server-first way to define forms for VueForm-powered frontends. Instead of building the schema in JavaScript only, you define forms in PHP classes (builders) that return a `Vueform` schema. This keeps validation, defaults and submission logic close to your Laravel application.
+### Enterprise-Ready Features
 
-Benefits
-
-- Single source of truth for form schema and server validation.
-- Easy reuse of form components across controllers and projects.
-- Built-in patterns for conditional fields, remote options and complex structures (groups, lists).
-- Option to render the form directly in Blade or return the JSON schema to your SPA.
+- **Single Source of Truth** - Form schema, validation rules, and business logic live together in PHP
+- **Type-Safe Form Builders** - Leverage PHP 8.0+ type hints and IDE autocomplete
+- **Reusable Form Components** - Create form libraries shared across your application
+- **AJAX-Ready** - Built-in async submission with Laravel CSRF protection
+- **Conditional Logic** - Show/hide fields based on user input without writing JS
+- **Multi-Step Forms** - Build wizards and complex form flows declaratively
 
 ---
 
-## Requirements
+## 📋 Table of Contents
 
-- PHP 8.0+ (or the version required by your Laravel installation)
-- Laravel 9.x or newer (adjust accordingly if you use a different LTS)
-- The LaravelVueForm library (this package depends on its abstractions and element classes)
+- [Key Features](#-key-features)
+- [Requirements](#-requirements)
+- [Installation](#-installation)
+- [Quick Start Guide](#-quick-start-guide)
+- [Configuration](#-configuration)
+- [Creating Form Components](#-creating-form-components)
+- [Rendering Forms](#-rendering-forms)
+- [Form Submission Handling](#-form-submission-handling)
+- [Advanced Usage](#-advanced-usage)
+- [Architecture & Design](#-architecture--design)
+- [API Reference](#-api-reference)
+- [Performance Optimization](#-performance-optimization)
+- [Troubleshooting](#-troubleshooting)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ---
 
-## Installation
+## ✨ Key Features
 
-Add this form builder composer package to your laravel application by using following command.
+### For PHP Developers
+
+- **Reusable Form** - Anywhere in your `.blade.php` file you can use this form
+- **Laravel Validation Integration** - Use familiar validation rules directly in form definitions
+- **Eloquent Model Binding** - Auto-populate forms from Eloquent models
+- **Dynamic Routing** - Automatic endpoint generation based on Laravel routes
+
+### Form Element Types
+
+- **Text Inputs** - Text, email, password, textarea, URL, number
+- **Selection Controls** - Radio, checkbox, select, multiselect, toggle
+- **Date & Time** - Date picker, time picker, datetime picker
+- **File Uploads** - Single/multiple file upload with preview
+- **Rich Content** - WYSIWYG editor, markdown editor
+- **Dynamic Lists** - Repeatable field groups with add/remove
+- **Layout Elements** - Groups, columns, tabs, steps
+
+---
+
+## 🔧 Requirements
+
+- **PHP**: 8.0 or higher
+- **Laravel**: 9.x, 10.x, or 11.x
+- **Composer**: 2.x or higher
+- **Browser Support**: Modern browsers (Chrome, Firefox, Safari, Edge)
+
+> **Note**: This package works with Laravel's default frontend setup. No Vue CLI, Vite, or npm installation required on your end—all frontend assets are pre-bundled.
+
+---
+
+## 📦 Installation
+
+### Step 1: Install via Composer
 
 ```bash
 composer require bijoy4067/vueform-laravel
 ```
 
-publish vendor assets
+### Step 2: Publish Configuration and Assets
 
 ```bash
 php artisan vendor:publish --tag=vueform-laravel --force
 ```
 
-## Configuration
+This command publishes:
 
-Load required front-end assets once in your main layout (inside `<head>`):
+- Configuration file to `config/vueform-laravel.php`
+- Pre-compiled CSS and JavaScript assets to your `public` directory
+- Stubs for form component generation
 
-```php
-<!-- Load VueForm assets (scripts & styles required by the renderer) -->
-{{ LaravelVueForm\Abstracts\VueFormBuilder::loadAssets() }}
+### Step 3: Add Assets to Your Layout
+
+Add the following to your main Blade layout's `<head>` section (typically `resources/views/layouts/app.blade.php`):
+
+```blade
+<head>
+    <!-- Required: CSRF Token for AJAX submissions -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Load VueForm Laravel Assets (CSS + JS) -->
+    {{ LaravelVueForm\Abstracts\VueFormBuilder::loadAssets() }}
+
+    <!-- Your other head elements -->
+</head>
 ```
 
-Ensure `csrf-token` meta is present (used by AJAX submissions):
-
-```html
-<meta name="csrf-token" content="{{ csrf_token() }}" />
-```
-
-Updata your form style (color, padding, margin) etc, form `config/vueform-laravel.php`. After update make reload to your form style will be applied to your form
-
-```php
-<?php
-
-return [
-    'styles' => [
-        '--vf-primary' => '#6200ee', // you can modify here
-        //... other style
-    ]
-]
-```
-
-## Create Form Component
-
-Create form (Vueform laravel php class) by using following command
-
-```bash
-php artisan vueform:make FormComponent
-```
-
-This will create a file to `app/VueForm/FormComponent.php`. You can also create files manually anywhere inside `app/VueForm`.
+**What this does**: Loads pre-compiled Vue 3 components, VueForm library, and Material Theme styles. No build process needed.
 
 ---
 
-## Usage
+## 🚀 Quick Start Guide
 
-Add Form Elements schema and setting up Form such as (`endpoint, submit method`) etc inside `buildForm()` method.
+### Create Your First Form (2 minutes)
 
-Minimal example `app\VueForm\FormComponent.php` (Text input + submit button):
+#### 1. Generate a Form Component
+
+```bash
+php artisan vueform:make ContactForm
+```
+
+This creates `app/VueForm/ContactForm.php` with boilerplate code.
+
+#### 2. Define Form Schema
+
+Open `app/VueForm/ContactForm.php` and add your form fields:
 
 ```php
 <?php
@@ -108,209 +141,510 @@ namespace App\VueForm;
 
 use LaravelVueForm\Abstracts\VueFormBuilder;
 use LaravelVueForm\Elements\Fields\TextElement;
+use LaravelVueForm\Elements\Fields\TextareaElement;
 use LaravelVueForm\Elements\Static\ButtonElement;
 use LaravelVueForm\Elements\Vueform;
 
-class FormComponent extends VueFormBuilder
+class ContactForm extends VueFormBuilder
 {
     protected function buildForm()
     {
-        return Vueform::build() // must add name
+        return Vueform::build()
             ->schema([
-                TextElement::name('search')->info(null), // text input field
-                ButtonElement::submitButton() // submit button
+                TextElement::name('name')
+                    ->label('Your Name')
+                    ->rules('required|min:3'),
+
+                TextElement::name('email')
+                    ->label('Email Address')
+                    ->rules('required|email'),
+
+                TextareaElement::name('message')
+                    ->label('Message')
+                    ->rules('required|min:10'),
+
+                ButtonElement::submitButton('Send Message')
             ]);
     }
 
-    // Called when form is submitted (if no custom endpoint is configured)
-    public static function formData($request)
+    public static function validatedFormData($request)
     {
-        $request->validate(['search' => 'required']);
-        // handle submission...
-        return response()->json(['status' => 'success']);
+        // This receives only validated data
+        // Send email, save to database, etc.
+
+        return response()->json([
+            'message' => 'Thank you! We received your message.'
+        ]);
     }
 }
 ```
 
-Key point of this example:
-
-- Endpoint.
-  - Endpoint will be auto generate if you not defiend `protected static $actionUrl = 'site.com/api-endpoint';`.
-- Form Submit method
-
-  - By default it submit form by post method you can defined method by `protected static $method = 'GET';`.
-
-- Added text input field and submit button to the form.
-- After submit form, you can get form submited data to `formData($request)` or `validatedFormData($request)` method.
-
-`validatedFormData()` method provided only validated request data. If form has errors then return by defalut (Laravel validation pattern error)
-
-> Example of `validatedFormData()` method:
-
-```php
-// Called when form is submitted (if no custom endpoint is configured)
-
-public static function validatedFormData($request)
-{
-    dd($request);
-    // OR
-    dd(request()->all());
-}
-```
-
-## Render Form
-
-To render this form to browser you can follow following methods
-
-- Add this Form to `Controller -> blade`.
-- Globally add anywhere in any blade file
-
-#### Update controller
-
-controller + Blade example
+#### 3. Add to Controller
 
 ```php
 <?php
 
 namespace App\Http\Controllers;
 
-use App\VueForm\FormComponent;
-use Illuminate\Http\Request;
+use App\VueForm\ContactForm;
 
-class FormController extends Controller
+class ContactController extends Controller
 {
-    public function index()
+    public function show()
     {
-        $formComponent = app(FormComponent::class);
-        return view('example', compact('formComponent'));
-
-        // or
-
-        return view('example', [
-          'formComponent' => app(FormComponent::class)
+        return view('contact', [
+            'contactForm' => app(ContactForm::class)
         ]);
     }
 }
 ```
 
-Add following php code to `example.blade.php` file.
+#### 4. Render in Blade Template
+
+```blade
+<!-- resources/views/contact.blade.php -->
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <h1>Contact Us</h1>
+        {!! $contactForm->build() !!}
+    </div>
+@endsection
+```
+
+**That's it!** Navigate to your route and see a fully functional, validated contact form with Material Design styling.
+
+---
+
+## ⚙️ Configuration
+
+### Customize Material Theme Colors
+
+Edit `config/vueform-laravel.php` to match your brand:
 
 ```php
-{!! $formComponent->build() !!}
+<?php
+
+return [
+    'styles' => [
+        // Primary brand color
+        '--vf-primary' => '#6200ee',
+
+        // Form element styling
+        '--vf-bg-input' => '#ffffff',
+        '--vf-border-color-input' => '#d1d5db',
+        '--vf-radius-input' => '0.375rem',
+
+        // Typography
+        '--vf-font-size' => '0.875rem',
+        '--vf-line-height' => '1.25rem',
+
+        // Spacing
+        '--vf-gutter' => '1rem',
+        '--vf-min-height-input' => '2.375rem',
+
+        // State colors
+        '--vf-color-success' => '#10b981',
+        '--vf-color-danger' => '#ef4444',
+    ]
+];
 ```
 
-Example:
+After updating configuration, **clear your browser cache** or do a hard refresh (Ctrl+F5) to see changes.
 
-```html
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+---
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>{{ config('app.name', 'Laravel') }}</title>
+## 🏗️ Creating Form Components
 
-        <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta name="csrf-token" content="{{ csrf_token() }}">
-            <title>{{ config('app.name', 'Laravel') }}</title>
+### Using the Artisan Command
 
-            <!-- Fonts -->
-            <link rel="preconnect" href="https://fonts.bunny.net">
-            <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+```bash
+# Basic form
+php artisan vueform:make UserRegistrationForm
 
-            <!-- Styles / Scripts -->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+# Form in a subdirectory
+php artisan vueform:make Admin/UserEditForm
 
-            {{ LaravelVueForm\Abstracts\VueFormBuilder::loadAssets() }}
-        </head>
-
-    <body>
-        <div class="container mx-auto">
-            <div class="col-12 mx-auto mt-5">
-
-                <!-- Reander form -->
-                {!! $vueFormData->build() !!}
-            </div>
-        </div>
-    </body>
-
-</html>
+# With custom namespace
+php artisan vueform:make Forms/Checkout/PaymentForm
 ```
 
-#### Update Blade
+Forms are created in `app/VueForm/` by default. You can organize them in subdirectories.
 
-Render the Form Globally in your any Blade file.
+### Form Builder Anatomy
+
+Every form component extends `VueFormBuilder` and implements `buildForm()`:
 
 ```php
-{!! (new \App\VueForm\Fields\PhoneElementForm())->build() !!}
+<?php
+
+namespace App\VueForm;
+
+use LaravelVueForm\Abstracts\VueFormBuilder;
+use LaravelVueForm\Elements\Vueform;
+
+class ExampleForm extends VueFormBuilder
+{
+    // Optional: Custom submission endpoint
+    protected static $actionUrl = null; // Auto-generated if null
+
+    // Optional: HTTP method (GET, POST, PUT, PATCH, DELETE)
+    protected static $method = 'POST';
+
+    // Required: Define form structure
+    protected function buildForm()
+    {
+        return Vueform::build()
+            ->schema([
+                // Your form elements here
+            ]);
+    }
+
+    // Optional: Handle form submission
+    public static function validatedFormData($request)
+    {
+        // Process validated data
+        // $request contains only fields that passed validation
+
+        return response()->json(['success' => true]);
+    }
+
+    // Alternative: Manual validation
+    public static function formData($request)
+    {
+        // Manually validate
+        $validated = $request->validate([
+            'field_name' => 'required|string|max:255'
+        ]);
+
+        // Process data
+
+        return response()->json(['success' => true]);
+    }
+}
 ```
 
-Example of your Blade file:
+### Key Concepts
 
-```html
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+- **Auto-Generated Endpoints**: If `$actionUrl` is `null`, the package generates a secure route automatically
+- **Validation Methods**:
+  - `validatedFormData()` - Receives pre-validated data based on element rules
+  - `formData()` - Receives raw request for manual validation
+- **Response Format**: Return JSON responses for AJAX forms
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>{{ config('app.name', 'Laravel') }}</title>
+---
 
-        <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta name="csrf-token" content="{{ csrf_token() }}">
-            <title>{{ config('app.name', 'Laravel') }}</title>
+## 🖼️ Rendering Forms
 
-            <!-- Fonts -->
-            <link rel="preconnect" href="https://fonts.bunny.net">
-            <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+### Method 1: Via Controller (Recommended)
 
-            <!-- Styles / Scripts -->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+**Best for**: Multi-page applications, forms with complex logic
 
-            {{ LaravelVueForm\Abstracts\VueFormBuilder::loadAssets() }}
-        </head>
-
-    <body>
-        <div class="container mx-auto">
-            <div class="col-12 mx-auto mt-5">
-                {!! (new \App\VueForm\Fields\PhoneElementForm())->build() !!}
-            </div>
-        </div>
-    </body>
-
-</html>
+```php
+// Controller
+public function create()
+{
+    return view('users.create', [
+        'userForm' => app(\App\VueForm\UserForm::class)
+    ]);
+}
 ```
 
-## Reference
+```blade
+<!-- View -->
+{!! $userForm->build() !!}
+```
 
-Fowwing items are used to develop this package
+### Method 2: Direct Instantiation
 
-- [Laravel](https://laravel.com)
-- [Vue 3](https://vuejs.org)
-- [Vuefrom](https://vueform.com)
-- [Meterial Theme](https://material-theme.com)
+**Best for**: Simple forms, prototyping, global components
 
-## Contributing
+```blade
+<!-- Anywhere in any Blade file -->
+{!! (new \App\VueForm\NewsletterForm())->build() !!}
+```
 
-Contributions are welcome. Suggested workflow:
+---
 
-    1. Fork the repository.
-    2. Create a feature branch: `git checkout -b feat/my-feature`
-    3. Add tests and documentation for your change.
-    4. Open a pull request with a clear description and test results.
+## 📨 Form Submission Handling
 
-Please follow PSR coding standards and include unit/integration tests for new features.
+### Automatic Validation
 
-## Changelog
+The package validates form data based on rules defined in your elements:
 
-Maintain a `CHANGELOG.md` following Keep a Changelog if you publish releases. Each release should list breaking changes, new features, and fixes.
+```php
+protected function buildForm()
+{
+    return Vueform::build()
+        ->schema([
+            TextElement::name('username')
+                ->rules('required|alpha_dash|min:3|max:20|unique:users'),
 
-## License
+            TextElement::name('email')
+                ->rules('required|email|unique:users'),
 
-Declare your project license (e.g., MIT). Add a `LICENSE` file to the repository and update this section with the chosen license name and a short note.
+            TextElement::name('age')
+                ->rules('nullable|integer|min:13|max:120')
+        ]);
+}
+
+public static function validatedFormData($request)
+{
+    // All rules passed, $request contains clean data
+    User::create($request->all());
+
+    return response()->json([
+        'message' => 'User created successfully!',
+        'redirect' => route('users.index')
+    ]);
+}
+```
+
+### Custom Validation Messages
+
+```php
+TextElement::name('email')
+    ->rules('required|email')
+    ->messages([
+        'required' => 'We need your email to contact you.',
+        'email' => 'Please enter a valid email address.'
+    ]);
+```
+
+### Handling Validation Errors
+
+Errors are automatically displayed below each field. Customize error display:
+
+```php
+return Vueform::build()
+    ->displayErrors(true) // Show/hide error messages
+    ->validateOn('change|submit') // When to validate
+    ->schema([...]);
+```
+
+### Server-Side Processing
+
+```php
+public static function validatedFormData($request)
+{
+    // Example: Create database record
+    $user = User::create($request->only(['name', 'email']));
+
+    // Example: Send email
+    Mail::to($user)->send(new WelcomeEmail($user));
+
+    // Example: Fire event
+    event(new UserRegistered($user));
+
+    // Return success response
+    return response()->json([
+        'message' => 'Registration complete!',
+        'redirect' => route('dashboard')
+    ]);
+}
+```
+
+### Error Handling
+
+```php
+public static function validatedFormData($request)
+{
+    try {
+        // Your logic here
+
+        return response()->json(['success' => true]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'message' => 'An error occurred: ' . $e->getMessage()
+        ], 500);
+    }
+}
+```
+
+---
+
+## 🎓 Advanced Usage
+
+### Conditional Fields
+
+Show/hide fields based on other field values:
+
+```php
+RadioElement::name('account_type')
+    ->items(['personal' => 'Personal', 'business' => 'Business']),
+
+TextElement::name('company_name')
+    ->conditions([
+        ['account_type', '==', 'business']
+    ])
+```
+
+### Dynamic Options from Database
+
+```php
+SelectElement::name('category_id')
+    ->items(Category::pluck('name', 'id')->toArray())
+    ->search(true)
+    ->placeholder('Select a category...')
+```
+
+### File Uploads
+
+```php
+FileElement::name('avatar')
+    ->accept('image/*')
+    ->uploadTempEndpoint(route('temp.upload'))
+    ->removeTempEndpoint(route('temp.remove'))
+    ->auto(true)
+```
+
+### Multi-Step Forms (Wizards)
+
+```php
+return Vueform::build()
+    ->steps([
+        'personal' => 'Personal Information',
+        'address' => 'Address Details',
+        'review' => 'Review & Submit'
+    ])
+    ->schema([
+        // Step 1
+        GroupElement::name('personal_info')->schema([...]),
+
+        // Step 2
+        GroupElement::name('address_info')->schema([...]),
+
+        // Step 3
+        StaticElement::name('review')->content('<p>Review your information...</p>')
+    ]);
+```
+
+### Repeatable Field Groups
+
+```php
+ListElement::name('phone_numbers')
+    ->label('Phone Numbers')
+    ->addText('Add Another Phone')
+    ->object([
+        'type' => SelectElement::name('type')->items(['mobile', 'home', 'work']),
+        'number' => TextElement::name('number')->rules('required')
+    ])
+```
+
+---
+
+### Element Types Reference
+
+See the full documentation for detailed element options:
+
+- **Text Inputs**: `TextElement`, `TextareaElement`, `EmailElement`, `PasswordElement`
+- **Numbers**: `NumberElement`, `SliderElement`
+- **Selections**: `SelectElement`, `RadioElement`, `CheckboxElement`, `ToggleElement`
+- **Dates**: `DateElement`, `TimeElement`, `DatetimeElement`
+- **Files**: `FileElement`, `ImageElement`
+- **Rich Content**: `EditorElement`, `MarkdownElement`
+- **Layout**: `GroupElement`, `ListElement`, `ColumnsElement`
+- **Static**: `ButtonElement`, `StaticElement`, `HtmlElement`
+
+---
+
+## ⚡ Performance Optimization
+
+### Caching Form Schemas
+
+For forms that don't change often:
+
+```php
+public function buildForm()
+{
+    return Cache::remember('contact-form-schema', 3600, function() {
+        return Vueform::build()->schema([...]);
+    });
+}
+```
+
+---
+
+## 🐛 Troubleshooting
+
+### Forms Not Rendering
+
+**Check**: Did you add `loadAssets()` to your layout?
+
+```blade
+{{ LaravelVueForm\Abstracts\VueFormBuilder::loadAssets() }}
+```
+
+### CSRF Token Errors
+
+**Check**: Is the CSRF meta tag present?
+
+```blade
+<meta name="csrf-token" content="{{ csrf_token() }}">
+```
+
+### Validation Not Working
+
+**Check**: Are rules defined on elements?
+
+```php
+TextElement::name('email')->rules('required|email')
+```
+
+### Styles Not Applied
+
+**Solution**: Clear browser cache and run:
+
+```bash
+php artisan cache:clear
+php artisan config:clear
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how to get started:
+
+1. **Fork the repository** on GitHub
+2. **Clone your fork**: `git clone https://github.com/bijoy4067/vueform-laravel.git`
+3. **Create a feature branch**: `git checkout -b feature/amazing-feature`
+4. **Make your changes** with clear commit messages
+5. **Add tests** for new functionality
+6. **Submit a pull request** with a description of your changes
+
+### Coding Standards
+
+- Follow PSR-12 coding standards
+- Write PHPDoc comments for public methods
+- Include unit tests for new features
+- Update documentation for new features
+
+---
+
+## 📜 License
+
+This package is open-sourced software licensed under the [MIT license](LICENSE).
+
+---
+
+## 🔗 Resources
+
+- **Official Documentation**: [Coming Soon]
+- **Laravel Documentation**: [https://laravel.com/docs](https://laravel.com/docs)
+- **Vue 3 Guide**: [https://vuejs.org](https://vuejs.org)
+- **VueForm**: [https://vueform.com](https://vueform.com)
+- **Material Design**: [https://material.io](https://material.io)
+
+---
+
+## 📞 Support
+
+- **Issues**: [GitHub Issues](https://github.com/bijoy4067/vueform-laravel/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/bijoy4067/vueform-laravel/discussions)
+- **Email**: support@example.com
+
+---
+
+**Built with ❤️ for the Laravel community**
