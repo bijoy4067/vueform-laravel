@@ -37,8 +37,6 @@
 - [Rendering Forms](#-rendering-forms)
 - [Form Submission Handling](#-form-submission-handling)
 - [Advanced Usage](#-advanced-usage)
-- [Architecture & Design](#-architecture--design)
-- [API Reference](#-api-reference)
 - [Performance Optimization](#-performance-optimization)
 - [Troubleshooting](#-troubleshooting)
 - [Contributing](#-contributing)
