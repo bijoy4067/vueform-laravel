@@ -61,7 +61,7 @@ class StaticElementForm extends VueFormBuilder
 | content | `string\|object\|function` | null | `StaticElement::name("name")->content()` |
 | description | `string\|object` | null | `StaticElement::name("name")->description()` |
 | expressions | `boolean` | null | `StaticElement::name("name")->expressions()` |
-| height | `string` | null | `StaticElement::name("name")->height()` |
+| height | `string\|number` | null | `StaticElement::name("name")->height()` |
 | href | `string` | null | `StaticElement::name("name")->href()` |
 | id | `string` | null | `StaticElement::name("name")->id()` |
 | info | `string\|object` | null | `StaticElement::name("name")->info()` |
@@ -86,7 +86,7 @@ class StaticElementForm extends VueFormBuilder
 | top | `string\|number` | null | `StaticElement::name("name")->top()` |
 | view | `string` | null | `StaticElement::name("name")->view()` |
 | views | `object` | null | `StaticElement::name("name")->views()` |
-| width | `string` | null | `StaticElement::name("name")->width()` |
+| width | `string\|number` | null | `StaticElement::name("name")->width()` |
 | wrap | `boolean` | null | `StaticElement::name("name")->wrap()` |
 
 ---

@@ -14,8 +14,8 @@ Demonstrates the use of GridElement in Laravel VueForm to create structured
 ```php
 use LaravelVueForm\Abstracts\VueFormBuilder;
 use LaravelVueForm\Elements\Static\ButtonElement;
-use LaravelVueForm\Elements\Static\StaticElement;
 use LaravelVueForm\Elements\Structure\GridElement;
+use LaravelVueForm\Elements\Vueform;
 ```
 
 ---
@@ -25,29 +25,24 @@ use LaravelVueForm\Elements\Structure\GridElement;
 ```php
 class GridElementForm extends VueFormBuilder
 {
-    protected static $method = 'post';
-    /**
-     * Build the form structure.s
-     *
-     * @return array
-     */
-    protected function buildForm(): array
+    protected function buildForm()
     {
-        return [
-            GridElement::rowWith1Columns([
-                ['type' => 'text', 'name' => 'a', 'placeholder' => 'A'],
-                ['type' => 'select', 'items' => [1, 2, 3], 'name' => 'b', 'placeholder' => 'B'],
-                ['type' => 'date', 'name' => 'c', 'placeholder' => 'C'],
-                ['type' => 'slider', 'name' => 'd']
-            ]),
-            GridElement::rowWith3Columns([
-                ['type' => 'text', 'name' => 'e', 'placeholder' => 'E'],
-                ['type' => 'select', 'items' => [1, 2, 3], 'name' => 'f', 'placeholder' => 'F'],
-                ['type' => 'date', 'name' => 'g', 'placeholder' => 'G'],
-                ['type' => 'slider', 'name' => 'h']
-            ]),
-            ButtonElement::submitButton()
-        ];
+        return Vueform::build()
+            ->schema([
+                GridElement::rowWith1Columns([
+                    ['type' => 'text', 'name' => 'a', 'placeholder' => 'A'],
+                    ['type' => 'select', 'items' => [1, 2, 3], 'name' => 'b', 'placeholder' => 'B'],
+                    ['type' => 'date', 'name' => 'c', 'placeholder' => 'C'],
+                    ['type' => 'slider', 'name' => 'd']
+                ]),
+                GridElement::rowWith3Columns([
+                    ['type' => 'text', 'name' => 'e', 'placeholder' => 'E'],
+                    ['type' => 'select', 'items' => [1, 2, 3], 'name' => 'f', 'placeholder' => 'F'],
+                    ['type' => 'date', 'name' => 'g', 'placeholder' => 'G'],
+                    ['type' => 'slider', 'name' => 'h']
+                ]),
+                ButtonElement::submitButton()
+            ]);
     }
 
     public static function formData($request)

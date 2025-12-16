@@ -19,6 +19,7 @@ use LaravelVueForm\Elements\Static\ButtonElement;
 use LaravelVueForm\Elements\Static\StaticElement;
 use LaravelVueForm\Elements\Structure\ObjectElement;
 use LaravelVueForm\Elements\Structure\ListElement;
+use LaravelVueForm\Elements\Vueform;
 ```
 
 ---
@@ -28,47 +29,42 @@ use LaravelVueForm\Elements\Structure\ListElement;
 ```php
 class ObjectElementForm extends VueFormBuilder
 {
-    protected static $method = 'post';
-    /**
-     * Build the form structure.s
-     *
-     * @return array
-     */
-    protected function buildForm(): array
+    protected function buildForm()
     {
-        return [
-            ObjectElement::rowWith4Columns([
+        return Vueform::build()
+            ->schema([
                 ObjectElement::rowWith4Columns([
-                    TextElement::name('first_name'),
-                    TextElement::name('first_namex')
+                    ObjectElement::rowWith4Columns([
+                        TextElement::name('first_name'),
+                        TextElement::name('first_namex')
+                    ]),
                 ]),
-            ]),
-            ObjectElement::rowWith4Columns([
-                TagsElement::name('category')
-                    ->type('tags')
-                    ->closeOnSelect(false)
-                    // ->inputType('search')
-                    ->autocomplete('off')
-                    ->limit(5)
-                    ->rules('required')
-                    ->conditions([
-                        ['first_name', 'not_empty']
-                    ])
-                    // ->columns([
-                    //     'container' => 12,
-                    //     'wrapper' => 6
-                    // ])
-                    ->items([
-                        ['value' => 1, 'label' => 'Category 1', 'color' => 'red', 'name' => 'foo'],
-                        ['value' => 2, 'label' => 'Category 2', 'color' => 'red', 'name' => 'foo'],
-                        ['value' => 3, 'label' => 'Category 3', 'color' => 'red', 'name' => 'foo']
-                    ])
-                    ->max(5)
-                    ->event([
-                        'select' => 'aaaa',
-                    ])
-                    ->slots([
-                        'tag' => '<span
+                ObjectElement::rowWith4Columns([
+                    TagsElement::name('category')
+                        ->type('tags')
+                        ->closeOnSelect(false)
+                        // ->inputType('search')
+                        ->autocomplete('off')
+                        ->limit(5)
+                        ->rules('required')
+                        ->conditions([
+                            ['first_name', 'not_empty']
+                        ])
+                        // ->columns([
+                        //     'container' => 12,
+                        //     'wrapper' => 6
+                        // ])
+                        ->items([
+                            ['value' => 1, 'label' => 'Category 1', 'color' => 'red', 'name' => 'foo'],
+                            ['value' => 2, 'label' => 'Category 2', 'color' => 'red', 'name' => 'foo'],
+                            ['value' => 3, 'label' => 'Category 3', 'color' => 'red', 'name' => 'foo']
+                        ])
+                        ->max(5)
+                        ->event([
+                            'select' => 'aaaa',
+                        ])
+                        ->slots([
+                            'tag' => '<span
                             class="badge w-auto"
                             style="background-color: {{ option.color}};
                             color:{{ option.backgroundColor }};
@@ -87,52 +83,51 @@ class ObjectElementForm extends VueFormBuilder
                                 </span>
                             </span>
                         </span>',
-                        'info' => '<span>gggg ddd ddd</span>',
-                        'before' => '<h1 style="color: blue;"> Please select categories cc</h1>',
-                    ]),
-                TagsElement::name('tags')
+                            'info' => '<span>gggg ddd ddd</span>',
+                            'before' => '<h1 style="color: blue;"> Please select categories cc</h1>',
+                        ]),
+                    TagsElement::name('tags')
+                        ->type('tags')
+                        ->closeOnSelect(false)
+                        ->inputType('search')
+                        ->autocomplete('off')
+                        ->limit(5)
+                        ->items('http://localhost:8000/tags/json')
+                        ->max(5)
+                        ->rules('required')
+                        ->event([
+                            'select' => 'aaaa',
+                        ]),
+                    TextElement::name('search'),
+                    TextElement::name('number')->inputType('number'),
+                ]),
+                ListElement::schema([
+                    TextElement::name('item_name')
+                        ->label('Item Name')
+                        ->rules('required'),
+                ]),
+                StaticElement::hr(),
+                TagsElement::name('rating')
                     ->type('tags')
                     ->closeOnSelect(false)
                     ->inputType('search')
                     ->autocomplete('off')
                     ->limit(5)
-                    ->items('http://localhost:8000/tags/json')
+                    ->columns([
+                        'container' => 12,
+                        'wrapper' => 6
+                    ])
+                    ->items([
+                        ['value' => 1, 'label' => 'Category 1', 'color' => 'red', 'name' => 'foo'],
+                        ['value' => 2, 'label' => 'Category 2', 'color' => 'red', 'name' => 'foo'],
+                        ['value' => 3, 'label' => 'Category 3', 'color' => 'red', 'name' => 'foo']
+                    ])
                     ->max(5)
-                    ->rules('required')
                     ->event([
                         'select' => 'aaaa',
                     ]),
-                TextElement::name('search'),
-                TextElement::name('number')->inputType('number'),
-            ]),
-            ListElement::schema([
-                TextElement::name('item_name')
-                    ->label('Item Name')
-                    ->rules('required'),
-            ]),
-            StaticElement::hr(),
-            TagsElement::name('rating')
-                ->type('tags')
-                ->closeOnSelect(false)
-                ->inputType('search')
-                ->autocomplete('off')
-                ->limit(5)
-                ->columns([
-                    'container' => 12,
-                    'wrapper' => 6
-                ])
-                ->items([
-                    ['value' => 1, 'label' => 'Category 1', 'color' => 'red', 'name' => 'foo'],
-                    ['value' => 2, 'label' => 'Category 2', 'color' => 'red', 'name' => 'foo'],
-                    ['value' => 3, 'label' => 'Category 3', 'color' => 'red', 'name' => 'foo']
-                ])
-                ->max(5)
-                ->event([
-                    'select' => 'aaaa',
-                ]),
-            ButtonElement::submitButton()
-
-        ];
+                ButtonElement::submitButton()
+            ]);
     }
 
     public static function formData($request)

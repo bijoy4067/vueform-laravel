@@ -22,7 +22,7 @@ class StaticElement extends FormSchemaBuilder
         'content' => 'string|object|function',
         'description' => 'string|object',
         'expressions' => 'boolean',
-        'height' => 'string',
+        'height' => 'string|number',
         'href' => 'string',
         'id' => 'string',
         'info' => 'string|object',
@@ -47,7 +47,7 @@ class StaticElement extends FormSchemaBuilder
         'top' => 'string|number',
         'view' => 'string',
         'views' => 'object',
-        'width' => 'string',
+        'width' => 'string|number',
         'wrap' => 'boolean',
     ];
 
@@ -72,9 +72,7 @@ class StaticElement extends FormSchemaBuilder
         'visible' => 'boolean',
     ];
 
-    protected static array $allowedEventAttributes = [
-
-    ];
+    protected static array $allowedEventAttributes = [];
 
     protected static array $allowedSlotAttributes = [
         'after' => [],
