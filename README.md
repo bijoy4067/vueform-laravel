@@ -102,7 +102,7 @@ This command publishes:
 
 Add the following to your main Blade layout's `<head>` section (typically `resources/views/layouts/app.blade.php`):
 
-```blade
+```php
 <head>
     <!-- Required: CSRF Token for AJAX submissions -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -201,7 +201,7 @@ class ContactController extends Controller
 
 #### 4. Render in Blade Template
 
-```blade
+```php
 <!-- resources/views/contact.blade.php -->
 @extends('layouts.app')
 
@@ -351,7 +351,7 @@ public function create()
 }
 ```
 
-```blade
+```php
 <!-- View -->
 {!! $userForm->build() !!}
 ```
@@ -360,7 +360,7 @@ public function create()
 
 **Best for**: Simple forms, prototyping, global components
 
-```blade
+```php
 <!-- Anywhere in any Blade file -->
 {!! (new \App\VueForm\NewsletterForm())->build() !!}
 ```
@@ -572,7 +572,7 @@ public function buildForm()
 
 **Check**: Did you add `loadAssets()` to your layout?
 
-```blade
+```php
 {{ LaravelVueForm\Abstracts\VueFormBuilder::loadAssets() }}
 ```
 
@@ -580,7 +580,7 @@ public function buildForm()
 
 **Check**: Is the CSRF meta tag present?
 
-```blade
+```php
 <meta name="csrf-token" content="{{ csrf_token() }}">
 ```
 

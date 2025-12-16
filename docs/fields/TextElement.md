@@ -32,7 +32,7 @@ class TextElementForm extends VueFormBuilder
             ])
             ->schema([
                 TextElement::name('search')
-                    ->info(null)
+                    ->info('')
                     ->addClass('block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focused:outline-sky-500 focus:outline-sky-500 sm:text-sm/6'),
                 TextElement::name('addon')->slots([
                     'addon-before' => '<i class="fa fa-search"></i>'
