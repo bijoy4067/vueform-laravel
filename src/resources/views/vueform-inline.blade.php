@@ -39,8 +39,8 @@
     @endphp
 
     {{-- STEP 2: RENDER THE VUE FORM --}}
-    <vue-form-inline :data='{!! json_encode($formOptions, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}'>
+    <{{ $formOptions['element-name'] . '-inline' }} :data='{!! json_encode($formOptions, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}'>
         {!! $renderElements($formElements) !!}
-    </vue-form-inline>
+    </{{ $formOptions['element-name']. '-inline' }}>
 
 </div>

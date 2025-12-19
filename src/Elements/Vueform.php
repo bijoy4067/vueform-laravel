@@ -3,6 +3,7 @@
 namespace LaravelVueForm\Elements;
 
 use LaravelVueForm\Builder\FormSchemaBuilder;
+use LaravelVueForm\Elements\Tabs\FormTabsElement;
 
 class Vueform extends FormSchemaBuilder
 {
@@ -128,9 +129,12 @@ class Vueform extends FormSchemaBuilder
         'empty' => [],
     ];
 
-    public static function build()
+    public static function build(): self
     {
-        return static::name();
+        $instance = static::name();
+        $instance->attributes['element-name'] = 'vue-form';
+
+        return $instance;
     }
 
     public function showSuccessAlert($type = 'toast')
@@ -138,5 +142,16 @@ class Vueform extends FormSchemaBuilder
         $this->attributes['showAlert'] = true;
         $this->attributes['alertType'] = $type;
         return $this;
+    }
+
+    public function tabs(array $tabs): FormTabsElement
+    {
+        $instance = FormTabsElement::name();
+        $instance->attributes['element-name'] = 'vue-form-tabs';
+        foreach ($tabs as $tab) {
+            $instance->attributes['tabs'][] = $tab->toArray();
+        }
+
+        return $instance;
     }
 }
