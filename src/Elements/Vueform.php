@@ -3,6 +3,8 @@
 namespace LaravelVueForm\Elements;
 
 use LaravelVueForm\Builder\FormSchemaBuilder;
+use LaravelVueForm\Elements\Tabs\FormLanguages;
+use LaravelVueForm\Elements\Tabs\FormStepsElement;
 use LaravelVueForm\Elements\Tabs\FormTabsElement;
 
 class Vueform extends FormSchemaBuilder
@@ -150,6 +152,28 @@ class Vueform extends FormSchemaBuilder
         $instance->attributes['element-name'] = 'vue-form-tabs';
         foreach ($tabs as $tab) {
             $instance->attributes['tabs'][] = $tab->toArray();
+        }
+
+        return $instance;
+    }
+
+    public function steps(array $tabs): FormStepsElement
+    {
+        $instance = FormStepsElement::name();
+        $instance->attributes['element-name'] = 'vue-form-steps';
+        foreach ($tabs as $tab) {
+            $instance->attributes['steps'][] = $tab->toArray();
+        }
+
+        return $instance;
+    }
+
+    public function langs(array $tabs): FormLanguages
+    {
+        $instance = FormLanguages::name();
+        $instance->attributes['element-name'] = 'vue-form-langs';
+        foreach ($tabs as $tab) {
+            $instance->attributes['langs'][] = $tab->toArray();
         }
 
         return $instance;
