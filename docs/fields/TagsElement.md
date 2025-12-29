@@ -1,4 +1,4 @@
-# Tags Input Element 
+# TagsElement 
 
 A fully-featured demonstration of the TagsElement field in Laravel VueForm. 
       This example showcases tag selection with custom templates, dynamic item sources, 

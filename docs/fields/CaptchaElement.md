@@ -1,4 +1,4 @@
-# CaptchaElement
+# Captcha Element
 
 A form demonstrating usage of the CaptchaElement field within Laravel VueForm. <a href="https://vueform.com/reference/captcha-element" target="_blank">Documentation</a>
 

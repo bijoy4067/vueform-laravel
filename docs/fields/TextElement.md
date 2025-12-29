@@ -1,4 +1,4 @@
-# Text Input Element 
+# TextElement 
 
 A comprehensive form demonstrating various text input types including text, number, email, password, and URL fields with conditional rendering support. <a href="https://vueform.com/reference/text-element" target="_blank">Documentation</a>
 

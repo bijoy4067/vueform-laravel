@@ -1,4 +1,4 @@
-# Checkbox Group Element
+# CheckboxGroupElement
 
 A form demonstrating usage of the CheckboxgroupElement field within Laravel VueForm. <a href="https://vueform.com/reference/checkboxgroup-element" target="_blank">Documentation</a>
 
