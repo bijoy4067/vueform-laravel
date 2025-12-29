@@ -64,7 +64,7 @@ class {$className} extends VueFormBuilder
 {
     protected function buildForm()
     {
-        return Vueform::name('{$formName}')
+        return Vueform::build()
             ->schema([
                 // elements
             ]);
