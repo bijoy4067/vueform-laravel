@@ -71,7 +71,6 @@ abstract class VueFormBuilder
      */
     private static function processElements(object $value): array
     {
-
         // Convert element object into array format
         $elementArray = $value->toArray();
 

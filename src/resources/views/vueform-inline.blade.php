@@ -20,17 +20,14 @@
                 if (!empty($elementData['schema']) && is_array($elementData['schema'])) {
                     $childHtml = $renderElements($elementData['schema']);
                 }
+                unset($elementData['schema']);
+                unset($elementData['element-name']);
 
-                // 2. FIX: Remove the 'schema' key from the element's data
-        //    before passing it to the component via the :data prop.
-        unset($elementData['schema']);
-        unset($elementData['element-name']);
-
-        // 3. Render this element, passing its data and the rendered children
-        $html .= view('vueForm::components.core.element-render', [
-            'component' => $component,
-            'data' => $elementData,
-            'html' => $childHtml, // The rendered children
+                // 3. Render this element, passing its data and the rendered children
+                $html .= view('vueForm::components.core.element-render', [
+                    'component' => $component,
+                    'data' => $elementData,
+                    'html' => $childHtml, // The rendered children
                 ])->render();
             }
 
@@ -38,9 +35,8 @@
         };
     @endphp
 
-    {{-- STEP 2: RENDER THE VUE FORM --}}
     <{{ $formOptions['element-name'] . '-inline' }} :data='{!! json_encode($formOptions, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}'>
         {!! $renderElements($formElements) !!}
-    </{{ $formOptions['element-name']. '-inline' }}>
+    </{{ $formOptions['element-name'] . '-inline' }}>
 
 </div>
