@@ -3,6 +3,10 @@
 namespace LaravelVueForm\Abstracts;
 
 use LaravelVueForm\Controllers\FormDataController;
+use LaravelVueForm\Elements\Tabs\FormLanguages;
+use LaravelVueForm\Elements\Tabs\FormStepsElement;
+use LaravelVueForm\Elements\Tabs\FormTabsElement;
+use LaravelVueForm\Elements\Vueform;
 
 /**
  * VueFormBuilder
@@ -53,6 +57,7 @@ abstract class VueFormBuilder
     /**
      * Developers define their form structure here.
      * Must return a Form object or compatible structure.
+     * @return \LaravelVueForm\Elements\Vueform
      */
     abstract protected function buildForm();
 
@@ -130,10 +135,31 @@ abstract class VueFormBuilder
      */
     public function build($response = 'html'): string|array
     {
-        $elements = [];
+        $allowedTypes = [
+            Vueform::class,
+            FormTabsElement::class,
+            FormLanguages::class,
+            FormStepsElement::class,
+        ];
 
+        $isValid = false;
+
+        foreach ($allowedTypes as $type) {
+            if ($this->buildForm() instanceof $type) {
+                $isValid = true;
+                break;
+            }
+        }
+
+        if (!$isValid) {
+            throw new \Exception(
+                'buildForm() must return a valid VueForm element instance of ' . implode(', ', $allowedTypes)
+            );
+        }
         // Get raw form definition from child class
         $form = $this->buildForm()->toArray();
+
+        $elements = [];
         foreach ($form['schema'] as $value) {
             $elements[] = self::processElements($value); // numeric array
         }
@@ -188,7 +214,7 @@ abstract class VueFormBuilder
                 $nestedPath = !empty($element['name'])
                     ? ($parentPath ? "{$parentPath}.{$element['name']}" : $element['name'])
                     : $parentPath;
-                
+
                 $rules = array_merge(
                     $rules,
                     $this->getFormValidationRules($element['schema'], $nestedPath)

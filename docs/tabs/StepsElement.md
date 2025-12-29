@@ -20,7 +20,7 @@ class StepsElementForm extends VueFormBuilder
 {
     protected function buildForm()
     {
-        return Vueform::name('tabs-element-form')
+        return Vueform::build()
             ->steps([
                 FormStepElement::name('tab1')
                     ->label('tab1')

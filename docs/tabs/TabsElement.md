@@ -20,7 +20,7 @@ class TabsElementForm extends VueFormBuilder
 {
     protected function buildForm()
     {
-        return Vueform::name('tabs-element-form')
+        return Vueform::build()
             ->tabs([
                 FormTabElement::name('tab1')
                     ->label('tab1')

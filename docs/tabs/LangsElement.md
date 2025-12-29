@@ -20,7 +20,7 @@ class LangsElementForm extends VueFormBuilder
 {
     protected function buildForm()
     {
-        return Vueform::name('tabs-element-form')
+        return Vueform::build()
             ->langs([
                 FormLanguage::name('tab1')
                     ->language('English')
