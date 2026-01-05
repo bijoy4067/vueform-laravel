@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelVueForm\Elements\Fields;
+namespace VueFormLaravel\Elements\Fields;
 
-use LaravelVueForm\Builder\FormSchemaBuilder;
+use VueFormLaravel\Builder\FormSchemaBuilder;
 
 class HiddenElement extends FormSchemaBuilder
 {
@@ -61,7 +61,5 @@ class HiddenElement extends FormSchemaBuilder
         'reset',
     ];
 
-    protected static array $allowedSlotAttributes = [
-
-    ];
+    protected static array $allowedSlotAttributes = [];
 }

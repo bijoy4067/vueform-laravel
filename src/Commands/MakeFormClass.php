@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelVueForm\Commands;
+namespace VueFormLaravel\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -57,8 +57,8 @@ class MakeFormClass extends Command
 
 namespace {$namespace};
 
-use LaravelVueForm\Abstracts\\VueFormBuilder;
-use LaravelVueForm\Elements\Vueform;
+use VueFormLaravel\Abstracts\\VueFormBuilder;
+use VueFormLaravel\Elements\Vueform;
 
 class {$className} extends VueFormBuilder
 {

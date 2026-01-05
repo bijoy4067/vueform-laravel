@@ -139,11 +139,11 @@ Open `app/VueForm/ContactForm.php` and add your form fields:
 
 namespace App\VueForm;
 
-use LaravelVueForm\Abstracts\VueFormBuilder;
-use LaravelVueForm\Elements\Fields\TextElement;
-use LaravelVueForm\Elements\Fields\TextareaElement;
-use LaravelVueForm\Elements\Static\ButtonElement;
-use LaravelVueForm\Elements\Vueform;
+use VueFormLaravel\Abstracts\VueFormBuilder;
+use VueFormLaravel\Elements\Fields\TextElement;
+use VueFormLaravel\Elements\Fields\TextareaElement;
+use VueFormLaravel\Elements\Static\ButtonElement;
+use VueFormLaravel\Elements\Vueform;
 
 class ContactForm extends VueFormBuilder
 {
@@ -281,8 +281,8 @@ Every form component extends `VueFormBuilder` and implements `buildForm()`:
 
 namespace App\VueForm;
 
-use LaravelVueForm\Abstracts\VueFormBuilder;
-use LaravelVueForm\Elements\Vueform;
+use VueFormLaravel\Abstracts\VueFormBuilder;
+use VueFormLaravel\Elements\Vueform;
 
 class ExampleForm extends VueFormBuilder
 {

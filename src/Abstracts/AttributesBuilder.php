@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelVueForm\Abstracts;
+namespace VueFormLaravel\Abstracts;
 
 /**
  * AttributesBuilder

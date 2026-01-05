@@ -1,25 +1,25 @@
-# Group Element 
+# Group Element
 
-A comprehensive demonstration of using GroupElement and ListElement in Laravel VueForm. 
-      This form showcases nested column layouts, conditional field rendering, tag selection 
-      with custom templates, dynamic remote items, and mixed input types. It includes validation, 
-      slot customization, static elements like horizontal dividers, and submit button integration. 
-      Ideal for developers looking to implement advanced, structured forms with flexible layouts 
-      and complex user interactions. <a href="https://vueform.com/reference/group-element" target="_blank">Documentation</a>
+A comprehensive demonstration of using GroupElement and ListElement in Laravel VueForm.
+This form showcases nested column layouts, conditional field rendering, tag selection
+with custom templates, dynamic remote items, and mixed input types. It includes validation,
+slot customization, static elements like horizontal dividers, and submit button integration.
+Ideal for developers looking to implement advanced, structured forms with flexible layouts
+and complex user interactions. <a href="https://vueform.com/reference/group-element" target="_blank">Documentation</a>
 
 ---
 
 ## 🧱 Import Class
 
 ```php
-use LaravelVueForm\Abstracts\VueFormBuilder;
-use LaravelVueForm\Elements\Fields\TagsElement;
-use LaravelVueForm\Elements\Fields\TextElement;
-use LaravelVueForm\Elements\Static\ButtonElement;
-use LaravelVueForm\Elements\Static\StaticElement;
-use LaravelVueForm\Elements\Structure\GroupElement;
-use LaravelVueForm\Elements\Structure\ListElement;
-use LaravelVueForm\Elements\Vueform;
+use VueFormLaravel\Abstracts\VueFormBuilder;
+use VueFormLaravel\Elements\Fields\TagsElement;
+use VueFormLaravel\Elements\Fields\TextElement;
+use VueFormLaravel\Elements\Static\ButtonElement;
+use VueFormLaravel\Elements\Static\StaticElement;
+use VueFormLaravel\Elements\Structure\GroupElement;
+use VueFormLaravel\Elements\Structure\ListElement;
+use VueFormLaravel\Elements\Vueform;
 ```
 
 ---
@@ -152,57 +152,57 @@ class GroupElementForm extends VueFormBuilder
     // }
 }
 ```
+
 ---
 
 ## ⚙️ Allowed Attributes
 
-| Name | Data Type | Default | Example |
-| ---- | ---- | ---- | ---- |
-| addClass | `array\|object\|string\|function` | null | `GroupElement::name("name")->addClass()` |
-| addClasses | `object\|function` | null | `GroupElement::name("name")->addClasses()` |
-| after | `object\|string\|number` | null | `GroupElement::name("name")->after()` |
-| before | `object\|string\|number` | null | `GroupElement::name("name")->before()` |
-| between | `object\|string\|number` | null | `GroupElement::name("name")->between()` |
-| columns | `object\|string\|number` | null | `GroupElement::name("name")->columns()` |
-| conditions | `array` | null | `GroupElement::name("name")->conditions()` |
-| default | `object` | null | `GroupElement::name("name")->default()` |
-| description | `string\|object` | null | `GroupElement::name("name")->description()` |
-| displayErrors | `boolean` | null | `GroupElement::name("name")->displayErrors()` |
-| fieldName | `string\|object` | null | `GroupElement::name("name")->fieldName()` |
-| formatData | `function` | null | `GroupElement::name("name")->formatData()` |
-| formatLoad | `function` | null | `GroupElement::name("name")->formatLoad()` |
-| id | `string` | null | `GroupElement::name("name")->id()` |
-| info | `string\|object` | null | `GroupElement::name("name")->info()` |
-| infoPosition | `string` | null | `GroupElement::name("name")->infoPosition()` |
-| inline | `boolean` | null | `GroupElement::name("name")->inline()` |
-| label | `string\|object\|function` | null | `GroupElement::name("name")->label()` |
-| messages | `object` | null | `GroupElement::name("name")->messages()` |
-| name | `string\|number` | null | `GroupElement::name("name")->name()` |
-| overrideClass | `array\|object\|string\|function` | null | `GroupElement::name("name")->overrideClass()` |
-| overrideClasses | `object\|function` | null | `GroupElement::name("name")->overrideClasses()` |
-| presets | `array` | null | `GroupElement::name("name")->presets()` |
-| removeClass | `array\|object\|function` | null | `GroupElement::name("name")->removeClass()` |
-| removeClasses | `object\|function` | null | `GroupElement::name("name")->removeClasses()` |
-| replaceClass | `object\|function` | null | `GroupElement::name("name")->replaceClass()` |
-| replaceClasses | `object\|function` | null | `GroupElement::name("name")->replaceClasses()` |
-| rules | `array\|string\|object` | null | `GroupElement::name("name")->rules()` |
-| schema | `object` | null | `GroupElement::name("name")->schema()` |
-| size | `string` | null | `GroupElement::name("name")->size()` |
-| slots | `object` | null | `GroupElement::name("name")->slots()` |
-| submit | `boolean` | null | `GroupElement::name("name")->submit()` |
-| templates | `object` | null | `GroupElement::name("name")->templates()` |
-| view | `string` | null | `GroupElement::name("name")->view()` |
-| views | `object` | null | `GroupElement::name("name")->views()` |
+| Name            | Data Type                         | Default | Example                                         |
+| --------------- | --------------------------------- | ------- | ----------------------------------------------- |
+| addClass        | `array\|object\|string\|function` | null    | `GroupElement::name("name")->addClass()`        |
+| addClasses      | `object\|function`                | null    | `GroupElement::name("name")->addClasses()`      |
+| after           | `object\|string\|number`          | null    | `GroupElement::name("name")->after()`           |
+| before          | `object\|string\|number`          | null    | `GroupElement::name("name")->before()`          |
+| between         | `object\|string\|number`          | null    | `GroupElement::name("name")->between()`         |
+| columns         | `object\|string\|number`          | null    | `GroupElement::name("name")->columns()`         |
+| conditions      | `array`                           | null    | `GroupElement::name("name")->conditions()`      |
+| default         | `object`                          | null    | `GroupElement::name("name")->default()`         |
+| description     | `string\|object`                  | null    | `GroupElement::name("name")->description()`     |
+| displayErrors   | `boolean`                         | null    | `GroupElement::name("name")->displayErrors()`   |
+| fieldName       | `string\|object`                  | null    | `GroupElement::name("name")->fieldName()`       |
+| formatData      | `function`                        | null    | `GroupElement::name("name")->formatData()`      |
+| formatLoad      | `function`                        | null    | `GroupElement::name("name")->formatLoad()`      |
+| id              | `string`                          | null    | `GroupElement::name("name")->id()`              |
+| info            | `string\|object`                  | null    | `GroupElement::name("name")->info()`            |
+| infoPosition    | `string`                          | null    | `GroupElement::name("name")->infoPosition()`    |
+| inline          | `boolean`                         | null    | `GroupElement::name("name")->inline()`          |
+| label           | `string\|object\|function`        | null    | `GroupElement::name("name")->label()`           |
+| messages        | `object`                          | null    | `GroupElement::name("name")->messages()`        |
+| name            | `string\|number`                  | null    | `GroupElement::name("name")->name()`            |
+| overrideClass   | `array\|object\|string\|function` | null    | `GroupElement::name("name")->overrideClass()`   |
+| overrideClasses | `object\|function`                | null    | `GroupElement::name("name")->overrideClasses()` |
+| presets         | `array`                           | null    | `GroupElement::name("name")->presets()`         |
+| removeClass     | `array\|object\|function`         | null    | `GroupElement::name("name")->removeClass()`     |
+| removeClasses   | `object\|function`                | null    | `GroupElement::name("name")->removeClasses()`   |
+| replaceClass    | `object\|function`                | null    | `GroupElement::name("name")->replaceClass()`    |
+| replaceClasses  | `object\|function`                | null    | `GroupElement::name("name")->replaceClasses()`  |
+| rules           | `array\|string\|object`           | null    | `GroupElement::name("name")->rules()`           |
+| schema          | `object`                          | null    | `GroupElement::name("name")->schema()`          |
+| size            | `string`                          | null    | `GroupElement::name("name")->size()`            |
+| slots           | `object`                          | null    | `GroupElement::name("name")->slots()`           |
+| submit          | `boolean`                         | null    | `GroupElement::name("name")->submit()`          |
+| templates       | `object`                          | null    | `GroupElement::name("name")->templates()`       |
+| view            | `string`                          | null    | `GroupElement::name("name")->view()`            |
+| views           | `object`                          | null    | `GroupElement::name("name")->views()`           |
 
 ---
 
 ## ⚙️ Available Static Methods
 
-| Method | Description |
-| --- | --- |
+| Method            | Description                                                                               |
+| ----------------- | ----------------------------------------------------------------------------------------- |
 | `rowWith1Columns` | Generates a VueForm Group Element where each item occupies a full row (1 column per row). |
-| `rowWith2Columns` | Generates a VueForm Group Element with 2 items per row. |
-| `rowWith3Columns` | Generates a VueForm Group Element with 3 items per row. |
-| `rowWith4Columns` | Generates a VueForm Group Element with 4 items per row and a unique random name. |
-| `rowWith6Columns` | Generates a VueForm Group Element with 6 items per row. |
-
+| `rowWith2Columns` | Generates a VueForm Group Element with 2 items per row.                                   |
+| `rowWith3Columns` | Generates a VueForm Group Element with 3 items per row.                                   |
+| `rowWith4Columns` | Generates a VueForm Group Element with 4 items per row and a unique random name.          |
+| `rowWith6Columns` | Generates a VueForm Group Element with 6 items per row.                                   |

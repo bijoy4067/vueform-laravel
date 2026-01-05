@@ -7,9 +7,9 @@ A form demonstrating usage of the FileElement field within Laravel VueForm. <a h
 ## 🧱 Import Class
 
 ```php
-use LaravelVueForm\Abstracts\VueFormBuilder;
-use LaravelVueForm\Elements\Fields\FileElement;
-use LaravelVueForm\Elements\Vueform;
+use VueFormLaravel\Abstracts\VueFormBuilder;
+use VueFormLaravel\Elements\Fields\FileElement;
+use VueFormLaravel\Elements\Vueform;
 ```
 
 ---
@@ -28,58 +28,58 @@ class FileElementForm extends VueFormBuilder
     }
 }
 ```
+
 ---
 
 ## ⚙️ Allowed Attributes
 
-| Name | Data Type | Default | Example |
-| ---- | ---- | ---- | ---- |
-| accept | `string\|array` | null | `FileElement::name("name")->accept()` |
-| addClass | `array\|object\|string\|function` | null | `FileElement::name("name")->addClass()` |
-| addClasses | `object\|function` | {} | `FileElement::name("name")->addClasses()` |
-| after | `object\|string\|number` | null | `FileElement::name("name")->after()` |
-| auto | `boolean` | true | `FileElement::name("name")->auto()` |
-| before | `object\|string\|number` | null | `FileElement::name("name")->before()` |
-| between | `object\|string\|number` | null | `FileElement::name("name")->between()` |
-| clickable | `boolean` | true | `FileElement::name("name")->clickable()` |
-| columns | `object\|string\|number` | null | `FileElement::name("name")->columns()` |
-| conditions | `array` | [] | `FileElement::name("name")->conditions()` |
-| default | `string\|object` | null | `FileElement::name("name")->default()` |
-| description | `string\|object` | null | `FileElement::name("name")->description()` |
-| disabled | `boolean\|function\|array\|object` | false | `FileElement::name("name")->disabled()` |
-| displayErrors | `boolean` | true | `FileElement::name("name")->displayErrors()` |
-| drop | `boolean` | false | `FileElement::name("name")->drop()` |
-| fieldName | `string\|object` | name|label | `FileElement::name("name")->fieldName()` |
-| formatData | `function` | null | `FileElement::name("name")->formatData()` |
-| formatLoad | `function` | null | `FileElement::name("name")->formatLoad()` |
-| id | `string` | null | `FileElement::name("name")->id()` |
-| info | `string\|object` | null | `FileElement::name("name")->info()` |
-| infoPosition | `string` | right | `FileElement::name("name")->infoPosition()` |
-| inline | `boolean` | false | `FileElement::name("name")->inline()` |
-| label | `string\|object\|function` | null | `FileElement::name("name")->label()` |
-| messages | `object` | {} | `FileElement::name("name")->messages()` |
-| methods | `object` | {} | `FileElement::name("name")->methods()` |
-| name | `string\|number` | undefined | `FileElement::name("name")->name()` |
-| overrideClass | `array\|object\|string\|function` | null | `FileElement::name("name")->overrideClass()` |
-| overrideClasses | `object\|function` | {} | `FileElement::name("name")->overrideClasses()` |
-| params | `object` | {} | `FileElement::name("name")->params()` |
-| presets | `array` | [] | `FileElement::name("name")->presets()` |
-| previewUrl | `string` | undefined | `FileElement::name("name")->previewUrl()` |
-| removeClass | `array\|object\|function` | null | `FileElement::name("name")->removeClass()` |
-| removeClasses | `object\|function` | {} | `FileElement::name("name")->removeClasses()` |
-| removeEndpoint | `object\|string\|function\|boolean\|promise` | config.endpoints.removeFile | `FileElement::name("name")->removeEndpoint()` |
+| Name               | Data Type                                    | Default                         | Example                                           |
+| ------------------ | -------------------------------------------- | ------------------------------- | ------------------------------------------------- | ---------------------------------------- |
+| accept             | `string\|array`                              | null                            | `FileElement::name("name")->accept()`             |
+| addClass           | `array\|object\|string\|function`            | null                            | `FileElement::name("name")->addClass()`           |
+| addClasses         | `object\|function`                           | {}                              | `FileElement::name("name")->addClasses()`         |
+| after              | `object\|string\|number`                     | null                            | `FileElement::name("name")->after()`              |
+| auto               | `boolean`                                    | true                            | `FileElement::name("name")->auto()`               |
+| before             | `object\|string\|number`                     | null                            | `FileElement::name("name")->before()`             |
+| between            | `object\|string\|number`                     | null                            | `FileElement::name("name")->between()`            |
+| clickable          | `boolean`                                    | true                            | `FileElement::name("name")->clickable()`          |
+| columns            | `object\|string\|number`                     | null                            | `FileElement::name("name")->columns()`            |
+| conditions         | `array`                                      | []                              | `FileElement::name("name")->conditions()`         |
+| default            | `string\|object`                             | null                            | `FileElement::name("name")->default()`            |
+| description        | `string\|object`                             | null                            | `FileElement::name("name")->description()`        |
+| disabled           | `boolean\|function\|array\|object`           | false                           | `FileElement::name("name")->disabled()`           |
+| displayErrors      | `boolean`                                    | true                            | `FileElement::name("name")->displayErrors()`      |
+| drop               | `boolean`                                    | false                           | `FileElement::name("name")->drop()`               |
+| fieldName          | `string\|object`                             | name                            | label                                             | `FileElement::name("name")->fieldName()` |
+| formatData         | `function`                                   | null                            | `FileElement::name("name")->formatData()`         |
+| formatLoad         | `function`                                   | null                            | `FileElement::name("name")->formatLoad()`         |
+| id                 | `string`                                     | null                            | `FileElement::name("name")->id()`                 |
+| info               | `string\|object`                             | null                            | `FileElement::name("name")->info()`               |
+| infoPosition       | `string`                                     | right                           | `FileElement::name("name")->infoPosition()`       |
+| inline             | `boolean`                                    | false                           | `FileElement::name("name")->inline()`             |
+| label              | `string\|object\|function`                   | null                            | `FileElement::name("name")->label()`              |
+| messages           | `object`                                     | {}                              | `FileElement::name("name")->messages()`           |
+| methods            | `object`                                     | {}                              | `FileElement::name("name")->methods()`            |
+| name               | `string\|number`                             | undefined                       | `FileElement::name("name")->name()`               |
+| overrideClass      | `array\|object\|string\|function`            | null                            | `FileElement::name("name")->overrideClass()`      |
+| overrideClasses    | `object\|function`                           | {}                              | `FileElement::name("name")->overrideClasses()`    |
+| params             | `object`                                     | {}                              | `FileElement::name("name")->params()`             |
+| presets            | `array`                                      | []                              | `FileElement::name("name")->presets()`            |
+| previewUrl         | `string`                                     | undefined                       | `FileElement::name("name")->previewUrl()`         |
+| removeClass        | `array\|object\|function`                    | null                            | `FileElement::name("name")->removeClass()`        |
+| removeClasses      | `object\|function`                           | {}                              | `FileElement::name("name")->removeClasses()`      |
+| removeEndpoint     | `object\|string\|function\|boolean\|promise` | config.endpoints.removeFile     | `FileElement::name("name")->removeEndpoint()`     |
 | removeTempEndpoint | `object\|string\|function\|boolean\|promise` | config.endpoints.removeTempFile | `FileElement::name("name")->removeTempEndpoint()` |
-| replaceClass | `object\|function` | null | `FileElement::name("name")->replaceClass()` |
-| replaceClasses | `object\|function` | {} | `FileElement::name("name")->replaceClasses()` |
-| rules | `array\|string\|object` | null | `FileElement::name("name")->rules()` |
-| size | `string` | undefined | `FileElement::name("name")->size()` |
-| slots | `object` | {} | `FileElement::name("name")->slots()` |
-| softRemove | `boolean` | false | `FileElement::name("name")->softRemove()` |
-| submit | `boolean` | true | `FileElement::name("name")->submit()` |
-| templates | `object` | {} | `FileElement::name("name")->templates()` |
+| replaceClass       | `object\|function`                           | null                            | `FileElement::name("name")->replaceClass()`       |
+| replaceClasses     | `object\|function`                           | {}                              | `FileElement::name("name")->replaceClasses()`     |
+| rules              | `array\|string\|object`                      | null                            | `FileElement::name("name")->rules()`              |
+| size               | `string`                                     | undefined                       | `FileElement::name("name")->size()`               |
+| slots              | `object`                                     | {}                              | `FileElement::name("name")->slots()`              |
+| softRemove         | `boolean`                                    | false                           | `FileElement::name("name")->softRemove()`         |
+| submit             | `boolean`                                    | true                            | `FileElement::name("name")->submit()`             |
+| templates          | `object`                                     | {}                              | `FileElement::name("name")->templates()`          |
 | uploadTempEndpoint | `object\|string\|function\|boolean\|promise` | config.endpoints.uploadTempFile | `FileElement::name("name")->uploadTempEndpoint()` |
-| url | `string\|boolean` | / | `FileElement::name("name")->url()` |
-| urls | `object` | {} | `FileElement::name("name")->urls()` |
-| view | `string` | file | `FileElement::name("name")->view()` |
-| views | `object` | {} | `FileElement::name("name")->views()` |
-
+| url                | `string\|boolean`                            | /                               | `FileElement::name("name")->url()`                |
+| urls               | `object`                                     | {}                              | `FileElement::name("name")->urls()`               |
+| view               | `string`                                     | file                            | `FileElement::name("name")->view()`               |
+| views              | `object`                                     | {}                              | `FileElement::name("name")->views()`              |

@@ -1,10 +1,10 @@
 <?php
 
-namespace LaravelVueForm\Builder;
+namespace VueFormLaravel\Builder;
 
 use Illuminate\Support\Str;
-use LaravelVueForm\Abstracts\AttributesBuilder;
-use LaravelVueForm\Traits\DefaultAttributesTraits;
+use VueFormLaravel\Abstracts\AttributesBuilder;
+use VueFormLaravel\Traits\DefaultAttributesTraits;
 
 /**
  * FormSchemaBuilder

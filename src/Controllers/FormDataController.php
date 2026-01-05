@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelVueForm\Controllers;
+namespace VueFormLaravel\Controllers;
 
 use Crypt;
 

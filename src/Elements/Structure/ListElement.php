@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelVueForm\Elements\Structure;
+namespace VueFormLaravel\Elements\Structure;
 
-use LaravelVueForm\Builder\FormSchemaBuilder;
+use VueFormLaravel\Builder\FormSchemaBuilder;
 
 class ListElement extends FormSchemaBuilder
 {

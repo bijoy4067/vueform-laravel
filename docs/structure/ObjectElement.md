@@ -1,25 +1,25 @@
-# Group Element 
+# Group Element
 
-A comprehensive demonstration of using ObjectElement and ListElement in Laravel VueForm. 
-      This form showcases nested column layouts, conditional field rendering, tag selection 
-      with custom templates, dynamic remote items, and mixed input types. It includes validation, 
-      slot customization, static elements like horizontal dividers, and submit button integration. 
-      Ideal for developers looking to implement advanced, structured forms with flexible layouts 
-      and complex user interactions. <a href="https://vueform.com/reference/object-element" target="_blank">Documentation</a>
+A comprehensive demonstration of using ObjectElement and ListElement in Laravel VueForm.
+This form showcases nested column layouts, conditional field rendering, tag selection
+with custom templates, dynamic remote items, and mixed input types. It includes validation,
+slot customization, static elements like horizontal dividers, and submit button integration.
+Ideal for developers looking to implement advanced, structured forms with flexible layouts
+and complex user interactions. <a href="https://vueform.com/reference/object-element" target="_blank">Documentation</a>
 
 ---
 
 ## 🧱 Import Class
 
 ```php
-use LaravelVueForm\Abstracts\VueFormBuilder;
-use LaravelVueForm\Elements\Fields\TagsElement;
-use LaravelVueForm\Elements\Fields\TextElement;
-use LaravelVueForm\Elements\Static\ButtonElement;
-use LaravelVueForm\Elements\Static\StaticElement;
-use LaravelVueForm\Elements\Structure\ObjectElement;
-use LaravelVueForm\Elements\Structure\ListElement;
-use LaravelVueForm\Elements\Vueform;
+use VueFormLaravel\Abstracts\VueFormBuilder;
+use VueFormLaravel\Elements\Fields\TagsElement;
+use VueFormLaravel\Elements\Fields\TextElement;
+use VueFormLaravel\Elements\Static\ButtonElement;
+use VueFormLaravel\Elements\Static\StaticElement;
+use VueFormLaravel\Elements\Structure\ObjectElement;
+use VueFormLaravel\Elements\Structure\ListElement;
+use VueFormLaravel\Elements\Vueform;
 ```
 
 ---
@@ -144,58 +144,58 @@ class ObjectElementForm extends VueFormBuilder
     }
 }
 ```
+
 ---
 
 ## ⚙️ Allowed Attributes
 
-| Name | Data Type | Default | Example |
-| ---- | ---- | ---- | ---- |
-| addClass | `array\|object\|string\|function` | null | `ObjectElement::name("name")->addClass()` |
-| addClasses | `object\|function` | null | `ObjectElement::name("name")->addClasses()` |
-| after | `object\|string\|number` | null | `ObjectElement::name("name")->after()` |
-| before | `object\|string\|number` | null | `ObjectElement::name("name")->before()` |
-| between | `object\|string\|number` | null | `ObjectElement::name("name")->between()` |
-| columns | `object\|string\|number` | null | `ObjectElement::name("name")->columns()` |
-| conditions | `array` | null | `ObjectElement::name("name")->conditions()` |
-| default | `object` | null | `ObjectElement::name("name")->default()` |
-| description | `string\|object` | null | `ObjectElement::name("name")->description()` |
-| displayErrors | `boolean` | null | `ObjectElement::name("name")->displayErrors()` |
-| embed | `boolean` | null | `ObjectElement::name("name")->embed()` |
-| fieldName | `string\|object` | null | `ObjectElement::name("name")->fieldName()` |
-| formatData | `function` | null | `ObjectElement::name("name")->formatData()` |
-| formatLoad | `function` | null | `ObjectElement::name("name")->formatLoad()` |
-| id | `string` | null | `ObjectElement::name("name")->id()` |
-| info | `string\|object` | null | `ObjectElement::name("name")->info()` |
-| infoPosition | `string` | null | `ObjectElement::name("name")->infoPosition()` |
-| inline | `boolean` | null | `ObjectElement::name("name")->inline()` |
-| label | `string\|object\|function` | null | `ObjectElement::name("name")->label()` |
-| messages | `object` | null | `ObjectElement::name("name")->messages()` |
-| name | `string\|number` | null | `ObjectElement::name("name")->name()` |
-| overrideClass | `array\|object\|string\|function` | null | `ObjectElement::name("name")->overrideClass()` |
-| overrideClasses | `object\|function` | null | `ObjectElement::name("name")->overrideClasses()` |
-| presets | `array` | null | `ObjectElement::name("name")->presets()` |
-| removeClass | `array\|object\|function` | null | `ObjectElement::name("name")->removeClass()` |
-| removeClasses | `object\|function` | null | `ObjectElement::name("name")->removeClasses()` |
-| replaceClass | `object\|function` | null | `ObjectElement::name("name")->replaceClass()` |
-| replaceClasses | `object\|function` | null | `ObjectElement::name("name")->replaceClasses()` |
-| rules | `array\|string\|object` | null | `ObjectElement::name("name")->rules()` |
-| schema | `object` | null | `ObjectElement::name("name")->schema()` |
-| size | `string` | null | `ObjectElement::name("name")->size()` |
-| slots | `object` | null | `ObjectElement::name("name")->slots()` |
-| submit | `boolean` | null | `ObjectElement::name("name")->submit()` |
-| templates | `object` | null | `ObjectElement::name("name")->templates()` |
-| view | `string` | null | `ObjectElement::name("name")->view()` |
-| views | `object` | null | `ObjectElement::name("name")->views()` |
+| Name            | Data Type                         | Default | Example                                          |
+| --------------- | --------------------------------- | ------- | ------------------------------------------------ |
+| addClass        | `array\|object\|string\|function` | null    | `ObjectElement::name("name")->addClass()`        |
+| addClasses      | `object\|function`                | null    | `ObjectElement::name("name")->addClasses()`      |
+| after           | `object\|string\|number`          | null    | `ObjectElement::name("name")->after()`           |
+| before          | `object\|string\|number`          | null    | `ObjectElement::name("name")->before()`          |
+| between         | `object\|string\|number`          | null    | `ObjectElement::name("name")->between()`         |
+| columns         | `object\|string\|number`          | null    | `ObjectElement::name("name")->columns()`         |
+| conditions      | `array`                           | null    | `ObjectElement::name("name")->conditions()`      |
+| default         | `object`                          | null    | `ObjectElement::name("name")->default()`         |
+| description     | `string\|object`                  | null    | `ObjectElement::name("name")->description()`     |
+| displayErrors   | `boolean`                         | null    | `ObjectElement::name("name")->displayErrors()`   |
+| embed           | `boolean`                         | null    | `ObjectElement::name("name")->embed()`           |
+| fieldName       | `string\|object`                  | null    | `ObjectElement::name("name")->fieldName()`       |
+| formatData      | `function`                        | null    | `ObjectElement::name("name")->formatData()`      |
+| formatLoad      | `function`                        | null    | `ObjectElement::name("name")->formatLoad()`      |
+| id              | `string`                          | null    | `ObjectElement::name("name")->id()`              |
+| info            | `string\|object`                  | null    | `ObjectElement::name("name")->info()`            |
+| infoPosition    | `string`                          | null    | `ObjectElement::name("name")->infoPosition()`    |
+| inline          | `boolean`                         | null    | `ObjectElement::name("name")->inline()`          |
+| label           | `string\|object\|function`        | null    | `ObjectElement::name("name")->label()`           |
+| messages        | `object`                          | null    | `ObjectElement::name("name")->messages()`        |
+| name            | `string\|number`                  | null    | `ObjectElement::name("name")->name()`            |
+| overrideClass   | `array\|object\|string\|function` | null    | `ObjectElement::name("name")->overrideClass()`   |
+| overrideClasses | `object\|function`                | null    | `ObjectElement::name("name")->overrideClasses()` |
+| presets         | `array`                           | null    | `ObjectElement::name("name")->presets()`         |
+| removeClass     | `array\|object\|function`         | null    | `ObjectElement::name("name")->removeClass()`     |
+| removeClasses   | `object\|function`                | null    | `ObjectElement::name("name")->removeClasses()`   |
+| replaceClass    | `object\|function`                | null    | `ObjectElement::name("name")->replaceClass()`    |
+| replaceClasses  | `object\|function`                | null    | `ObjectElement::name("name")->replaceClasses()`  |
+| rules           | `array\|string\|object`           | null    | `ObjectElement::name("name")->rules()`           |
+| schema          | `object`                          | null    | `ObjectElement::name("name")->schema()`          |
+| size            | `string`                          | null    | `ObjectElement::name("name")->size()`            |
+| slots           | `object`                          | null    | `ObjectElement::name("name")->slots()`           |
+| submit          | `boolean`                         | null    | `ObjectElement::name("name")->submit()`          |
+| templates       | `object`                          | null    | `ObjectElement::name("name")->templates()`       |
+| view            | `string`                          | null    | `ObjectElement::name("name")->view()`            |
+| views           | `object`                          | null    | `ObjectElement::name("name")->views()`           |
 
 ---
 
 ## ⚙️ Available Static Methods
 
-| Method | Description |
-| --- | --- |
+| Method            | Description                                                                                      |
+| ----------------- | ------------------------------------------------------------------------------------------------ |
 | `rowWith1Columns` | This method generates a group element in VueForm with each item occupying a full row (1 column). |
-| `rowWith2Columns` | This method generates a group element in VueForm with 2 items per row. |
-| `rowWith3Columns` | This method generates a group element in VueForm with 3 items per row. |
-| `rowWith4Columns` | This method generates a group element in VueForm with 4 items per row. |
-| `rowWith6Columns` | This method generates a group element in VueForm with 6 items per row. |
-
+| `rowWith2Columns` | This method generates a group element in VueForm with 2 items per row.                           |
+| `rowWith3Columns` | This method generates a group element in VueForm with 3 items per row.                           |
+| `rowWith4Columns` | This method generates a group element in VueForm with 4 items per row.                           |
+| `rowWith6Columns` | This method generates a group element in VueForm with 6 items per row.                           |

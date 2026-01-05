@@ -1,5 +1,6 @@
-<?php 
-namespace LaravelVueForm\Abstracts;
+<?php
+
+namespace VueFormLaravel\Abstracts;
 
 class VueFormResponse
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace LaravelVueForm\Elements;
+namespace VueFormLaravel\Elements;
 
-use LaravelVueForm\Builder\FormSchemaBuilder;
-use LaravelVueForm\Elements\Tabs\FormLanguages;
-use LaravelVueForm\Elements\Tabs\FormStepsElement;
-use LaravelVueForm\Elements\Tabs\FormTabsElement;
+use VueFormLaravel\Builder\FormSchemaBuilder;
+use VueFormLaravel\Elements\Tabs\FormLanguages;
+use VueFormLaravel\Elements\Tabs\FormStepsElement;
+use VueFormLaravel\Elements\Tabs\FormTabsElement;
 
 class Vueform extends FormSchemaBuilder
 {

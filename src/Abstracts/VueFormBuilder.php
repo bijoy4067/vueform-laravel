@@ -1,12 +1,12 @@
 <?php
 
-namespace LaravelVueForm\Abstracts;
+namespace VueFormLaravel\Abstracts;
 
-use LaravelVueForm\Controllers\FormDataController;
-use LaravelVueForm\Elements\Tabs\FormLanguages;
-use LaravelVueForm\Elements\Tabs\FormStepsElement;
-use LaravelVueForm\Elements\Tabs\FormTabsElement;
-use LaravelVueForm\Elements\Vueform;
+use VueFormLaravel\Controllers\FormDataController;
+use VueFormLaravel\Elements\Tabs\FormLanguages;
+use VueFormLaravel\Elements\Tabs\FormStepsElement;
+use VueFormLaravel\Elements\Tabs\FormTabsElement;
+use VueFormLaravel\Elements\Vueform;
 
 /**
  * VueFormBuilder

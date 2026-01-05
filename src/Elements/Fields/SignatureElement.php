@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelVueForm\Elements\Fields;
+namespace VueFormLaravel\Elements\Fields;
 
-use LaravelVueForm\Builder\FormSchemaBuilder;
+use VueFormLaravel\Builder\FormSchemaBuilder;
 
 class SignatureElement extends FormSchemaBuilder
 {

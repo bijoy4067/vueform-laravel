@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelVueForm\Elements\Static;
+namespace VueFormLaravel\Elements\Static;
 
-use LaravelVueForm\Builder\FormSchemaBuilder;
+use VueFormLaravel\Builder\FormSchemaBuilder;
 
 class ButtonElement extends FormSchemaBuilder
 {

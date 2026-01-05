@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelVueForm\Elements\Tabs;
+namespace VueFormLaravel\Elements\Tabs;
 
-use LaravelVueForm\Builder\FormSchemaBuilder;
+use VueFormLaravel\Builder\FormSchemaBuilder;
 
 class FormTabsElement extends FormSchemaBuilder
 {

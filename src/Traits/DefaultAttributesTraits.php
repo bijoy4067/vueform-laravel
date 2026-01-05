@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelVueForm\Traits;
+namespace VueFormLaravel\Traits;
 
 
 trait DefaultAttributesTraits

@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelVueForm\Elements\Structure;
+namespace VueFormLaravel\Elements\Structure;
 
-use LaravelVueForm\Builder\FormSchemaBuilder;
+use VueFormLaravel\Builder\FormSchemaBuilder;
 
 class GroupElement extends FormSchemaBuilder
 {
@@ -227,8 +227,8 @@ class GroupElement extends FormSchemaBuilder
     // }
 
     /**
-     * Build a group element dynamically with any number of columns.
-     */
+ * Build a group element dynamically with any number of columns.
+ */
     // protected static function makeRowWithColumns(array $data, int $columnsCount = 1)
     // {
     //     $element = new static();

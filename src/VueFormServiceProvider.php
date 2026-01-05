@@ -1,9 +1,9 @@
 <?php
 
-namespace LaravelVueForm;
+namespace VueFormLaravel;
 
 use Illuminate\Support\ServiceProvider;
-use LaravelVueForm\Commands\MakeFormClass;
+use VueFormLaravel\Commands\MakeFormClass;
 
 class VueFormServiceProvider extends ServiceProvider
 {

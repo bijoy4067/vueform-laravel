@@ -5,10 +5,10 @@
 ## 🧱 Import Class
 
 ```php
-use LaravelVueForm\Abstracts\VueFormBuilder;
-use LaravelVueForm\Elements\Fields\TextElement;
-use LaravelVueForm\Elements\Tabs\FormLanguage;
-use LaravelVueForm\Elements\Vueform;
+use VueFormLaravel\Abstracts\VueFormBuilder;
+use VueFormLaravel\Elements\Fields\TextElement;
+use VueFormLaravel\Elements\Tabs\FormLanguage;
+use VueFormLaravel\Elements\Vueform;
 ```
 
 ---
