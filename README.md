@@ -1,4 +1,4 @@
-[![Vueform Laravel](https://raw.githubusercontent.com/bijoy4067/vueform-laravel/refs/heads/main/.github/assets/logo.png?token=GHSAT0AAAAAADOCXVS76EVJL563UDY4IQ2G2J7KWCQ)](https://vueform.com?cid=vueform)
+[![Vueform Laravel](https://vueform-laravel.vercel.app/assets/images/logo.png)](https://vueform.com?cid=vueform)
 
 # VueForm Laravel Form Builder
 
@@ -644,7 +644,6 @@ This package is open-sourced software licensed under the [MIT license](LICENSE).
 - **Issues**: [GitHub Issues](https://github.com/bijoy4067/vueform-laravel/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/bijoy4067/vueform-laravel/discussions)
 - **Email**: vueformlaravel@gmail.com
-
 
 ---
 
