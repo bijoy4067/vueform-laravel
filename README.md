@@ -1,6 +1,6 @@
 [![Vueform Laravel](https://raw.githubusercontent.com/bijoy4067/vueform-laravel/refs/heads/main/.github/assets/logo.png?token=GHSAT0AAAAAADOCXVS76EVJL563UDY4IQ2G2J7KWCQ)](https://vueform.com?cid=vueform)
 
-# VueForm Laravel - Server-Side Form Builder for Laravel & Vue 3
+# VueForm Laravel Form Builder
 
 [![Latest Version](https://img.shields.io/packagist/v/bijoy4067/vueform-laravel)](https://packagist.org/packages/bijoy4067/vueform-laravel)
 [![License](https://img.shields.io/packagist/l/bijoy4067/vueform-laravel)](LICENSE)
@@ -208,7 +208,7 @@ class ContactController extends Controller
 @section('content')
     <div class="container">
         <h1>Contact Us</h1>
-        {!! $contactForm->build() !!}
+        {!! $contactForm->render() !!}
     </div>
 @endsection
 ```
@@ -353,7 +353,7 @@ public function create()
 
 ```php
 <!-- View -->
-{!! $userForm->build() !!}
+{!! $userForm->render() !!}
 ```
 
 ### Method 2: Direct Instantiation
@@ -362,7 +362,7 @@ public function create()
 
 ```php
 <!-- Anywhere in any Blade file -->
-{!! (new \App\VueForm\NewsletterForm())->build() !!}
+{!! (new \App\VueForm\NewsletterForm())->render() !!}
 ```
 
 ---

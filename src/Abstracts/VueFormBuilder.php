@@ -126,13 +126,13 @@ abstract class VueFormBuilder
     }
 
     /**
-     * Builds the final form output.
+     * Renders the final form output.
      *
      * Modes:
      * - 'html'  → rendered Vue component
      * - 'array' → raw schema data
      */
-    public function build($response = 'html'): string|array
+    public function render($response = 'html'): string|array
     {
         $allowedTypes = [
             Vueform::class,
