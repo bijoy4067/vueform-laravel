@@ -1,4 +1,4 @@
-# TextElement
+# TextElement 
 
 A comprehensive form demonstrating various text input types including text, number, email, password, and URL fields with conditional rendering support. <a href="https://vueform.com/reference/text-element" target="_blank">Documentation</a>
 
@@ -61,57 +61,57 @@ class TextElementForm extends VueFormBuilder
     }
 }
 ```
-
 ---
 
 ## ⚙️ Allowed Attributes
 
-| Name            | Data Type                          | Default   | Example                                        |
-| --------------- | ---------------------------------- | --------- | ---------------------------------------------- | ---------------------------------------- |
-| addClass        | `array\|object\|string\|function`  | null      | `TextElement::name("name")->addClass()`        |
-| addClasses      | `object\|function`                 | {}        | `TextElement::name("name")->addClasses()`      |
-| addons          | `object`                           | {}        | `TextElement::name("name")->addons()`          |
-| after           | `object\|string\|number`           | null      | `TextElement::name("name")->after()`           |
-| attrs           | `object`                           | {}        | `TextElement::name("name")->attrs()`           |
-| autocomplete    | `string\|number`                   | null      | `TextElement::name("name")->autocomplete()`    |
-| before          | `object\|string\|number`           | null      | `TextElement::name("name")->before()`          |
-| between         | `object\|string\|number`           | null      | `TextElement::name("name")->between()`         |
-| columns         | `object\|string\|number`           | null      | `TextElement::name("name")->columns()`         |
-| conditions      | `array`                            | []        | `TextElement::name("name")->conditions()`      |
-| debounce        | `number`                           | null      | `TextElement::name("name")->debounce()`        |
-| default         | `string\|number\|object`           | null      | `TextElement::name("name")->default()`         |
-| description     | `string\|object`                   | null      | `TextElement::name("name")->description()`     |
-| disabled        | `boolean\|function\|array\|object` | false     | `TextElement::name("name")->disabled()`        |
-| displayErrors   | `boolean`                          | true      | `TextElement::name("name")->displayErrors()`   |
-| expression      | `string\|object`                   | undefined | `TextElement::name("name")->expression()`      |
-| fieldName       | `string\|object`                   | name      | label                                          | `TextElement::name("name")->fieldName()` |
-| floating        | `string\|boolean\|object`          | null      | `TextElement::name("name")->floating()`        |
-| forceNumbers    | `boolean`                          | null      | `TextElement::name("name")->forceNumbers()`    |
-| formatData      | `function`                         | null      | `TextElement::name("name")->formatData()`      |
-| formatLoad      | `function`                         | null      | `TextElement::name("name")->formatLoad()`      |
-| id              | `string`                           | null      | `TextElement::name("name")->id()`              |
-| info            | `string\|object`                   | null      | `TextElement::name("name")->info()`            |
-| infoPosition    | `string`                           | right     | `TextElement::name("name")->infoPosition()`    |
-| inline          | `boolean`                          | false     | `TextElement::name("name")->inline()`          |
-| inputType       | `string`                           | text      | `TextElement::name("name")->inputType()`       |
-| label           | `string\|object\|function`         | null      | `TextElement::name("name")->label()`           |
-| loading         | `boolean`                          | false     | `TextElement::name("name")->loading()`         |
-| mask            | `string\|object\|array\|function`  | undefined | `TextElement::name("name")->mask()`            |
-| messages        | `object`                           | {}        | `TextElement::name("name")->messages()`        |
-| name            | `string\|number`                   | undefined | `TextElement::name("name")->name()`            |
-| overrideClass   | `array\|object\|string\|function`  | null      | `TextElement::name("name")->overrideClass()`   |
-| overrideClasses | `object\|function`                 | {}        | `TextElement::name("name")->overrideClasses()` |
-| placeholder     | `string\|object`                   | null      | `TextElement::name("name")->placeholder()`     |
-| presets         | `array`                            | []        | `TextElement::name("name")->presets()`         |
-| readonly        | `boolean\|function\|array\|object` | false     | `TextElement::name("name")->readonly()`        |
-| removeClass     | `array\|object\|function`          | null      | `TextElement::name("name")->removeClass()`     |
-| removeClasses   | `object\|function`                 | {}        | `TextElement::name("name")->removeClasses()`   |
-| replaceClass    | `object\|function`                 | null      | `TextElement::name("name")->replaceClass()`    |
-| replaceClasses  | `object\|function`                 | {}        | `TextElement::name("name")->replaceClasses()`  |
-| rules           | `array\|string\|object`            | null      | `TextElement::name("name")->rules()`           |
-| size            | `string`                           | undefined | `TextElement::name("name")->size()`            |
-| slots           | `object`                           | {}        | `TextElement::name("name")->slots()`           |
-| submit          | `boolean`                          | true      | `TextElement::name("name")->submit()`          |
-| templates       | `object`                           | {}        | `TextElement::name("name")->templates()`       |
-| view            | `string`                           | undefined | `TextElement::name("name")->view()`            |
-| views           | `object`                           | {}        | `TextElement::name("name")->views()`           |
+| Name | Data Type | Default | Example |
+| ---- | ---- | ---- | ---- |
+| addClass | `array\|object\|string\|function` | null | `TextElement::name("name")->addClass()` |
+| addClasses | `object\|function` | {} | `TextElement::name("name")->addClasses()` |
+| addons | `object` | {} | `TextElement::name("name")->addons()` |
+| after | `object\|string\|number` | null | `TextElement::name("name")->after()` |
+| attrs | `object` | {} | `TextElement::name("name")->attrs()` |
+| autocomplete | `string\|number` | null | `TextElement::name("name")->autocomplete()` |
+| before | `object\|string\|number` | null | `TextElement::name("name")->before()` |
+| between | `object\|string\|number` | null | `TextElement::name("name")->between()` |
+| columns | `object\|string\|number` | null | `TextElement::name("name")->columns()` |
+| conditions | `array` | [] | `TextElement::name("name")->conditions()` |
+| debounce | `number` | null | `TextElement::name("name")->debounce()` |
+| default | `string\|number\|object` | null | `TextElement::name("name")->default()` |
+| description | `string\|object` | null | `TextElement::name("name")->description()` |
+| disabled | `boolean\|function\|array\|object` | false | `TextElement::name("name")->disabled()` |
+| displayErrors | `boolean` | true | `TextElement::name("name")->displayErrors()` |
+| expression | `string\|object` | undefined | `TextElement::name("name")->expression()` |
+| fieldName | `string\|object` | name|label | `TextElement::name("name")->fieldName()` |
+| floating | `string\|boolean\|object` | null | `TextElement::name("name")->floating()` |
+| forceNumbers | `boolean` | null | `TextElement::name("name")->forceNumbers()` |
+| formatData | `function` | null | `TextElement::name("name")->formatData()` |
+| formatLoad | `function` | null | `TextElement::name("name")->formatLoad()` |
+| id | `string` | null | `TextElement::name("name")->id()` |
+| info | `string\|object` | null | `TextElement::name("name")->info()` |
+| infoPosition | `string` | right | `TextElement::name("name")->infoPosition()` |
+| inline | `boolean` | false | `TextElement::name("name")->inline()` |
+| inputType | `string` | text | `TextElement::name("name")->inputType()` |
+| label | `string\|object\|function` | null | `TextElement::name("name")->label()` |
+| loading | `boolean` | false | `TextElement::name("name")->loading()` |
+| mask | `string\|object\|array\|function` | undefined | `TextElement::name("name")->mask()` |
+| messages | `object` | {} | `TextElement::name("name")->messages()` |
+| name | `string\|number` | undefined | `TextElement::name("name")->name()` |
+| overrideClass | `array\|object\|string\|function` | null | `TextElement::name("name")->overrideClass()` |
+| overrideClasses | `object\|function` | {} | `TextElement::name("name")->overrideClasses()` |
+| placeholder | `string\|object` | null | `TextElement::name("name")->placeholder()` |
+| presets | `array` | [] | `TextElement::name("name")->presets()` |
+| readonly | `boolean\|function\|array\|object` | false | `TextElement::name("name")->readonly()` |
+| removeClass | `array\|object\|function` | null | `TextElement::name("name")->removeClass()` |
+| removeClasses | `object\|function` | {} | `TextElement::name("name")->removeClasses()` |
+| replaceClass | `object\|function` | null | `TextElement::name("name")->replaceClass()` |
+| replaceClasses | `object\|function` | {} | `TextElement::name("name")->replaceClasses()` |
+| rules | `array\|string\|object` | null | `TextElement::name("name")->rules()` |
+| size | `string` | undefined | `TextElement::name("name")->size()` |
+| slots | `object` | {} | `TextElement::name("name")->slots()` |
+| submit | `boolean` | true | `TextElement::name("name")->submit()` |
+| templates | `object` | {} | `TextElement::name("name")->templates()` |
+| view | `string` | undefined | `TextElement::name("name")->view()` |
+| views | `object` | {} | `TextElement::name("name")->views()` |
+
