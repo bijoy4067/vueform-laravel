@@ -1,6 +1,6 @@
 {
   "name": "bijoy4067/vueform-laravel",
-  "description": "Laraform Community Edition (Laravel)",
+  "description": "VueForm Laravel is a server-side form builder package for Laravel that allows developers to create and manage forms using Vue 3 components.",
   "version": "1.2.2",
   "type": "library",
   "keywords": [
@@ -9,7 +9,7 @@
     "builder",
     "generator"
   ],
-  "homepage": "https://laraform.io",
+  "homepage": "https://vueform-laravel.vercel.app",
   "license": "MIT",
   "authors": [
     {
@@ -19,7 +19,7 @@
   ],
   "support": {
     "issues": "https://github.com/bijoy4067/laravel-vueform/issues",
-    "docs": "https://laraform.io/docs"
+    "docs": "https://vueform-laravel.vercel.app/docs"
   },
   "require": {
     "php": "^8.2"
