@@ -7,14 +7,14 @@ namespace Composer\Autoload;
 class ComposerStaticInitbbf9b9efa026c41dce90a797a77e5438
 {
     public static $prefixLengthsPsr4 = array (
-        'L' => 
+        'V' => 
         array (
-            'LaravelVueForm\\' => 15,
+            'VueFormLaravel\\' => 15,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'LaravelVueForm\\' => 
+        'VueFormLaravel\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

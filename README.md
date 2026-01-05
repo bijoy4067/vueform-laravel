@@ -108,7 +108,7 @@ Add the following to your main Blade layout's `<head>` section (typically `resou
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Load VueForm Laravel Assets (CSS + JS) -->
-    {{ LaravelVueForm\Abstracts\VueFormBuilder::loadAssets() }}
+    {{ VueFormLaravel\Abstracts\VueFormBuilder::loadAssets() }}
 
     <!-- Your other head elements -->
 </head>
@@ -573,7 +573,7 @@ public function buildForm()
 **Check**: Did you add `loadAssets()` to your layout?
 
 ```php
-{{ LaravelVueForm\Abstracts\VueFormBuilder::loadAssets() }}
+{{ VueFormLaravel\Abstracts\VueFormBuilder::loadAssets() }}
 ```
 
 ### CSRF Token Errors

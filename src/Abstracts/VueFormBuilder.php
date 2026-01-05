@@ -57,7 +57,7 @@ abstract class VueFormBuilder
     /**
      * Developers define their form structure here.
      * Must return a Form object or compatible structure.
-     * @return \LaravelVueForm\Elements\Vueform
+     * @return \VueFormLaravel\Elements\Vueform
      */
     abstract protected function buildForm();
 
