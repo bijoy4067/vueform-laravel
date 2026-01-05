@@ -1,4 +1,4 @@
-[![Vueform Laravel](https://vueform-laravel.vercel.app/assets/images/logo.png)](https://vueform.com?cid=vueform)
+[![Vueform Laravel](https://vueform-laravel.vercel.app/assets/images/logo.png)](https://vueform-laravel.vercel.app/)
 
 # VueForm Laravel Form Builder
 
