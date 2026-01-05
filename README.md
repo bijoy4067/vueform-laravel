@@ -643,7 +643,8 @@ This package is open-sourced software licensed under the [MIT license](LICENSE).
 
 - **Issues**: [GitHub Issues](https://github.com/bijoy4067/vueform-laravel/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/bijoy4067/vueform-laravel/discussions)
-- **Email**: support@example.com
+- **Email**: vueformlaravel@gmail.com
+
 
 ---
 
