@@ -190,8 +190,19 @@ protected function buildForm()
         ->schema([
             ButtonElement::submitButton()
                 ->event([
-                    'click' => 'handleSubmit'
+                    'click' => 'handleSubmit' // js function name
                 ]),
+            TagsElement::name('rating')
+                    ->type('tags')
+                    ->items([
+                        ['value' => 1, 'label' => 'Category 1', 'color' => 'red', 'name' => 'foo'],
+                        ['value' => 2, 'label' => 'Category 2', 'color' => 'red', 'name' => 'foo'],
+                        ['value' => 3, 'label' => 'Category 3', 'color' => 'red', 'name' => 'foo']
+                    ])
+                    ->max(5)
+                    ->events([
+                        'select' => 'handleSelect', // pass option and el$ to js function
+                    ]),
         ]);
 }
 ```
@@ -212,6 +223,9 @@ Example handler:
 function handleSubmit() {
   alert("Submit button clicked!");
 }
+function handleSelect(option, el$) {
+  alert("selected option value are: " + option);
+}
 ```
 
 ### Done
@@ -219,5 +233,6 @@ function handleSubmit() {
 After completing both steps, your VueForm buttons will be able to trigger custom JavaScript logic without additional configuration.
 
 [![Vueform Event Handling](https://vueform-laravel.vercel.app/assets/images/event.png)](https://vueform-laravel.vercel.app/docs/index.html#event_handling)
+[![Vueform Event Handling With Parameter](https://vueform-laravel.vercel.app/assets/images/event-pm.png)](https://vueform-laravel.vercel.app/docs/index.html#event_handling)
 
 ---

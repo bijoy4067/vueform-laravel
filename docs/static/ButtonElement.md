@@ -11,6 +11,7 @@ A minimal example demonstrating the ButtonElement component within Laravel VueFo
 
 ```php
 use VueFormLaravel\Abstracts\VueFormBuilder;
+use VueFormLaravel\Elements\Fields\TagsElement;
 use VueFormLaravel\Elements\Static\ButtonElement;
 use VueFormLaravel\Elements\Vueform;
 ```
@@ -26,9 +27,20 @@ class ButtonElementForm extends VueFormBuilder
     {
         return Vueform::build()
             ->schema([
-                ButtonElement::submitButton()
+                // ButtonElement::submitButton()
+                //     ->events([
+                //         'click' => 'handleSubmit'
+                //     ]),
+                TagsElement::name('rating')
+                    ->type('tags')
+                    ->items([
+                        ['value' => 'category_1', 'label' => 'Category 1', 'color' => 'red', 'name' => 'foo'],
+                        ['value' => 'category_2', 'label' => 'Category 2', 'color' => 'red', 'name' => 'foo'],
+                        ['value' => 'category_3', 'label' => 'Category 3', 'color' => 'red', 'name' => 'foo']
+                    ])
+                    ->max(5)
                     ->events([
-                        'click' => 'handleSubmit'
+                        'select' => 'handleSelect', // pass option and el$ to js function
                     ]),
             ]);
     }
