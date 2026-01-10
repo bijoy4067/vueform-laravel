@@ -53,7 +53,7 @@ class TagsElementForm extends VueFormBuilder
                             ['value' => 3, 'label' => 'Category 3', 'color' => 'red', 'name' => 'foo']
                         ])
                         ->max(5)
-                        ->event([
+                        ->events([
                             'select' => 'aaaa',
                         ])
                         ->slots([
@@ -89,7 +89,7 @@ class TagsElementForm extends VueFormBuilder
                         ->items('http://localhost:8000/tags/json')
                         ->max(5)
                         ->rules('required')
-                        ->event([
+                        ->events([
                             'select' => 'aaaa',
                         ]),
                     TextElement::name('search'),
@@ -115,7 +115,7 @@ class TagsElementForm extends VueFormBuilder
                         ['value' => 3, 'label' => 'Category 3', 'color' => 'red', 'name' => 'foo']
                     ])
                     ->max(5)
-                    ->event([
+                    ->events([
                         'select' => 'aaaa',
                     ]),
                 ButtonElement::submitButton()

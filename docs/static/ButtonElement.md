@@ -27,7 +27,7 @@ class ButtonElementForm extends VueFormBuilder
         return Vueform::build()
             ->schema([
                 ButtonElement::submitButton()
-                    ->event([
+                    ->events([
                         'click' => 'handleSubmit'
                     ]),
             ]);
