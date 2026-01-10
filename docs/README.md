@@ -205,11 +205,19 @@ Next, define the handleSubmit function in:
 ```bash
 public/vueform-laravel/vueform-custom.js
 ```
+
 Example handler:
+
 ```js
 function handleSubmit() {
-    alert("Submit button clicked!");
+  alert("Submit button clicked!");
 }
 ```
+
 ### Done
+
 After completing both steps, your VueForm buttons will be able to trigger custom JavaScript logic without additional configuration.
+
+[![Vueform Event Handling](https://vueform-laravel.vercel.app/assets/images/event.png)](https://vueform-laravel.vercel.app/docs/index.html#event_handling)
+
+---

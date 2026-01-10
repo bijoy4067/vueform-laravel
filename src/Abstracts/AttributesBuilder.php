@@ -30,7 +30,7 @@ namespace VueFormLaravel\Abstracts;
  */
 class AttributesBuilder
 {
-    protected function event(array $data): static
+    protected function events(array $data): static
     {
         // Each array item represents a Vue event
         // Example: ['click' => 'handleClick']
