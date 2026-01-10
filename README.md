@@ -7,7 +7,7 @@
 [![PHP Version](https://img.shields.io/packagist/php-v/bijoy4067/vueform-laravel)](https://packagist.org/packages/bijoy4067/vueform-laravel)
 
 **Build powerful, production-ready Laravel forms with Vue 3 without writing JavaScript.** 
-VueForm Laravel is a comprehensive PHP form builder that seamlessly integrates VueForm's reactive UI components with Laravel's robust backend validation and routing system. Define your forms entirely in PHP, leverage server-side validation, and render beautiful Material Design forms instantly in your Blade templates [Documentation](https://vueform-laravel.vercel.app/docs/).
+VueForm Laravel is a comprehensive PHP form builder that seamlessly integrates VueForm's reactive UI components with Laravel's robust backend validation and routing system. Define your forms entirely in PHP, leverage server-side validation, and render beautiful Material Design forms instantly in your Blade templates [Documentation](https://vueform-laravel.vercel.app/).
 
 ---
 
@@ -35,7 +35,6 @@ VueForm Laravel is a comprehensive PHP form builder that seamlessly integrates V
 
 - **Reusable Form** - Anywhere in your `.blade.php` file you can use this form
 - **Laravel Validation Integration** - Use familiar validation rules directly in form definitions
-- **Eloquent Model Binding** - Auto-populate forms from Eloquent models
 - **Dynamic Routing** - Automatic endpoint generation based on Laravel routes
 
 ### Form Element Types

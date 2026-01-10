@@ -1,8 +1,9 @@
 # VueForm Laravel Backend — Examples
 
-This file collects focused examples (no installation instructions) drawn from the example builders in app/VueForm/*.
+This file collects focused examples (no installation instructions) drawn from the example builders in app/VueForm/\*.
 
 Files referenced:
+
 - app/VueForm/Fields/TextElementForm.php  
   https://github.com/bijoy4067/vueform-laravel-backend/blob/main/app/VueForm/Fields/TextElementForm.php
 - app/VueForm/Fields/TagsElementForm.php  
@@ -21,9 +22,11 @@ Files referenced:
 ---
 
 ## Text input example
+
 Demonstrates text, number, email, password and url fields, defaults, conditional visibility and an addon slot.
 
 Key excerpt:
+
 ```php
 Vueform::name('text-element-form')
     ->default([
@@ -49,6 +52,7 @@ Vueform::name('text-element-form')
 ```
 
 Example form handler (validation + JSON response):
+
 ```php
 public static function formData($request)
 {
@@ -63,9 +67,11 @@ public static function formData($request)
 ---
 
 ## Tags (multi-select) example
+
 Shows tags with custom slots, static items or remote items, limits and events.
 
 Key excerpt:
+
 ```php
 TagsElement::name('category')
     ->type('tags')
@@ -88,6 +94,7 @@ TagsElement::name('category')
 ```
 
 Remote items example:
+
 ```php
 TagsElement::name('tags')
     ->items('http://localhost:8000/tags/json')
@@ -97,9 +104,11 @@ TagsElement::name('tags')
 ---
 
 ## Group & List structure examples
+
 Arrange fields into rows/columns and create repeatable list items.
 
 Group example (row with columns, conditional show):
+
 ```php
 GroupElement::rowWith4Columns([
     TextElement::name('first_name'),
@@ -110,6 +119,7 @@ GroupElement::rowWith4Columns([
 ```
 
 List (repeatable schema) example:
+
 ```php
 ListElement::schema([
     TextElement::name('item_name')->label('Item Name')->rules('required'),
@@ -125,7 +135,9 @@ ListElement::schema([
 ---
 
 ## Phone element example
+
 Phone input with country include and unmask option:
+
 ```php
 PhoneElement::name('phone')
     ->include(['bd'])
@@ -135,9 +147,11 @@ PhoneElement::name('phone')
 ---
 
 ## Static elements & submit button
+
 Static content helpers (text, headers, hr, image) and a submit button helper.
 
 Static elements:
+
 ```php
 StaticElement::text('asdf'),
 StaticElement::h1('asdf'),
@@ -146,6 +160,7 @@ StaticElement::img(src: 'https://vueform.com/images/logo.svg', height: 40, width
 ```
 
 Submit button:
+
 ```php
 ButtonElement::submitButton()
 ```
@@ -153,6 +168,48 @@ ButtonElement::submitButton()
 ---
 
 ## Minimal usage notes
+
 - Each example builder returns a configured Vueform instance inside buildForm().
 - Many examples include a static formData($request) method to validate request input and return JSON — place your submission logic there.
 - Use conditions() to show/hide elements based on other field values, and items() for static or remote options.
+
+---
+
+## Event Handling
+
+VueForm allows you to attach JavaScript event handlers to form elements and trigger custom logic on the frontend.
+
+### Step 1 — Attach Event to Element
+
+Inside your form class, define an event using the `->event()` method. For example, attaching a `click` event to a Submit button:
+
+```php
+protected function buildForm()
+{
+    return Vueform::build()
+        ->schema([
+            ButtonElement::submitButton()
+                ->event([
+                    'click' => 'handleSubmit'
+                ]),
+        ]);
+}
+```
+
+Here, the event key click represents the DOM event, and the value handleSubmit is the JavaScript function name that will be executed.
+
+### Step 2 — Define the JavaScript Handler
+
+Next, define the handleSubmit function in:
+
+```bash
+public/vueform-laravel/vueform-custom.js
+```
+Example handler:
+```js
+function handleSubmit() {
+    alert("Submit button clicked!");
+}
+```
+### Done
+After completing both steps, your VueForm buttons will be able to trigger custom JavaScript logic without additional configuration.
