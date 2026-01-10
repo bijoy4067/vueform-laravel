@@ -6,25 +6,8 @@
 [![License](https://img.shields.io/packagist/l/bijoy4067/vueform-laravel)](LICENSE)
 [![PHP Version](https://img.shields.io/packagist/php-v/bijoy4067/vueform-laravel)](https://packagist.org/packages/bijoy4067/vueform-laravel)
 
-**Build powerful, production-ready Laravel forms with Vue 3 without writing JavaScript.** VueForm Laravel is a comprehensive PHP form builder that seamlessly integrates VueForm's reactive UI components with Laravel's robust backend validation and routing system. Define your forms entirely in PHP, leverage server-side validation, and render beautiful Material Design forms instantly in your Blade templates.
-
-## 🎯 Why VueForm Laravel?
-
-### Developer-First Form Building
-
-- **Zero JavaScript Required** - Build complex forms using only PHP classes
-- **Server-Side Schema Generation** - Forms are defined in Laravel, validated in Laravel, and rendered automatically
-- **Material Design UI** - Pre-built, customizable Material Theme components included
-- **No Frontend Build Process** - All CSS and JS assets are pre-compiled and bundled
-
-### Enterprise-Ready Features
-
-- **Single Source of Truth** - Form schema, validation rules, and business logic live together in PHP
-- **Type-Safe Form Builders** - Leverage PHP 8.0+ type hints and IDE autocomplete
-- **Reusable Form Components** - Create form libraries shared across your application
-- **AJAX-Ready** - Built-in async submission with Laravel CSRF protection
-- **Conditional Logic** - Show/hide fields based on user input without writing JS
-- **Multi-Step Forms** - Build wizards and complex form flows declaratively
+**Build powerful, production-ready Laravel forms with Vue 3 without writing JavaScript.** 
+VueForm Laravel is a comprehensive PHP form builder that seamlessly integrates VueForm's reactive UI components with Laravel's robust backend validation and routing system. Define your forms entirely in PHP, leverage server-side validation, and render beautiful Material Design forms instantly in your Blade templates [Documentation](https://vueform-laravel.vercel.app/docs/).
 
 ---
 
