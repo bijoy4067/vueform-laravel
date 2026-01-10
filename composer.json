@@ -1,7 +1,6 @@
 {
   "name": "bijoy4067/vueform-laravel",
   "description": "VueForm Laravel is a server-side form builder package for Laravel that allows developers to create and manage forms using Vue 3 components.",
-  "version": "1.2.2",
   "type": "library",
   "keywords": [
     "laravel",
@@ -18,20 +17,12 @@
     }
   ],
   "support": {
-    "issues": "https://github.com/bijoy4067/laravel-vueform/issues",
+    "issues": "https://github.com/bijoy4067/vueform-laravel/issues",
     "docs": "https://vueform-laravel.vercel.app/docs"
   },
   "require": {
-    "php": "^8.2"
-  },
-  "require-dev": {
-    "fakerphp/faker": "^1.23",
-    "laravel/pail": "^1.2.2",
-    "laravel/pint": "^1.24",
-    "laravel/sail": "^1.41",
-    "mockery/mockery": "^1.6",
-    "nunomaduro/collision": "^8.6",
-    "phpunit/phpunit": "^11.5.3"
+    "php": "^8.2",
+    "laravel/framework": "^10.0|^11.0"
   },
   "autoload": {
     "psr-4": {
@@ -47,16 +38,5 @@
         "VueForm": "VueFormLaravel\\VueForm"
       }
     }
-  },
-  "scripts": {
-    "post-install-cmd": [
-      "@php artisan vendor:publish --provider=\"VueFormLaravel\\VueFormServiceProvider\" --force",
-      "VueFormLaravel\\ComposerScripts::postInstall"
-    ],
-    "post-update-cmd": [
-      "@php artisan vendor:publish --provider=\"VueFormLaravel\\VueFormServiceProvider\" --force",
-      "VueFormLaravel\\ComposerScripts::postInstall",
-      "VueFormLaravel\\ComposerScripts::postUpdate"
-    ]
   }
 }
