@@ -32,7 +32,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "VueFormLaravel\\VueFormServiceProvider"
+        "VueFormLaravel\\VueFormLaravelServiceProvider"
       ],
       "aliases": {
         "VueForm": "VueFormLaravel\\VueForm"
