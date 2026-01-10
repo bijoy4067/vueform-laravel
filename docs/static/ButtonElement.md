@@ -34,13 +34,23 @@ class ButtonElementForm extends VueFormBuilder
                 TagsElement::name('rating')
                     ->type('tags')
                     ->items([
-                        ['value' => 'category_1', 'label' => 'Category 1', 'color' => 'red', 'name' => 'foo'],
-                        ['value' => 'category_2', 'label' => 'Category 2', 'color' => 'red', 'name' => 'foo'],
-                        ['value' => 'category_3', 'label' => 'Category 3', 'color' => 'red', 'name' => 'foo']
+                        ['value' => 'user1', 'label' => 'Bijoy karmokar', 'image' => 'http://127.0.0.1:8000/assets/images/user-1.jpg'],
+                        ['value' => 'user2', 'label' => 'User Two', 'image' => 'http://127.0.0.1:8000/assets/images/user-2.jpg'],
+                        ['value' => 'user3', 'label' => 'User Three', 'image' => 'http://127.0.0.1:8000/assets/images/user-2.jpg']
                     ])
-                    ->max(5)
-                    ->events([
-                        'select' => 'handleSelect', // pass option and el$ to js function
+                    ->slots([
+                        'tag' => '<span
+                        >
+                         <img class="multiselect-tag-image" src="{{ option.image }}" alt="{{ option.label }}" style="width:20px; border-radius:50%; margin-right:5px; vertical-align:middle;">
+                            {{ option.label }}
+                            <span v-if="!{{ disabled }}" class="multiselect-tag-remove" id="{{ handleTagRemove(option, $event) }}">
+                                <span class="multiselect-tag-remove-icon fa fa-times">
+                                    <!-- <i class="fa fa-times text-light"></i> -->
+                                </span>
+                            </span>
+                        </span>',
+                        'info' => '<span>Select Category</span>',
+                        'before' => '<h1 style="color: blue;"> Please select categories</h1>',
                     ]),
             ]);
     }

@@ -58,26 +58,26 @@ class TagsElementForm extends VueFormBuilder
                         ])
                         ->slots([
                             'tag' => '<span
-                            class="badge w-auto"
-                            style="background-color: {{ option.color}};
-                            color:{{ option.backgroundColor }};
-                            padding: 5px 10px;
-                            border-radius: 4px;
-                            font-size: 14px;
-                            font-weight: 500;
-                            align-items: center;
-                            display: flex;
-                            margin: 4px 7px;"
-                        >
-                            {{ option.label }}
-                            <span v-if="!{{ disabled }}" class="multiselect-tag-remove" id="{{ handleTagRemove(option, $event) }}">
-                                <span class="multiselect-tag-remove-icon fa fa-times">
-                                    <!-- <i class="fa fa-times text-light"></i> -->
-                                </span>
-                            </span>
-                        </span>',
+                                    class="badge w-auto"
+                                    style="background-color: {{ option.color}};
+                                    color:{{ option.backgroundColor }};
+                                    padding: 5px 10px;
+                                    border-radius: 4px;
+                                    font-size: 14px;
+                                    font-weight: 500;
+                                    align-items: center;
+                                    display: flex;
+                                    margin: 4px 7px;"
+                                >
+                                    {{ option.label }}
+                                    <span v-if="!{{ disabled }}" class="multiselect-tag-remove" id="{{ handleTagRemove(option, $event) }}">
+                                        <span class="multiselect-tag-remove-icon fa fa-times">
+                                            <!-- <i class="fa fa-times text-light"></i> -->
+                                        </span>
+                                    </span>
+                                </span>',
                             'info' => '<span>gggg ddd ddd</span>',
-                            'before' => '<h1 style="color: blue;"> Please select categories cc</h1>',
+                            'before' => '<h1 style="color: blue;"> Please select categories</h1>',
                         ]),
                     TagsElement::name('tags')
                         ->type('tags')

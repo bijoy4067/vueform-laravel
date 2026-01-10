@@ -236,3 +236,47 @@ After completing both steps, your VueForm buttons will be able to trigger custom
 [![Vueform Event Handling With Parameter](https://vueform-laravel.vercel.app/assets/images/event-pm.png)](https://vueform-laravel.vercel.app/docs/index.html#event_handling)
 
 ---
+
+## Slots
+
+VueForm allows you to customize the appearance and behavior of form elements using slots. Slots are placeholders within an element's template that can be filled with custom content.
+
+### Step 1 — Attach Slots to Element
+
+Inside your form class, define an slots using the `->slots()` method. For example, update design for `TagsElement` `tag` slot:
+
+```php
+protected function buildForm()
+{
+    return Vueform::build()
+        ->schema([
+            TagsElement::name('user')
+                ->type('tags')
+                ->items([
+                    ['value' => 'user1', 'label' => 'Bijoy karmokar', 'image' => 'http://127.0.0.1:8000/assets/images/user-1.jpg'],
+                    ['value' => 'user2', 'label' => 'User Two', 'image' => 'http://127.0.0.1:8000/assets/images/user-2.jpg'],
+                    ['value' => 'user3', 'label' => 'User Three', 'image' => 'http://127.0.0.1:8000/assets/images/user-2.jpg']
+                ])
+                ->slots([
+                    'tag' => '
+                        <span>
+                            <img class="multiselect-tag-image" src="{{ option.image }}" alt="{{ option.label }}" style="width:20px; border-radius:50%; margin-right:5px; vertical-align:middle;">
+                            {{ option.label }}
+                            <span v-if="!{{ disabled }}" class="multiselect-tag-remove" id="{{ handleTagRemove(option, $event) }}">
+                                <span class="multiselect-tag-remove-icon fa fa-times">
+                                    <!-- <i class="fa fa-times text-light"></i> -->
+                                </span>
+                            </span>
+                        </span>',
+                    'info' => '<span>Select Category</span>',
+                    'before' => '<h1 style="color: blue;"> Please select categories</h1>',
+                ]),
+        ]);
+}
+```
+
+Each element provides its own set of slots. A slot represents a template block inside that element. By supplying custom HTML to a slot, You can override and redesign that specific block. This allows to you fully control the HTML and visual structure of the element without modifying the component itself.
+
+Example Output:
+
+[![Vueform Slots](https://vueform-laravel.vercel.app/assets/images/slot-tag.png)](https://vueform-laravel.vercel.app/docs/index.html#slots)
