@@ -122,6 +122,8 @@ class MultiselectElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
+The following events <a href="https://vueform.com/reference/multiselect-element#events" target="_blank">Documentation</a> are available for this element:
+
 | Name | Parameters | Description |
 | --- | --- | --- |
 | `reset` | - {component} el$ - the element's component | Triggered when the input is resetted. |
@@ -142,3 +144,82 @@ class MultiselectElementForm extends VueFormBuilder
 | `beforeUnmount` | - {component} el$ - the element's component | Triggered in beforeUnmount (or beforeDestroy in Vue 2) hook. |
 | `unmounted` | - {component} el$ - the element's component | Triggered in unmounted (or destroyed in Vue 2) hook. |
 
+### 🔔 Example Usage of PHP
+
+```php
+MultiselectElement::name('example')
+    ->events([
+        'reset' => 'handleReset',
+        'clear' => 'handleClear',
+        'change' => 'handleChange',
+        'select' => 'handleSelect',
+        'deselect' => 'handleDeselect',
+        'search-change' => 'handleSearchChange',
+        'open' => 'handleOpen',
+        'close' => 'handleClose',
+        'paste' => 'handlePaste',
+        'beforeCreate' => 'handleBeforeCreate',
+        'created' => 'handleCreated',
+        'beforeMount' => 'handleBeforeMount',
+        'mounted' => 'handleMounted',
+        'beforeUpdate' => 'handleBeforeUpdate',
+        'updated' => 'handleUpdated',
+        'beforeUnmount' => 'handleBeforeUnmount',
+        'unmounted' => 'handleUnmounted',
+    ])
+```
+
+### 🔔 Example Usage of JavaScript
+
+```javascript
+function handleReset(el$) {
+    // Your code here
+}
+function handleClear(el$) {
+    // Your code here
+}
+function handleChange(newValue, oldValue, el$) {
+    // Your code here
+}
+function handleSelect(option, el$) {
+    // Your code here
+}
+function handleDeselect(option, el$) {
+    // Your code here
+}
+function handleSearchChange(searchQuery, el$) {
+    // Your code here
+}
+function handleOpen(el$) {
+    // Your code here
+}
+function handleClose(el$) {
+    // Your code here
+}
+function handlePaste(event, el$) {
+    // Your code here
+}
+function handleBeforeCreate(el$) {
+    // Your code here
+}
+function handleCreated(el$) {
+    // Your code here
+}
+function handleBeforeMount(el$) {
+    // Your code here
+}
+function handleMounted(el$) {
+    // Your code here
+}
+function handleBeforeUpdate(el$) {
+    // Your code here
+}
+function handleUpdated(el$) {
+    // Your code here
+}
+function handleBeforeUnmount(el$) {
+    // Your code here
+}
+function handleUnmounted(el$) {
+    // Your code here
+}

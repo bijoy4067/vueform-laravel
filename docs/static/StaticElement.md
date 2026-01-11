@@ -93,6 +93,8 @@ class StaticElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
+The following events <a href="https://vueform.com/reference/static-element#events" target="_blank">Documentation</a> are available for this element:
+
 | Name | Parameters | Description |
 | --- | --- | --- |
 | `beforeCreate` | - {component} el$ - the element's component | Triggered in beforeCreate hook. |
@@ -104,6 +106,49 @@ class StaticElementForm extends VueFormBuilder
 | `beforeUnmount` | - {component} el$ - the element's component | Triggered in beforeUnmount (or beforeDestroy in Vue 2) hook. |
 | `unmounted` | - {component} el$ - the element's component | Triggered in unmounted (or destroyed in Vue 2) hook. |
 
+### 🔔 Example Usage of PHP
+
+```php
+StaticElement::name('example')
+    ->events([
+        'beforeCreate' => 'handleBeforeCreate',
+        'created' => 'handleCreated',
+        'beforeMount' => 'handleBeforeMount',
+        'mounted' => 'handleMounted',
+        'beforeUpdate' => 'handleBeforeUpdate',
+        'updated' => 'handleUpdated',
+        'beforeUnmount' => 'handleBeforeUnmount',
+        'unmounted' => 'handleUnmounted',
+    ])
+```
+
+### 🔔 Example Usage of JavaScript
+
+```javascript
+function handleBeforeCreate(el$) {
+    // Your code here
+}
+function handleCreated(el$) {
+    // Your code here
+}
+function handleBeforeMount(el$) {
+    // Your code here
+}
+function handleMounted(el$) {
+    // Your code here
+}
+function handleBeforeUpdate(el$) {
+    // Your code here
+}
+function handleUpdated(el$) {
+    // Your code here
+}
+function handleBeforeUnmount(el$) {
+    // Your code here
+}
+function handleUnmounted(el$) {
+    // Your code here
+}
 ---
 
 ## ⚙️ Available Static Methods

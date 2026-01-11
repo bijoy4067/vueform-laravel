@@ -53,6 +53,8 @@ class HiddenElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
+The following events <a href="https://vueform.com/reference/hidden-element#events" target="_blank">Documentation</a> are available for this element:
+
 | Name | Parameters | Description |
 | --- | --- | --- |
 | `reset` | - {component} el$ - the element's component | Triggered when the input is resetted. |
@@ -67,3 +69,58 @@ class HiddenElementForm extends VueFormBuilder
 | `beforeUnmount` | - {component} el$ - the element's component | Triggered in beforeUnmount (or beforeDestroy in Vue 2) hook. |
 | `unmounted` | - {component} el$ - the element's component | Triggered in unmounted (or destroyed in Vue 2) hook. |
 
+### 🔔 Example Usage of PHP
+
+```php
+HiddenElement::name('example')
+    ->events([
+        'reset' => 'handleReset',
+        'clear' => 'handleClear',
+        'change' => 'handleChange',
+        'beforeCreate' => 'handleBeforeCreate',
+        'created' => 'handleCreated',
+        'beforeMount' => 'handleBeforeMount',
+        'mounted' => 'handleMounted',
+        'beforeUpdate' => 'handleBeforeUpdate',
+        'updated' => 'handleUpdated',
+        'beforeUnmount' => 'handleBeforeUnmount',
+        'unmounted' => 'handleUnmounted',
+    ])
+```
+
+### 🔔 Example Usage of JavaScript
+
+```javascript
+function handleReset(el$) {
+    // Your code here
+}
+function handleClear(el$) {
+    // Your code here
+}
+function handleChange(newValue, oldValue, el$) {
+    // Your code here
+}
+function handleBeforeCreate(el$) {
+    // Your code here
+}
+function handleCreated(el$) {
+    // Your code here
+}
+function handleBeforeMount(el$) {
+    // Your code here
+}
+function handleMounted(el$) {
+    // Your code here
+}
+function handleBeforeUpdate(el$) {
+    // Your code here
+}
+function handleUpdated(el$) {
+    // Your code here
+}
+function handleBeforeUnmount(el$) {
+    // Your code here
+}
+function handleUnmounted(el$) {
+    // Your code here
+}
