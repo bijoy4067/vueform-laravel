@@ -100,6 +100,27 @@ class ListElementForm extends VueFormBuilder
 
 ---
 
+## ⚡ Events
+
+| Name | Parameters | Description |
+| --- | --- | --- |
+| `reset` | - {component} el$ - the element's component | Triggered when the input is resetted. |
+| `clear` | - {component} el$ - the element's component | Triggered when the input is cleared. |
+| `change` | - {string} newValue - the new value<br>- {string} oldValue - the old value<br>- {component} el$ - the element's component | Triggered when the element's value is changed. |
+| `add` | - {number} index - the index of the added item<br>- {any} addedValue - the added value<br>- {array} newValue - the element value after the item is added<br>- {component} el$ - the element's component | Triggered when a new item is added to the list. |
+| `remove` | - {number} index - the index of the removed item<br>- {array} value - the element's value after the item is removed<br>- {component} el$ - the element's component | Triggered when an item is removed from the list. |
+| `sort` | - {array} value - the element's value after sorting<br>- {number} oldIndex - the old index of the moved element<br>- {number} newIndex - the new index of the moved element<br>- {component} el$ - the moved element's component | Triggered when items are being sorted by the user, when sort: true. |
+| `beforeCreate` | - {component} el$ - the element's component | Triggered in beforeCreate hook. |
+| `created` | - {component} el$ - the element's component | Triggered in created hook. |
+| `beforeMount` | - {component} el$ - the element's component | Triggered in beforeMount hook. |
+| `mounted` | - {component} el$ - the element's component | Triggered in mounted hook. |
+| `beforeUpdate` | - {component} el$ - the element's component | Triggered in beforeUpdate hook. |
+| `updated` | - {component} el$ - the element's component | Triggered in updated hook. |
+| `beforeUnmount` | - {component} el$ - the element's component | Triggered in beforeUnmount (or beforeDestroy in Vue 2) hook. |
+| `unmounted` | - {component} el$ - the element's component | Triggered in unmounted (or destroyed in Vue 2) hook. |
+
+---
+
 ## ⚙️ Available Static Methods
 
 | Method | Description |

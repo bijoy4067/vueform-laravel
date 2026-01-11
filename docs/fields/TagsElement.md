@@ -223,3 +223,28 @@ class TagsElementForm extends VueFormBuilder
 | view | `string` | undefined | `TagsElement::name("name")->view()` |
 | views | `object` | {} | `TagsElement::name("name")->views()` |
 
+---
+
+## ⚡ Events
+
+| Name | Parameters | Description |
+| --- | --- | --- |
+| `reset` | - {component} el$ - the element's component | Triggered when the input is resetted. |
+| `clear` | - {component} el$ - the element's component | Triggered when the value is cleared. |
+| `change` | - {string} newValue - the new value<br>- {string} oldValue - the old value<br>- {component} el$ - the element's component | Triggered when the element's value is changed. |
+| `select` | - {object} option - the selected option<br>- {component} el$ - the element's component | Triggered when an option is selected. |
+| `deselect` | - {object} option - the deselected option<br>- {component} el$ - the element's component | Triggered when an option is deselected. |
+| `search-change` | - {string|null} searchQuery - the search value<br>- {component} el$ - the element's component | Triggered when the search query changes when using search: true. |
+| `open` | - {component} el$ - the element's component | Triggered when the dropdown list is opened. |
+| `close` | - {component} el$ - the element's component | Triggered when the dropdown list is closed. |
+| `tag` | - {string} tag - the tag value<br>- {component} el$ - the element's component | Triggered when a new tag is created when using create: true. |
+| `paste` | - {Event} event - the paste Event<br>- {component} el$ - the element's component | Triggered when text is pasted to the search input when using search: true. |
+| `beforeCreate` | - {component} el$ - the element's component | Triggered in beforeCreate hook. |
+| `created` | - {component} el$ - the element's component | Triggered in created hook. |
+| `beforeMount` | - {component} el$ - the element's component | Triggered in beforeMount hook. |
+| `mounted` | - {component} el$ - the element's component | Triggered in mounted hook. |
+| `beforeUpdate` | - {component} el$ - the element's component | Triggered in beforeUpdate hook. |
+| `updated` | - {component} el$ - the element's component | Triggered in updated hook. |
+| `beforeUnmount` | - {component} el$ - the element's component | Triggered in beforeUnmount (or beforeDestroy in Vue 2) hook. |
+| `unmounted` | - {component} el$ - the element's component | Triggered in unmounted (or destroyed in Vue 2) hook. |
+
