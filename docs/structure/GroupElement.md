@@ -1,11 +1,6 @@
-# Group Element 
+# Group Element
 
-A comprehensive demonstration of using GroupElement and ListElement in Laravel VueForm. 
-      This form showcases nested column layouts, conditional field rendering, tag selection 
-      with custom templates, dynamic remote items, and mixed input types. It includes validation, 
-      slot customization, static elements like horizontal dividers, and submit button integration. 
-      Ideal for developers looking to implement advanced, structured forms with flexible layouts 
-      and complex user interactions. <a href="https://vueform.com/reference/group-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the GroupElement in VueForm Laravel to group multiple form elements together and organize them into responsive rows and columns. <a href="https://vueform.com/reference/group-element" target="_blank">Documentation</a>
 
 ---
 
@@ -198,7 +193,7 @@ class GroupElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **group element ** events <a href="https://vueform.com/reference/group-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **group element** events <a href="https://vueform.com/reference/group-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

@@ -1,6 +1,6 @@
-# EditorElement
+# Editor Element
 
-A form demonstrating usage of the EditorElement field within Laravel VueForm. <a href="https://vueform.com/reference/editor-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the EditorElement field in VueForm Laravel to add a rich text editor for formatting and submitting content in Laravel forms. <a href="https://vueform.com/reference/editor-element" target="_blank">Documentation</a>
 
 ---
 
@@ -83,7 +83,7 @@ class EditorElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **editorelement** events <a href="https://vueform.com/reference/editor-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **editor element** events <a href="https://vueform.com/reference/editor-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

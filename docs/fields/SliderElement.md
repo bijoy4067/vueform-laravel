@@ -1,6 +1,6 @@
-# SliderElement
+# Slider Element
 
-A form demonstrating usage of the SliderElement field within Laravel VueForm. <a href="https://vueform.com/reference/slider-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the SliderElement field in VueForm Laravel to allow users to select a numeric value using a range slider input. <a href="https://vueform.com/reference/slider-element" target="_blank">Documentation</a>
 
 ---
 
@@ -95,7 +95,7 @@ class SliderElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **sliderelement** events <a href="https://vueform.com/reference/slider-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **slider element** events <a href="https://vueform.com/reference/slider-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

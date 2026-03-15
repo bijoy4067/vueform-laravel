@@ -1,6 +1,6 @@
-# TextElement 
+# TText Element
 
-A comprehensive form demonstrating various text input types including text, number, email, password, and URL fields with conditional rendering support. <a href="https://vueform.com/reference/t-text-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the TTextElement field in VueForm Laravel to capture single-line text input in multiple languages within a Laravel form. <a href="https://vueform.com/reference/t-text-element" target="_blank">Documentation</a>
 
 ---
 
@@ -94,7 +94,7 @@ class TTextElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **textelement ** events <a href="https://vueform.com/reference/t-text-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **ttext element** events <a href="https://vueform.com/reference/t-text-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

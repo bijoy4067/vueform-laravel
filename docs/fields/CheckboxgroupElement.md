@@ -1,6 +1,6 @@
-# CheckboxGroupElement
+# Checkbox Group Element
 
-A form demonstrating usage of the CheckboxgroupElement field within Laravel VueForm. <a href="https://vueform.com/reference/checkboxgroup-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the CheckboxGroupElement field in VueForm Laravel to create grouped checkbox inputs for selecting multiple options within a Laravel form. <a href="https://vueform.com/reference/checkboxgroup-element" target="_blank">Documentation</a>
 
 ---
 
@@ -82,7 +82,7 @@ class CheckboxgroupElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **checkboxgroupelement** events <a href="https://vueform.com/reference/checkboxgroup-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **checkbox group element** events <a href="https://vueform.com/reference/checkboxgroup-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

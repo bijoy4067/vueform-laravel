@@ -1,6 +1,6 @@
-# TextElement 
+# Toggle Element
 
-A comprehensive form demonstrating various text input types including text, number, email, password, and URL fields with conditional rendering support. <a href="https://vueform.com/reference/toggle-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the ToggleElement field in VueForm Laravel to allow users to switch between on and off states in a Laravel form. <a href="https://vueform.com/reference/toggle-element" target="_blank">Documentation</a>
 
 ---
 
@@ -94,7 +94,7 @@ class ToggleElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **textelement ** events <a href="https://vueform.com/reference/toggle-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **toggle element** events <a href="https://vueform.com/reference/toggle-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

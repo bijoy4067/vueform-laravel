@@ -1,4 +1,6 @@
-# TTextareaElement
+# TTextarea Element
+
+A form example demonstrating how to use the TTextareaElement field in VueForm Laravel to capture multilingual multi-line text input in a Laravel form. <a href="https://vueform.com/reference/t-textarea-element" target="_blank">Documentation</a>
 
 ---
 
@@ -78,4 +80,134 @@ class TTextareaElementForm extends VueFormBuilder
 | templates | `object` | {} | `TTextareaElement::name("name")->templates()` |
 | view | `string` | undefined | `TTextareaElement::name("name")->view()` |
 | views | `object` | {} | `TTextareaElement::name("name")->views()` |
+
+---
+
+## ⚡ Events
+
+You can define custom **ttextarea element** events <a href="https://vueform.com/reference/t-textarea-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+
+Each event value refers to a JavaScript function name.
+
+These functions must be defined inside:
+
+```javascript
+public/vueform-laravel/vueform-custom.js
+```
+
+This allows you to extend or override default behaviors for your generated VueForm components
+
+| Name | Parameters | Description |
+| --- | --- | --- |
+| `reset` | - {component} el$ - the element's component | Triggered when the input is resetted. |
+| `clear` | - {component} el$ - the element's component | Triggered when the input is cleared. |
+| `change` | - {string} newValue - the new value<br>- {string} oldValue - the old value<br>- {component} el$ - the element's component | Triggered when the element's value is changed. |
+| `blur` | - {component} el$ - the element's component | Triggered when the input is blurred. |
+| `focus` | - {component} el$ - the element's component | Triggered when the input is focused. |
+| `keydown` | - {Event} Event - the Event object<br>- {component} el$ - the element's component | Triggered on keydown. |
+| `keyup` | - {Event} Event - the Event object<br>- {component} el$ - the element's component | Triggered on keyup. |
+| `keypress` | - {Event} Event - the Event object<br>- {component} el$ - the element's component | Triggered on keypress. |
+| `beforeCreate` | - {component} el$ - the element's component | Triggered in beforeCreate hook. |
+| `created` | - {component} el$ - the element's component | Triggered in created hook. |
+| `beforeMount` | - {component} el$ - the element's component | Triggered in beforeMount hook. |
+| `mounted` | - {component} el$ - the element's component | Triggered in mounted hook. |
+| `beforeUpdate` | - {component} el$ - the element's component | Triggered in beforeUpdate hook. |
+| `updated` | - {component} el$ - the element's component | Triggered in updated hook. |
+| `beforeUnmount` | - {component} el$ - the element's component | Triggered in beforeUnmount (or beforeDestroy in Vue 2) hook. |
+| `unmounted` | - {component} el$ - the element's component | Triggered in unmounted (or destroyed in Vue 2) hook. |
+
+### 🔔 Example Usage of event (PHP)
+
+```php
+TTextareaElement::name('example')
+    ->events([
+        'reset' => 'handleReset',
+        'clear' => 'handleClear',
+        'change' => 'handleChange',
+        'blur' => 'handleBlur',
+        'focus' => 'handleFocus',
+        'keydown' => 'handleKeydown',
+        'keyup' => 'handleKeyup',
+        'keypress' => 'handleKeypress',
+        'beforeCreate' => 'handleBeforeCreate',
+        'created' => 'handleCreated',
+        'beforeMount' => 'handleBeforeMount',
+        'mounted' => 'handleMounted',
+        'beforeUpdate' => 'handleBeforeUpdate',
+        'updated' => 'handleUpdated',
+        'beforeUnmount' => 'handleBeforeUnmount',
+        'unmounted' => 'handleUnmounted',
+    ])
+```
+
+### 🔔 Example Usage of event(JavaScript)
+
+```javascript
+function handleReset(el$) {
+    // Your code here
+}
+function handleClear(el$) {
+    // Your code here
+}
+function handleChange(newValue, oldValue, el$) {
+    // Your code here
+}
+function handleBlur(el$) {
+    // Your code here
+}
+function handleFocus(el$) {
+    // Your code here
+}
+function handleKeydown(Event, el$) {
+    // Your code here
+}
+function handleKeyup(Event, el$) {
+    // Your code here
+}
+function handleKeypress(Event, el$) {
+    // Your code here
+}
+function handleBeforeCreate(el$) {
+    // Your code here
+}
+function handleCreated(el$) {
+    // Your code here
+}
+function handleBeforeMount(el$) {
+    // Your code here
+}
+function handleMounted(el$) {
+    // Your code here
+}
+function handleBeforeUpdate(el$) {
+    // Your code here
+}
+function handleUpdated(el$) {
+    // Your code here
+}
+function handleBeforeUnmount(el$) {
+    // Your code here
+}
+function handleUnmounted(el$) {
+    // Your code here
+}
+```
+
+---
+
+## ⚡ Slots
+
+The following slots <a href="https://vueform.com/reference/t-textarea-element#slots" target="_blank">Documentation</a> are available for this element:
+
+| Name | Scope | Description |
+| --- | --- | --- |
+| `label` | - {component} el$ - the element's component | Renders a label for the element in ElementLabel component. |
+| `info` | - {component} el$ - the element's component | Renders an info icon in ElementInfo component next the the element label. When the icon is hovered it shows the content of this slot. The element needs to have a label to render this. |
+| `required` | - |  |
+| `description` | - {component} el$ - the element's component | Renders description for the element in ElementDescription component. |
+| `before` | - {component} el$ - the element's component | Renders an ElementText component before the textarea. |
+| `between` | - {component} el$ - the element's component | Renders an ElementText component after the textarea and before description. |
+| `after` | - {component} el$ - the element's component | Renders an ElementText component after the description and error. |
+| `addon-before` | - {component} el$ - the element's component | Prepends an addon to the textarea. |
+| `addon-after` | - {component} el$ - the element's component | Appends an addon to the textarea. |
 

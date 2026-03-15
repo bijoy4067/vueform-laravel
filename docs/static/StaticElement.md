@@ -1,10 +1,6 @@
-# Static Element 
+# Static Element
 
-A demonstration of static UI components available in Laravel VueForm, including 
-      plain text, headings, horizontal rules, and images. This example showcases how 
-      StaticElement can be used to insert non-interactive content into forms, making it 
-      ideal for creating informational sections, visual dividers, instructional text, 
-      and branding elements within complex form layouts. <a href="https://vueform.com/reference/static-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the StaticElement in VueForm Laravel to display static content such as text, HTML, or informational blocks within Laravel forms. <a href="https://vueform.com/reference/static-element" target="_blank">Documentation</a>
 
 ---
 
@@ -93,7 +89,7 @@ class StaticElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **static element ** events <a href="https://vueform.com/reference/static-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **static element** events <a href="https://vueform.com/reference/static-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

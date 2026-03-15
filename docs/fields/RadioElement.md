@@ -1,6 +1,6 @@
-# RadioElement
+# Radio Element
 
-A form demonstrating usage of the RadioElement field within Laravel VueForm. <a href="https://vueform.com/reference/radio-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the RadioElement field in VueForm Laravel to allow users to select a single option from multiple radio choices in a Laravel form. <a href="https://vueform.com/reference/radio-element" target="_blank">Documentation</a>
 
 ---
 
@@ -80,7 +80,7 @@ class RadioElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **radioelement** events <a href="https://vueform.com/reference/radio-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **radio element** events <a href="https://vueform.com/reference/radio-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

@@ -1,9 +1,6 @@
-# Button Element 
+# Button Element
 
-A minimal example demonstrating the ButtonElement component within Laravel VueForm. 
-      This form focuses on rendering a standard submit button using the built-in 
-      submitButton() helper. Ideal for showcasing how simple static UI elements can be 
-      integrated into a form and how button elements interact with form submission behavior. <a href="https://vueform.com/reference/button-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the ButtonElement static element in VueForm Laravel to create submit buttons, clickable actions, and anchor buttons within Laravel forms. <a href="https://vueform.com/reference/button-element" target="_blank">Documentation</a>
 
 ---
 
@@ -34,12 +31,12 @@ class ButtonElementForm extends VueFormBuilder
                     ->events([
                         'click' => 'handleSubmit'
                     ]),
-            // anchor button example
-            StaticElement::text('Below is an example of an anchor button. It will navigate to the specified URL when clicked.')
-                ->addClass('mt-4 mb-3'),
-            ButtonElement::anchorButton('https://www.example.com')
-                ->buttonLabel('Visit Example.com')
-        ]);
+                // anchor button example
+                StaticElement::text('Below is an example of an anchor button. It will navigate to the specified URL when clicked.')
+                    ->addClass('mt-4 mb-3'),
+                ButtonElement::anchorButton('https://www.example.com')
+                    ->buttonLabel('Visit Example.com')
+            ]);
     }
 }
 ```
@@ -93,7 +90,7 @@ class ButtonElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **button element ** events <a href="https://vueform.com/reference/button-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **button element** events <a href="https://vueform.com/reference/button-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

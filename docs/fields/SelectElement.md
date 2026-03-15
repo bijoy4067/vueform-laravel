@@ -1,4 +1,6 @@
-# SelectElement
+# Select Element
+
+A form example demonstrating how to use the SelectElement field in VueForm Laravel to allow users to choose a single option from a dropdown list in a Laravel form. <a href="https://vueform.com/reference/select-element" target="_blank">Documentation</a>
 
 ---
 
@@ -123,4 +125,148 @@ class SelectElementForm extends VueFormBuilder
 | valueProp | `string` | value | `SelectElement::name("name")->valueProp()` |
 | view | `string` | undefined | `SelectElement::name("name")->view()` |
 | views | `object` | {} | `SelectElement::name("name")->views()` |
+
+---
+
+## ⚡ Events
+
+You can define custom **select element** events <a href="https://vueform.com/reference/select-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+
+Each event value refers to a JavaScript function name.
+
+These functions must be defined inside:
+
+```javascript
+public/vueform-laravel/vueform-custom.js
+```
+
+This allows you to extend or override default behaviors for your generated VueForm components
+
+| Name | Parameters | Description |
+| --- | --- | --- |
+| `reset` | - {component} el$ - the element's component | Triggered when the input is resetted. |
+| `clear` | - {component} el$ - the element's component | Triggered when the input is cleared. |
+| `change` | - {string} newValue - the new value<br>- {string} oldValue - the old value<br>- {component} el$ - the element's component | Triggered when the element's value is changed. |
+| `select` | - {object} option - the selected option<br>- {component} el$ - the element's component | Triggered when an option is selected when using native: false. |
+| `deselect` | - {object} option - the deselected option<br>- {component} el$ - the element's component | Triggered when an option is deselected when using native: false. |
+| `search-change` | - {string|null} searchQuery - the search value<br>- {component} el$ - the element's component | Triggered when the search query changes when using search: true. |
+| `open` | - {component} el$ - the element's component | Triggered when the dropdown list is opened when using native: false. |
+| `close` | - {component} el$ - the element's component | Triggered when the dropdown list is closed when using native: false. |
+| `paste` | - {Event} event - the paste Event<br>- {component} el$ - the element's component | Triggered when text is pasted to the search input when using search: true. |
+| `beforeCreate` | - {component} el$ - the element's component | Triggered in beforeCreate hook. |
+| `created` | - {component} el$ - the element's component | Triggered in created hook. |
+| `beforeMount` | - {component} el$ - the element's component | Triggered in beforeMount hook. |
+| `mounted` | - {component} el$ - the element's component | Triggered in mounted hook. |
+| `beforeUpdate` | - {component} el$ - the element's component | Triggered in beforeUpdate hook. |
+| `updated` | - {component} el$ - the element's component | Triggered in updated hook. |
+| `beforeUnmount` | - {component} el$ - the element's component | Triggered in beforeUnmount (or beforeDestroy in Vue 2) hook. |
+| `unmounted` | - {component} el$ - the element's component | Triggered in unmounted (or destroyed in Vue 2) hook. |
+
+### 🔔 Example Usage of event (PHP)
+
+```php
+SelectElement::name('example')
+    ->events([
+        'reset' => 'handleReset',
+        'clear' => 'handleClear',
+        'change' => 'handleChange',
+        'select' => 'handleSelect',
+        'deselect' => 'handleDeselect',
+        'search-change' => 'handleSearchChange',
+        'open' => 'handleOpen',
+        'close' => 'handleClose',
+        'paste' => 'handlePaste',
+        'beforeCreate' => 'handleBeforeCreate',
+        'created' => 'handleCreated',
+        'beforeMount' => 'handleBeforeMount',
+        'mounted' => 'handleMounted',
+        'beforeUpdate' => 'handleBeforeUpdate',
+        'updated' => 'handleUpdated',
+        'beforeUnmount' => 'handleBeforeUnmount',
+        'unmounted' => 'handleUnmounted',
+    ])
+```
+
+### 🔔 Example Usage of event(JavaScript)
+
+```javascript
+function handleReset(el$) {
+    // Your code here
+}
+function handleClear(el$) {
+    // Your code here
+}
+function handleChange(newValue, oldValue, el$) {
+    // Your code here
+}
+function handleSelect(option, el$) {
+    // Your code here
+}
+function handleDeselect(option, el$) {
+    // Your code here
+}
+function handleSearchChange(searchQuery, el$) {
+    // Your code here
+}
+function handleOpen(el$) {
+    // Your code here
+}
+function handleClose(el$) {
+    // Your code here
+}
+function handlePaste(event, el$) {
+    // Your code here
+}
+function handleBeforeCreate(el$) {
+    // Your code here
+}
+function handleCreated(el$) {
+    // Your code here
+}
+function handleBeforeMount(el$) {
+    // Your code here
+}
+function handleMounted(el$) {
+    // Your code here
+}
+function handleBeforeUpdate(el$) {
+    // Your code here
+}
+function handleUpdated(el$) {
+    // Your code here
+}
+function handleBeforeUnmount(el$) {
+    // Your code here
+}
+function handleUnmounted(el$) {
+    // Your code here
+}
+```
+
+---
+
+## ⚡ Slots
+
+The following slots <a href="https://vueform.com/reference/select-element#slots" target="_blank">Documentation</a> are available for this element:
+
+| Name | Scope | Description |
+| --- | --- | --- |
+| `option` | - {component} el$ - the element's component<br>- {object} option - the option object<br>- {string|null} search - the current value of search input | Replaces the default option template. |
+| `single-label` | - {component} el$ - the element's component<br>- {object} value - the selected option | Replaces the input's inner label that is displayed when an option is selected. |
+| `placeholder` | - {component} el$ - the element's component | Replaces the default template for the input's placeholder. |
+| `group-label` | - {component} el$ - the element's component<br>- {object} group - the group object | Replaces the default group header when groups is true. |
+| `before-list` | - {component} el$ - the element's component | Prepends the content of the slot to the option list. |
+| `after-list` | - {component} el$ - the element's component | Appends the content of the slot to the option list. |
+| `no-results` | - {component} el$ - the element's component | Replaces the default template that is shown when the input has options, but the user search does not have any results. Can be also set without overriding the template with noResultsText option. |
+| `no-options` | - {component} el$ - the element's component | Replaces the default template that is shown when the input has no options. Can be also set without overriding the template with noOptionsText option. |
+| `caret` | - {component} el$ - the element's component | Replaces the small triangle displayed on the right of the input when caret is true. |
+| `spinner` | - {component} el$ - the element's component | Replaces the spinner shown when async options are loading or loading is true. |
+| `clear` | - {component} el$ - the element's component<br>- {function} clear - clears the input value | Replaces the clear icon shown when the input has at least one selected options and canClear is true. |
+| `label` | - {component} el$ - the element's component | Renders a label for the element in ElementLabel component. |
+| `info` | - {component} el$ - the element's component | Renders an info icon in ElementInfo component next the the element label. When the icon is hovered it shows the content of this slot. The element needs to have a label to render this. |
+| `required` | - |  |
+| `description` | - {component} el$ - the element's component | Renders description for the element in ElementDescription component. |
+| `before` | - {component} el$ - the element's component | Renders an ElementText component before the select. |
+| `between` | - {component} el$ - the element's component | Renders an ElementText component after the select and before description. |
+| `after` | - {component} el$ - the element's component | Renders an ElementText component after the description and error. |
 

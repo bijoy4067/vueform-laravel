@@ -1,6 +1,6 @@
-# CheckboxElement
+# Checkbox Element
 
-A form demonstrating usage of the CheckboxElement field within Laravel VueForm. <a href="https://vueform.com/reference/checkbox-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the CheckboxElement field in VueForm Laravel to create selectable checkbox inputs for user options and form interactions. <a href="https://vueform.com/reference/checkbox-element" target="_blank">Documentation</a>
 
 ---
 
@@ -80,7 +80,7 @@ class CheckboxElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **checkboxelement** events <a href="https://vueform.com/reference/checkbox-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **checkbox element** events <a href="https://vueform.com/reference/checkbox-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

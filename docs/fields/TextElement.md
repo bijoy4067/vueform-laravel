@@ -1,6 +1,6 @@
-# TextElement 
+# Text Element
 
-A comprehensive form demonstrating various text input types including text, number, email, password, and URL fields with conditional rendering support. <a href="https://vueform.com/reference/text-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the TextElement field in VueForm Laravel to capture single-line text input in a Laravel form. <a href="https://vueform.com/reference/text-element" target="_blank">Documentation</a>
 
 ---
 
@@ -23,6 +23,7 @@ class TextElementForm extends VueFormBuilder
     protected function buildForm()
     {
         return Vueform::build()
+            ->theme('dark')
             ->default([
                 'search' => 'Search',
                 'number' => '123456',
@@ -119,7 +120,7 @@ class TextElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **textelement ** events <a href="https://vueform.com/reference/text-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **text element** events <a href="https://vueform.com/reference/text-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

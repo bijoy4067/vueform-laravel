@@ -1,6 +1,6 @@
-# RadiogroupElement
+# Radio Group Element
 
-A form demonstrating usage of the RadiogroupElement field within Laravel VueForm. <a href="https://vueform.com/reference/radiogroup-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the RadioGroupElement field in VueForm Laravel to group multiple radio options and allow users to select a single choice in a Laravel form. <a href="https://vueform.com/reference/radiogroup-element" target="_blank">Documentation</a>
 
 ---
 
@@ -92,7 +92,7 @@ class RadiogroupElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **radiogroupelement** events <a href="https://vueform.com/reference/radiogroup-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **radio group element** events <a href="https://vueform.com/reference/radiogroup-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

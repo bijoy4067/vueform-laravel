@@ -1,6 +1,6 @@
-# SignatureElement
+# Signature Element
 
-A form demonstrating usage of the SignatureElement field within Laravel VueForm. <a href="https://vueform.com/reference/signature-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the SignatureElement field in VueForm Laravel to allow users to draw and submit their digital signature in a Laravel form. <a href="https://vueform.com/reference/signature-element" target="_blank">Documentation</a>
 
 ---
 
@@ -22,8 +22,12 @@ class SignatureElementForm extends VueFormBuilder
     protected function buildForm()
     {
         return Vueform::build()
+            // ->theme('dark')
             ->schema([
-                SignatureElement::name('foo')
+                SignatureElement::name('signature')
+                    ->label('Signature')
+                    ->placeholder('Please sign here...')
+                    ->description('Use the field above to draw your signature. This will be submitted as part of the form data.')
             ]);
     }
 }
@@ -94,7 +98,7 @@ class SignatureElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **signatureelement** events <a href="https://vueform.com/reference/signature-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **signature element** events <a href="https://vueform.com/reference/signature-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

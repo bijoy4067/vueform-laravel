@@ -1,4 +1,6 @@
-# LangsElement
+# Langs Element
+
+A form example demonstrating how to use the LangsElement in VueForm Laravel to build multilingual forms with language tabs and translated inputs. <a href="https://vueform.com/reference/form-languages" target="_blank">Documentation</a>
 
 ---
 

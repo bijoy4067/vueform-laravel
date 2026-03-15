@@ -1,11 +1,6 @@
-# Group Element 
+# Object Element
 
-A comprehensive demonstration of using ObjectElement and ListElement in Laravel VueForm. 
-      This form showcases nested column layouts, conditional field rendering, tag selection 
-      with custom templates, dynamic remote items, and mixed input types. It includes validation, 
-      slot customization, static elements like horizontal dividers, and submit button integration. 
-      Ideal for developers looking to implement advanced, structured forms with flexible layouts 
-      and complex user interactions. <a href="https://vueform.com/reference/object-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the ObjectElement in VueForm Laravel to group form fields and store their values as a nested object structure. <a href="https://vueform.com/reference/object-element" target="_blank">Documentation</a>
 
 ---
 
@@ -191,7 +186,7 @@ class ObjectElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **group element ** events <a href="https://vueform.com/reference/object-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **object element** events <a href="https://vueform.com/reference/object-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

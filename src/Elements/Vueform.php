@@ -133,6 +133,9 @@ class Vueform extends FormSchemaBuilder
 
     public static function build(): self
     {
+        // Clear theme session on each form build to prevent unintended theme carryover between forms
+        session()->put('themes', []);
+
         $instance = static::name();
         $instance->attributes['element-name'] = 'vue-form';
 
@@ -177,5 +180,32 @@ class Vueform extends FormSchemaBuilder
         }
 
         return $instance;
+    }
+
+    /**
+     * Set the theme for the form. This will load the corresponding CSS file for the specified theme.
+     */
+    public function theme(string $theme = 'default'): self
+    {
+        $validThemes = ['default', 'dark'];
+        // validate themes
+        if (!in_array($theme, $validThemes)) {
+            throw new \InvalidArgumentException("Invalid theme: $theme. Valid themes are: " . implode(', ', $validThemes));
+        }
+
+        // Clear theme session to ensure only the current theme is loaded for this form
+        session()->put('themes', []);
+
+        $loadThemeLists = session()->get('themes', ['default']);
+
+        // Avoid loading the same theme multiple times across different forms in the same session
+        if (!in_array($theme, $loadThemeLists)) {
+            $loadThemeLists[] = $theme;
+            session()->put('themes', $loadThemeLists);
+        }
+
+        $this->attributes['theme'] = $theme;
+        session()->put('themes', [$theme]);
+        return $this;
     }
 }

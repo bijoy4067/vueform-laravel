@@ -1,6 +1,6 @@
-# TextareaElement
+# Textarea Element
 
-A form demonstrating usage of the TextareaElement field within Laravel VueForm. <a href="https://vueform.com/reference/textarea-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the TextareaElement field in VueForm Laravel to allow users to enter multi-line text input in a Laravel form. <a href="https://vueform.com/reference/textarea-element" target="_blank">Documentation</a>
 
 ---
 
@@ -85,7 +85,7 @@ class TextareaElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **textareaelement** events <a href="https://vueform.com/reference/textarea-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **textarea element** events <a href="https://vueform.com/reference/textarea-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

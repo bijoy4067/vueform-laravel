@@ -1,6 +1,6 @@
-# LocationElement
+# Location Element
 
-A form demonstrating usage of the LocationElement field within Laravel VueForm. <a href="https://vueform.com/reference/location-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the LocationElement field in VueForm Laravel to allow users to search and select a location within a Laravel form. <a href="https://vueform.com/reference/location-element" target="_blank">Documentation</a>
 
 ---
 
@@ -83,7 +83,7 @@ class LocationElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **locationelement** events <a href="https://vueform.com/reference/location-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **location element** events <a href="https://vueform.com/reference/location-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

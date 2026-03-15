@@ -1,11 +1,6 @@
-# Grid Element 
+# Grid Element
 
-Demonstrates the use of GridElement in Laravel VueForm to create structured 
-      multi-column layouts. This form allows arranging form fields into rows with 
-      configurable column counts (1, 2, 3, 4, or 6 columns). Each row can contain 
-      different input types, such as text, select, date, and slider elements, enabling 
-      clean and organized form designs. Ideal for forms that require responsive and 
-      visually structured data entry. <a href="https://vueform.com/reference/grid-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the GridElement in VueForm Laravel to organize form elements into responsive rows and columns using a grid layout. <a href="https://vueform.com/reference/grid-element" target="_blank">Documentation</a>
 
 ---
 
@@ -140,7 +135,7 @@ class GridElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **grid element ** events <a href="https://vueform.com/reference/grid-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **grid element** events <a href="https://vueform.com/reference/grid-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

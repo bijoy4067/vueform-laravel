@@ -1,11 +1,6 @@
-# List Element 
+# List Element
 
-Demonstrates the use of ListElement in Laravel VueForm for creating repeatable and 
-      structured item entries. This form showcases nested layouts with GroupElement, 
-      allowing multiple columns and rows inside each list item. Each list entry can 
-      include various field types, such as text inputs, and supports validation rules 
-      to ensure consistent data entry. Ideal for forms requiring dynamic, repeatable, 
-      and organized input sections . <a href="https://vueform.com/reference/list-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the ListElement in VueForm Laravel to repeat and manage multiple groups of form fields dynamically. <a href="https://vueform.com/reference/list-element" target="_blank">Documentation</a>
 
 ---
 
@@ -102,7 +97,7 @@ class ListElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **list element ** events <a href="https://vueform.com/reference/list-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **list element** events <a href="https://vueform.com/reference/list-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

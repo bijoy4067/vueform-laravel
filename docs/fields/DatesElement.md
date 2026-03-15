@@ -1,6 +1,6 @@
-# DatesElement
+# Dates Element
 
-A form demonstrating usage of the DatesElement field within Laravel VueForm. <a href="https://vueform.com/reference/dates-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the DatesElement field in VueForm Laravel to allow users to select multiple dates within a Laravel form. <a href="https://vueform.com/reference/dates-element" target="_blank">Documentation</a>
 
 ---
 
@@ -87,7 +87,7 @@ class DatesElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **dateselement** events <a href="https://vueform.com/reference/dates-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **dates element** events <a href="https://vueform.com/reference/dates-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

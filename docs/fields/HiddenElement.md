@@ -1,6 +1,6 @@
-# HiddenElement
+# Hidden Element
 
-A form demonstrating usage of the HiddenElement field within Laravel VueForm. <a href="https://vueform.com/reference/hidden-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the HiddenElement field in VueForm Laravel to store and submit hidden values within Laravel forms. <a href="https://vueform.com/reference/hidden-element" target="_blank">Documentation</a>
 
 ---
 
@@ -53,7 +53,7 @@ class HiddenElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **hiddenelement** events <a href="https://vueform.com/reference/hidden-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **hidden element** events <a href="https://vueform.com/reference/hidden-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

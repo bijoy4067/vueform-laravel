@@ -1,22 +1,37 @@
 [![Vueform Laravel](https://vueform-laravel.vercel.app/assets/images/logo.png)](https://vueform-laravel.vercel.app/)
 
-# VueForm Laravel Form Builder
+# VueForm Laravel Form Builder - Build Laravel Forms with Vue 3 Without JavaScript
 
 [![Latest Version](https://img.shields.io/packagist/v/bijoy4067/vueform-laravel)](https://packagist.org/packages/bijoy4067/vueform-laravel)
 [![License](https://img.shields.io/packagist/l/bijoy4067/vueform-laravel)](LICENSE)
 [![PHP Version](https://img.shields.io/packagist/php-v/bijoy4067/vueform-laravel)](https://packagist.org/packages/bijoy4067/vueform-laravel)
+[![Laravel Form Builder](https://img.shields.io/badge/Laravel-Form%20Builder-blue)](https://laravel.com)
+[![Vue 3 Forms](https://img.shields.io/badge/Vue%203-Forms-green)](https://vuejs.org)
+[![Material Design](https://img.shields.io/badge/Material-Design-purple)](https://material.io)
 
-**Build powerful, production-ready Laravel forms with Vue 3 without writing JavaScript.** 
-VueForm Laravel is a comprehensive PHP form builder that seamlessly integrates VueForm's reactive UI components with Laravel's robust backend validation and routing system. Define your forms entirely in PHP, leverage server-side validation, and render beautiful Material Design forms instantly in your Blade templates [Documentation](https://vueform-laravel.vercel.app/).
+**VueForm Laravel** is a powerful, production-ready PHP form builder that integrates VueForm's reactive UI components with Laravel's backend validation. Create beautiful, responsive forms entirely in PHP without writing JavaScript code. Perfect for Laravel developers who want modern form interfaces with Material Design themes.
+
+**Key Benefits:**
+
+- ✅ **Zero JavaScript Required** - Build forms in pure PHP
+- ✅ **Laravel Integration** - Native validation, routing, and security
+- ✅ **Material Design UI** - Professional, responsive forms
+- ✅ **Theme Support** - Multiple themes including dark mode
+- ✅ **Production Ready** - Optimized assets and performance
+- ✅ **Developer Friendly** - Easy to learn, extensive documentation
+
+[📖 Full Documentation](https://vueform-laravel.vercel.app/) | [🚀 Quick Start](#-quick-start-guide) | [🎨 Themes](#-themes)
 
 ---
 
 ## 📋 Table of Contents
 
+- [Why VueForm Laravel?](#-why-vueform-laravel)
 - [Key Features](#-key-features)
 - [Requirements](#-requirements)
 - [Installation](#-installation)
 - [Quick Start Guide](#-quick-start-guide)
+- [Themes](#-themes)
 - [Configuration](#%EF%B8%8F-configuration)
 - [Creating Form Components](#%EF%B8%8F-creating-form-components)
 - [Rendering Forms](#%EF%B8%8F-rendering-forms)
@@ -26,6 +41,28 @@ VueForm Laravel is a comprehensive PHP form builder that seamlessly integrates V
 - [Troubleshooting](#-troubleshooting)
 - [Contributing](#-contributing)
 - [License](#-license)
+
+---
+
+## 🚀 Why VueForm Laravel?
+
+VueForm Laravel bridges the gap between Laravel's powerful backend and modern frontend form experiences. As a PHP developer, you can now create interactive, validated forms without learning Vue.js or managing complex frontend build processes.
+
+**Perfect for:**
+
+- Laravel developers building admin panels
+- PHP developers creating user registration forms
+- Teams needing consistent form styling across applications
+- Projects requiring rapid form development
+- Applications with complex validation requirements
+
+**What makes it special:**
+
+- **Server-Side First**: Define forms in PHP with Laravel validation
+- **Client-Side Enhancement**: Automatic Vue 3 reactivity and Material Design
+- **Zero Configuration**: Works out-of-the-box with Laravel
+- **SEO Friendly**: Server-rendered forms with JavaScript enhancement
+- **Accessible**: WCAG compliant form components
 
 ---
 
@@ -199,28 +236,79 @@ class ContactController extends Controller
 
 ---
 
-## ⚙️ Configuration
+## 🎨 Themes
 
-### Customize Material Theme Colors
+VueForm Laravel supports multiple themes for different visual styles and user preferences. Themes are configured in `config/vueform-laravel.php` and automatically generate separate CSS/JS bundles for optimal performance.
 
-Edit `config/vueform-laravel.php` to match your brand:
+### Available Themes
+
+- **Default Theme** - Clean Material Design with light background
+- **Dark Theme** - Dark mode optimized for low-light environments
+- **Custom Themes** - Create your own themes by extending configuration
+
+### Theme Configuration
 
 ```php
-<?php
-
-return [
-    'styles' => [
-        // Primary brand color
+// config/vueform-laravel.php
+'themes' => [
+    'default' => [
         '--vf-primary' => '#6200ee',
-
-        // Form element styling
         '--vf-bg-input' => '#ffffff',
-        '--vf-border-color-input' => '#d1d5db',
-        '--vf-radius-input' => '0.375rem',
+        // ... more variables
+    ],
+    'dark' => [
+        '--vf-primary' => '#BB86FC',
+        '--vf-bg-input' => '#1E1E1E',
+        // ... dark theme variables
+    ],
+],
+```
 
-        // Typography
-        '--vf-font-size' => '0.875rem',
-        '--vf-line-height' => '1.25rem',
+### Using Themes
+
+Set the current theme in your controller or middleware:
+
+```php
+session(['theme' => 'dark']);
+```
+
+The form will automatically load the appropriate theme assets and styling.
+
+---
+
+## ⚙️ Configuration
+
+### Basic Configuration
+
+The main configuration file is located at `config/vueform-laravel.php`. Here you can customize:
+
+- **Themes**: Define multiple themes with CSS variables
+- **Validation Messages**: Customize error messages
+- **File Upload Settings**: Configure upload paths and validation
+- **API Endpoints**: Set custom endpoints for dynamic options
+
+### Theme Customization
+
+```php
+// config/vueform-laravel.php
+'themes' => [
+    'default' => [
+        '--vf-primary' => '#6200ee',
+        '--vf-danger' => '#B00020',
+        '--vf-success' => '#4CAF50',
+        '--vf-font-size' => '1rem',
+        // ... hundreds of customizable variables
+    ],
+],
+```
+
+### Environment Variables
+
+```env
+# Google reCAPTCHA (optional)
+GOOGLE_RECAPTCHA_SITE_KEY=your_site_key_here
+GOOGLE_RECAPTCHA_SECRET_KEY=your_secret_key_here
+```
 
         // Spacing
         '--vf-gutter' => '1rem',
@@ -230,8 +318,10 @@ return [
         '--vf-color-success' => '#10b981',
         '--vf-color-danger' => '#ef4444',
     ]
+
 ];
-```
+
+````
 
 After updating configuration, **clear your browser cache** or do a hard refresh (Ctrl+F5) to see changes.
 
@@ -250,7 +340,7 @@ php artisan vueform:make Admin/UserEditForm
 
 # With custom namespace
 php artisan vueform:make Forms/Checkout/PaymentForm
-```
+````
 
 Forms are created in `app/VueForm/` by default. You can organize them in subdirectories.
 

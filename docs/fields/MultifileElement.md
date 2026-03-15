@@ -1,6 +1,6 @@
-# MultifileElement
+# Multifile Element
 
-A form demonstrating usage of the MultifileElement field within Laravel VueForm. <a href="https://vueform.com/reference/multifile-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the MultifileElement field in VueForm Laravel to allow users to upload multiple files within a Laravel form. <a href="https://vueform.com/reference/multifile-element" target="_blank">Documentation</a>
 
 ---
 
@@ -95,7 +95,7 @@ class MultifileElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **multifileelement** events <a href="https://vueform.com/reference/multifile-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **multifile element** events <a href="https://vueform.com/reference/multifile-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

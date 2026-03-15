@@ -1,6 +1,6 @@
 # Captcha Element
 
-A form demonstrating usage of the CaptchaElement field within Laravel VueForm. <a href="https://vueform.com/reference/captcha-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the CaptchaElement field in VueForm Laravel to add captcha verification and protect forms from spam submissions. <a href="https://vueform.com/reference/captcha-element" target="_blank">Documentation</a>
 
 ---
 
@@ -22,6 +22,7 @@ class CaptchaElementForm extends VueFormBuilder
     protected function buildForm()
     {
         return Vueform::build()
+            // ->theme('dark')
             ->schema([
                 CaptchaElement::name('capture')
             ]);

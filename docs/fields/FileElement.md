@@ -1,6 +1,6 @@
-# FileElement
+# File Element
 
-A form demonstrating usage of the FileElement field within Laravel VueForm. <a href="https://vueform.com/reference/file-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the FileElement field in VueForm Laravel to upload files such as images, documents, or attachments in Laravel forms. <a href="https://vueform.com/reference/file-element" target="_blank">Documentation</a>
 
 ---
 
@@ -88,7 +88,7 @@ class FileElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **fileelement** events <a href="https://vueform.com/reference/file-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **file element** events <a href="https://vueform.com/reference/file-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 

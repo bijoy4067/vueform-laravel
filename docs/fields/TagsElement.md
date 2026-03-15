@@ -1,12 +1,6 @@
-# TagsElement 
+# Tags Element
 
-A fully-featured demonstration of the TagsElement field in Laravel VueForm. 
-      This example showcases tag selection with custom templates, dynamic item sources, 
-      searchability, column-based layout grouping, and event handling. It also includes 
-      mixed field types, slot customization, remote data loading, validation rules, 
-      and integration with static elements such as headings and horizontal dividers. 
-      Ideal for developers looking to implement advanced tag-based input fields with 
-      flexible UI rendering and form submission workflows. <a href="https://vueform.com/reference/tags-element" target="_blank">Documentation</a>
+A form example demonstrating how to use the TagsElement field in VueForm Laravel to allow users to add and manage multiple tags dynamically within a Laravel form. <a href="https://vueform.com/reference/tags-element" target="_blank">Documentation</a>
 
 ---
 
@@ -227,7 +221,7 @@ class TagsElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-You can define custom **tagselement ** events <a href="https://vueform.com/reference/tags-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+You can define custom **tags element** events <a href="https://vueform.com/reference/tags-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
 
 Each event value refers to a JavaScript function name.
 
