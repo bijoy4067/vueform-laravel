@@ -96,4 +96,16 @@ class ButtonElement extends FormSchemaBuilder
 
         return $element->name(static::generateRandomName())->submits(true);
     }
+
+    /**
+     * @desc Create an anchor button that navigates to a specified URL
+     *
+     * @param  string  $url  The URL to navigate to when the button is clicked.
+     * @return static
+     */
+    public static function anchorButton(string $url)
+    {
+        $element = new static;
+        return $element->name(static::generateRandomName())->buttonType('anchor')->href($url);
+    }
 }

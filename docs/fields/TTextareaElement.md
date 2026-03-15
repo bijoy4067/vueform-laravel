@@ -21,7 +21,10 @@ class TTextareaElementForm extends VueFormBuilder
     {
         return Vueform::build()
             ->schema([
-                TTextareaElement::name('search')
+                TTextareaElement::name('description')
+                    ->label('Description')
+                    ->placeholder('Enter a description here...')
+                    ->default('This is a default description.')
             ]);
     }
 }

@@ -23,7 +23,12 @@ class CheckboxgroupElementForm extends VueFormBuilder
     {
         return Vueform::build()
             ->schema([
-                CheckboxgroupElement::name('foo')
+                CheckboxgroupElement::name('languages')
+                    ->items([
+                        ['value' => 'html', 'label' => 'HTML'],
+                        ['value' => 'css', 'label' => 'CSS'],
+                        ['value' => 'js', 'label' => 'JavaScript']
+                    ])
             ]);
     }
 }
@@ -77,7 +82,17 @@ class CheckboxgroupElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-The following events <a href="https://vueform.com/reference/checkboxgroup-element#events" target="_blank">Documentation</a> are available for this element:
+You can define custom **checkboxgroupelement** events <a href="https://vueform.com/reference/checkboxgroup-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+
+Each event value refers to a JavaScript function name.
+
+These functions must be defined inside:
+
+```javascript
+public/vueform-laravel/vueform-custom.js
+```
+
+This allows you to extend or override default behaviors for your generated VueForm components
 
 | Name | Parameters | Description |
 | --- | --- | --- |
@@ -93,7 +108,7 @@ The following events <a href="https://vueform.com/reference/checkboxgroup-elemen
 | `beforeUnmount` | - {component} el$ - the element's component | Triggered in beforeUnmount (or beforeDestroy in Vue 2) hook. |
 | `unmounted` | - {component} el$ - the element's component | Triggered in unmounted (or destroyed in Vue 2) hook. |
 
-### 🔔 Example Usage of PHP
+### 🔔 Example Usage of event (PHP)
 
 ```php
 CheckboxgroupElement::name('example')
@@ -112,7 +127,7 @@ CheckboxgroupElement::name('example')
     ])
 ```
 
-### 🔔 Example Usage of JavaScript
+### 🔔 Example Usage of event(JavaScript)
 
 ```javascript
 function handleReset(el$) {
@@ -148,3 +163,22 @@ function handleBeforeUnmount(el$) {
 function handleUnmounted(el$) {
     // Your code here
 }
+```
+
+---
+
+## ⚡ Slots
+
+The following slots <a href="https://vueform.com/reference/checkboxgroup-element#slots" target="_blank">Documentation</a> are available for this element:
+
+| Name | Scope | Description |
+| --- | --- | --- |
+| `checkbox` | - {component} el$ - the element's component<br>- {object} item - the checkbox item<br>- {string|number} value - the checkbox value<br>- {object} items - the checkbox items<br>- {number} index - the index of current checkbox<br>- {string} id - the id attribute of the checkbox field used by the default template<br>- {string} name - the name attribute of the checkbox field used by the default template<br>- {boolean} isDisabled - whether the checkbox is disabled<br>- {object} classes - an object containing the classes of CheckboxgroupCheckbox component | Replaces the template for the checkbox field. Checkboxes are rendered by the CheckboxgroupCheckbox component which has a default checkbox template. If the this slot is defined, the default template in CheckboxgroupCheckbox component will be overridden with the content of this slot. |
+| `label` | - {component} el$ - the element's component | Renders a label for the element in ElementLabel component. |
+| `info` | - {component} el$ - the element's component | Renders an info icon in ElementInfo component next the the element label. When the icon is hovered it shows the content of this slot. The element needs to have a label to render this. |
+| `required` | - |  |
+| `description` | - {component} el$ - the element's component | Renders description for the element in ElementDescription component. |
+| `before` | - {component} el$ - the element's component | Renders an ElementText component before the checkbox group. |
+| `between` | - {component} el$ - the element's component | Renders an ElementText component after the checkbox group and before description. |
+| `after` | - {component} el$ - the element's component | Renders an ElementText component after the description and error. |
+

@@ -171,6 +171,7 @@ abstract class VueFormBuilder
         if ($response === 'array') {
             return static::$schema;
         }
+        // dd(static::$schema);
         // Render Vue form view
         return view('vueForm::vueform-' . static::$formMode, [
             'formData' => static::$schema,

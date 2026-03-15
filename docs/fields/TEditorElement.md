@@ -21,7 +21,10 @@ class TEditorElementForm extends VueFormBuilder
     {
         return Vueform::build()
             ->schema([
-                TEditorElement::name('search')
+                TEditorElement::name('description')
+                    ->label('Description')
+                    ->placeholder('Enter a description here...')
+                    ->default('<p>This is a default description with <strong>rich text</strong> formatting.</p>')
             ]);
     }
 }

@@ -24,6 +24,7 @@ class CheckboxElementForm extends VueFormBuilder
         return Vueform::build()
             ->schema([
                 CheckboxElement::name('foo')
+                    ->text('This is a checkbox field. You can check or uncheck it to see how it works.')
             ]);
     }
 }
@@ -79,7 +80,17 @@ class CheckboxElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-The following events <a href="https://vueform.com/reference/checkbox-element#events" target="_blank">Documentation</a> are available for this element:
+You can define custom **checkboxelement** events <a href="https://vueform.com/reference/checkbox-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+
+Each event value refers to a JavaScript function name.
+
+These functions must be defined inside:
+
+```javascript
+public/vueform-laravel/vueform-custom.js
+```
+
+This allows you to extend or override default behaviors for your generated VueForm components
 
 | Name | Parameters | Description |
 | --- | --- | --- |
@@ -95,7 +106,7 @@ The following events <a href="https://vueform.com/reference/checkbox-element#eve
 | `beforeUnmount` | - {component} el$ - the element's component | Triggered in beforeUnmount (or beforeDestroy in Vue 2) hook. |
 | `unmounted` | - {component} el$ - the element's component | Triggered in unmounted (or destroyed in Vue 2) hook. |
 
-### 🔔 Example Usage of PHP
+### 🔔 Example Usage of event (PHP)
 
 ```php
 CheckboxElement::name('example')
@@ -114,7 +125,7 @@ CheckboxElement::name('example')
     ])
 ```
 
-### 🔔 Example Usage of JavaScript
+### 🔔 Example Usage of event(JavaScript)
 
 ```javascript
 function handleReset(el$) {
@@ -150,3 +161,22 @@ function handleBeforeUnmount(el$) {
 function handleUnmounted(el$) {
     // Your code here
 }
+```
+
+---
+
+## ⚡ Slots
+
+The following slots <a href="https://vueform.com/reference/checkbox-element#slots" target="_blank">Documentation</a> are available for this element:
+
+| Name | Scope | Description |
+| --- | --- | --- |
+| `default` | - {component} el$ - the element's component | Renders a label for the checkbox. |
+| `label` | - {component} el$ - the element's component | Renders a label for the element in ElementLabel component. |
+| `info` | - {component} el$ - the element's component | Renders an info icon in ElementInfo component next the the element label. When the icon is hovered it shows the content of this slot. The element needs to have a label to render this. |
+| `required` | - |  |
+| `description` | - {component} el$ - the element's component | Renders description for the element in ElementDescription component. |
+| `before` | - {component} el$ - the element's component | Renders an ElementText component before the checkbox. |
+| `between` | - {component} el$ - the element's component | Renders an ElementText component after the checkbox and before description. |
+| `after` | - {component} el$ - the element's component | Renders an ElementText component after the description and error. |
+

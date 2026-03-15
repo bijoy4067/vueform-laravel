@@ -13,6 +13,7 @@ A minimal example demonstrating the ButtonElement component within Laravel VueFo
 use VueFormLaravel\Abstracts\VueFormBuilder;
 use VueFormLaravel\Elements\Fields\TagsElement;
 use VueFormLaravel\Elements\Static\ButtonElement;
+use VueFormLaravel\Elements\Static\StaticElement;
 use VueFormLaravel\Elements\Vueform;
 ```
 
@@ -27,32 +28,18 @@ class ButtonElementForm extends VueFormBuilder
     {
         return Vueform::build()
             ->schema([
-                // ButtonElement::submitButton()
-                //     ->events([
-                //         'click' => 'handleSubmit'
-                //     ]),
-                TagsElement::name('rating')
-                    ->type('tags')
-                    ->items([
-                        ['value' => 'user1', 'label' => 'Bijoy karmokar', 'image' => 'http://127.0.0.1:8000/assets/images/user-1.jpg'],
-                        ['value' => 'user2', 'label' => 'User Two', 'image' => 'http://127.0.0.1:8000/assets/images/user-2.jpg'],
-                        ['value' => 'user3', 'label' => 'User Three', 'image' => 'http://127.0.0.1:8000/assets/images/user-2.jpg']
-                    ])
-                    ->slots([
-                        'tag' => '<span
-                        >
-                         <img class="multiselect-tag-image" src="{{ option.image }}" alt="{{ option.label }}" style="width:20px; border-radius:50%; margin-right:5px; vertical-align:middle;">
-                            {{ option.label }}
-                            <span v-if="!{{ disabled }}" class="multiselect-tag-remove" id="{{ handleTagRemove(option, $event) }}">
-                                <span class="multiselect-tag-remove-icon fa fa-times">
-                                    <!-- <i class="fa fa-times text-light"></i> -->
-                                </span>
-                            </span>
-                        </span>',
-                        'info' => '<span>Select Category</span>',
-                        'before' => '<h1 style="color: blue;"> Please select categories</h1>',
+                StaticElement::text('This is a simple form with a submit button. Click the button to trigger form submission.')
+                    ->addClass('mb-3'),
+                ButtonElement::submitButton()
+                    ->events([
+                        'click' => 'handleSubmit'
                     ]),
-            ]);
+            // anchor button example
+            StaticElement::text('Below is an example of an anchor button. It will navigate to the specified URL when clicked.')
+                ->addClass('mt-4 mb-3'),
+            ButtonElement::anchorButton('https://www.example.com')
+                ->buttonLabel('Visit Example.com')
+        ]);
     }
 }
 ```
@@ -106,7 +93,17 @@ class ButtonElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-The following events <a href="https://vueform.com/reference/button-element#events" target="_blank">Documentation</a> are available for this element:
+You can define custom **button element ** events <a href="https://vueform.com/reference/button-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+
+Each event value refers to a JavaScript function name.
+
+These functions must be defined inside:
+
+```javascript
+public/vueform-laravel/vueform-custom.js
+```
+
+This allows you to extend or override default behaviors for your generated VueForm components
 
 | Name | Parameters | Description |
 | --- | --- | --- |
@@ -120,7 +117,7 @@ The following events <a href="https://vueform.com/reference/button-element#event
 | `beforeUnmount` | - {component} el$ - the element's component | Triggered in beforeUnmount (or beforeDestroy in Vue 2) hook. |
 | `unmounted` | - {component} el$ - the element's component | Triggered in unmounted (or destroyed in Vue 2) hook. |
 
-### 🔔 Example Usage of PHP
+### 🔔 Example Usage of event (PHP)
 
 ```php
 ButtonElement::name('example')
@@ -137,7 +134,7 @@ ButtonElement::name('example')
     ])
 ```
 
-### 🔔 Example Usage of JavaScript
+### 🔔 Example Usage of event(JavaScript)
 
 ```javascript
 function handleClick(form$, el$, event) {
@@ -167,6 +164,24 @@ function handleBeforeUnmount(el$) {
 function handleUnmounted(el$) {
     // Your code here
 }
+```
+
+---
+
+## ⚡ Slots
+
+The following slots <a href="https://vueform.com/reference/button-element#slots" target="_blank">Documentation</a> are available for this element:
+
+| Name | Scope | Description |
+| --- | --- | --- |
+| `label` | - {component} el$ - the element's component | Renders a label for the element in ElementLabel component. |
+| `info` | - {component} el$ - the element's component | Renders an info icon in ElementInfo component next the the element label. When the icon is hovered it shows the content of this slot. The element needs to have a label to render this. |
+| `description` | - {component} el$ - the element's component | Renders description for the element in ElementDescription component. |
+| `before` | - {component} el$ - the element's component | Renders an ElementText component before the button. |
+| `between` | - {component} el$ - the element's component | Renders an ElementText component after the button and before description. |
+| `after` | - {component} el$ - the element's component | Renders an ElementText component after the description and error. |
+| `default` | - {component} el$ - the element's component | Renders the button's label. |
+
 ---
 
 ## ⚙️ Available Static Methods
@@ -174,4 +189,5 @@ function handleUnmounted(el$) {
 | Method | Description |
 | --- | --- |
 | `submitButton` | Create a form submit button |
+| `anchorButton` | Create an anchor button that navigates to a specified URL |
 

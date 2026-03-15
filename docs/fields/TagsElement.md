@@ -227,7 +227,17 @@ class TagsElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-The following events <a href="https://vueform.com/reference/tags-element#events" target="_blank">Documentation</a> are available for this element:
+You can define custom **tagselement ** events <a href="https://vueform.com/reference/tags-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+
+Each event value refers to a JavaScript function name.
+
+These functions must be defined inside:
+
+```javascript
+public/vueform-laravel/vueform-custom.js
+```
+
+This allows you to extend or override default behaviors for your generated VueForm components
 
 | Name | Parameters | Description |
 | --- | --- | --- |
@@ -250,7 +260,7 @@ The following events <a href="https://vueform.com/reference/tags-element#events"
 | `beforeUnmount` | - {component} el$ - the element's component | Triggered in beforeUnmount (or beforeDestroy in Vue 2) hook. |
 | `unmounted` | - {component} el$ - the element's component | Triggered in unmounted (or destroyed in Vue 2) hook. |
 
-### 🔔 Example Usage of PHP
+### 🔔 Example Usage of event (PHP)
 
 ```php
 TagsElement::name('example')
@@ -276,7 +286,7 @@ TagsElement::name('example')
     ])
 ```
 
-### 🔔 Example Usage of JavaScript
+### 🔔 Example Usage of event(JavaScript)
 
 ```javascript
 function handleReset(el$) {
@@ -333,3 +343,32 @@ function handleBeforeUnmount(el$) {
 function handleUnmounted(el$) {
     // Your code here
 }
+```
+
+---
+
+## ⚡ Slots
+
+The following slots <a href="https://vueform.com/reference/tags-element#slots" target="_blank">Documentation</a> are available for this element:
+
+| Name | Scope | Description |
+| --- | --- | --- |
+| `tag` | - {component} el$ - the element's component<br>- {object} option - the option object<br>- {boolean} disabled - whether the option is disabled<br>- {function} handleTagRemove - removes the tag from the selected options | Replaces the default tag template. |
+| `option` | - {component} el$ - the element's component<br>- {object} option - the option object<br>- {string|null} search - the current value of search input | Replaces the default option template. |
+| `placeholder` | - {component} el$ - the element's component | Replaces the default template for the input's placeholder. |
+| `group-label` | - {component} el$ - the element's component<br>- {object} group - the group object | Replaces the default group header when groups is true. |
+| `before-list` | - {component} el$ - the element's component | Prepends the content of the slot to the option list. |
+| `after-list` | - {component} el$ - the element's component | Appends the content of the slot to the option list. |
+| `no-results` | - {component} el$ - the element's component | Replaces the default template that is shown when the input has options, but the user search does not have any results. Can be also set without overriding the template with noResultsText option. |
+| `no-options` | - {component} el$ - the element's component | Replaces the default template that is shown when the input has no options. Can be also set without overriding the template with noOptionsText option. |
+| `caret` | - {component} el$ - the element's component | Replaces the small triangle displayed on the right of the input when caret is true. |
+| `spinner` | - {component} el$ - the element's component | Replaces the spinner shown when async options are loading or loading is true. |
+| `clear` | - {component} el$ - the element's component<br>- {function} clear - clears the input value | Replaces the clear icon shown when the input has at least one selected options and canClear is true. |
+| `label` | - {component} el$ - the element's component | Renders a label for the element in ElementLabel component. |
+| `info` | - {component} el$ - the element's component | Renders an info icon in ElementInfo component next the the element label. When the icon is hovered it shows the content of this slot. The element needs to have a label to render this. |
+| `required` | - |  |
+| `description` | - {component} el$ - the element's component | Renders description for the element in ElementDescription component. |
+| `before` | - {component} el$ - the element's component | Renders an ElementText component before the tags input. |
+| `between` | - {component} el$ - the element's component | Renders an ElementText component after the tags input and before description. |
+| `after` | - {component} el$ - the element's component | Renders an ElementText component after the description and error. |
+

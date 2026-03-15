@@ -23,7 +23,10 @@ class TextareaElementForm extends VueFormBuilder
     {
         return Vueform::build()
             ->schema([
-                TextareaElement::name('foo')
+                TextareaElement::name('description')
+                    ->label('Description')
+                    ->placeholder('Enter a description here...')
+                    ->default('This is a default description.')
             ]);
     }
 }
@@ -82,7 +85,17 @@ class TextareaElementForm extends VueFormBuilder
 
 ## ⚡ Events
 
-The following events <a href="https://vueform.com/reference/textarea-element#events" target="_blank">Documentation</a> are available for this element:
+You can define custom **textareaelement** events <a href="https://vueform.com/reference/textarea-element#events" target="_blank">Documentation</a> directly in PHP using the `->events()` method.
+
+Each event value refers to a JavaScript function name.
+
+These functions must be defined inside:
+
+```javascript
+public/vueform-laravel/vueform-custom.js
+```
+
+This allows you to extend or override default behaviors for your generated VueForm components
 
 | Name | Parameters | Description |
 | --- | --- | --- |
@@ -103,7 +116,7 @@ The following events <a href="https://vueform.com/reference/textarea-element#eve
 | `beforeUnmount` | - {component} el$ - the element's component | Triggered in beforeUnmount (or beforeDestroy in Vue 2) hook. |
 | `unmounted` | - {component} el$ - the element's component | Triggered in unmounted (or destroyed in Vue 2) hook. |
 
-### 🔔 Example Usage of PHP
+### 🔔 Example Usage of event (PHP)
 
 ```php
 TextareaElement::name('example')
@@ -127,7 +140,7 @@ TextareaElement::name('example')
     ])
 ```
 
-### 🔔 Example Usage of JavaScript
+### 🔔 Example Usage of event(JavaScript)
 
 ```javascript
 function handleReset(el$) {
@@ -178,3 +191,23 @@ function handleBeforeUnmount(el$) {
 function handleUnmounted(el$) {
     // Your code here
 }
+```
+
+---
+
+## ⚡ Slots
+
+The following slots <a href="https://vueform.com/reference/textarea-element#slots" target="_blank">Documentation</a> are available for this element:
+
+| Name | Scope | Description |
+| --- | --- | --- |
+| `label` | - {component} el$ - the element's component | Renders a label for the element in ElementLabel component. |
+| `info` | - {component} el$ - the element's component | Renders an info icon in ElementInfo component next the the element label. When the icon is hovered it shows the content of this slot. The element needs to have a label to render this. |
+| `required` | - |  |
+| `description` | - {component} el$ - the element's component | Renders description for the element in ElementDescription component. |
+| `before` | - {component} el$ - the element's component | Renders an ElementText component before the textarea. |
+| `between` | - {component} el$ - the element's component | Renders an ElementText component after the textarea and before description. |
+| `after` | - {component} el$ - the element's component | Renders an ElementText component after the description and error. |
+| `addon-before` | - {component} el$ - the element's component | Prepends an addon to the textarea. |
+| `addon-after` | - {component} el$ - the element's component | Appends an addon to the textarea. |
+
