@@ -22,7 +22,6 @@ class CaptchaElementForm extends VueFormBuilder
     protected function buildForm()
     {
         return Vueform::build()
-            // ->theme('dark')
             ->schema([
                 CaptchaElement::name('capture')
             ]);

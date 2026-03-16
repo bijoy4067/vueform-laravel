@@ -22,7 +22,6 @@ class SignatureElementForm extends VueFormBuilder
     protected function buildForm()
     {
         return Vueform::build()
-            // ->theme('dark')
             ->schema([
                 SignatureElement::name('signature')
                     ->label('Signature')
